@@ -1,0 +1,6 @@
+@import './colors.css';
+
+.container {
+    height: 84vh;
+    background-color: var(--light-yellow);
+}

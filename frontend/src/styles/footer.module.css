@@ -1,0 +1,6 @@
+@import './colors.css';
+
+.footer {
+    height: 8vh;
+    background-color: var(--light-gray);
+}
