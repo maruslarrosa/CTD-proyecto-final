@@ -50,4 +50,7 @@ public class CategoryServiceTest {
         Assert.assertTrue( !categories.isEmpty() );
         Assert.assertTrue( categories.size() == 1 );
     }
+
+
+
 }
