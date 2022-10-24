@@ -1,0 +1,26 @@
+@import './colors.css';
+
+.menuContainer {
+    width: 20rem;
+    height: 35rem;
+    background-color: var(--light-gray);
+    position: relative;
+    z-index: 999;
+    float: right;
+}
+
+.menuHeader {
+    height: 10rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--gray);
+}
+
+.menuTitle {
+    display: flex;
+    justify-content: flex-end;
+    font-weight: 800;
+    color: var(--yellow);
+}
