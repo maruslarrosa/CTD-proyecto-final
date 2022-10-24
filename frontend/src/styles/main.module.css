@@ -1,0 +1,5 @@
+@import './colors.css';
+
+.container {
+    background-color: white;
+}

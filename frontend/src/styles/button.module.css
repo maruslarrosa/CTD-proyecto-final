@@ -1,0 +1,29 @@
+@import './colors.css';
+
+button {
+    width: 8rem;
+    height: 2rem;
+    padding: 10px;
+    border-radius: 0.3rem ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.primary {
+    background-color: var(--light-yellow);
+    color: var(--gray);
+    border: 1px solid var(--gray);
+    box-shadow: none;
+}
+
+.primary:hover {
+    background-color: var(--gray);
+    color: var(--light-yellow);
+}
+
+.secondary {
+    background-color: var(--yellow);
+    color: var(--gray);
+    border: none
+}
