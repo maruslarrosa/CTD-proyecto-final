@@ -1,0 +1,18 @@
+@import './colors.css';
+
+.footer {
+    height: 5rem;
+    background-color: var(--light-gray);
+    color: var(--light-yellow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.iconContainer {
+    width: 15rem;
+    display: flex;
+    justify-content: space-between;
+}
