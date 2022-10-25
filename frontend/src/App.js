@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CreateAccount, Footer, Header, Login, Main } from './components'
 
 function App() {
-  
+
   const [width, setWidth] = useState(window.innerWidth);
 
   function handleWindowResizing() {
@@ -16,20 +16,20 @@ function App() {
     return () => {
       window.removeEventListener("resize", handleWindowResizing);
     };
-  });
+  }, []);
 
   const isMobile = width <= 768;
   return (
     <div className="App">
-      <Header isMobile={isMobile}/>
+      <Header isMobile={isMobile} />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Main />}/>
-          <Route path="/login" element={<Login />}/>
-          <Route path="/create-account" element={<CreateAccount />}/>
+          <Route path="/" element={<Main />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/create-account" element={<CreateAccount />} />
         </Routes>
       </BrowserRouter>
-      <Footer isMobile={isMobile}/>
+      <Footer isMobile={isMobile} />
     </div>
   );
 }
