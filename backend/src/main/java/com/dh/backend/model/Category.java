@@ -15,13 +15,13 @@ public class Category {
     @Id
     @SequenceGenerator(name = "category_sequence", sequenceName = "category_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "category_sequence")
-    @Column(name = "ID")
+    @Column(name = "ID_CATEGORY")
     private Long id;
-    @Column(name = "TITLE")
+    @Column(name = "TITLE_CATEGORY")
     private String title;
-    @Column(name = "DESCRIPTION")
+    @Column(name = "DESCRIPTION_CATEGORY")
     private String description;
-    @Column(name = "URL")
+    @Column(name = "URL_CATEGORY")
     private String url;
 
     //Constructores
