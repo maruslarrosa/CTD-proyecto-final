@@ -1,6 +1,7 @@
 @import './colors.css';
 
 .footer {
+    width: 100%;
     height: 5rem;
     background-color: var(--light-gray);
     color: var(--light-yellow);
@@ -9,6 +10,8 @@
     align-items: center;
     padding-left: 2rem;
     padding-right: 2rem;
+    position: absolute;
+    bottom: 0;
 }
 
 .iconContainer {
