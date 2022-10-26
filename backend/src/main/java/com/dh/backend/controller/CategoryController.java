@@ -37,4 +37,11 @@ public class CategoryController {
     public Set<CategoryDTO> getListCategories() {
         return categoryService.getListCategory();
     }
+
+    @PutMapping
+    public ResponseEntity<Category> updateCategory(@RequestBody Category category) {
+        return ResponseEntity.ok(categoryService.updateCategory(category));
+    }
+
+
 }
