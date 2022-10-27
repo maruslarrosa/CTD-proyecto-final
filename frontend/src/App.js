@@ -23,15 +23,17 @@ function App() {
   return (
     <div className="App">
       <GlobalContext.Provider value={isMobile}>
+      <BrowserRouter>
+
         <Header />
-        <BrowserRouter>
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/login" element={<Login />} />
             <Route path="/create-account" element={<CreateAccount />} />
           </Routes>
-        </BrowserRouter>
         <Footer isMobile={isMobile} />
+        </BrowserRouter>
+
       </GlobalContext.Provider>
     </div>
   );
