@@ -3,16 +3,40 @@ import { Button } from './Button';
 import { useState } from 'react';
 import { UseEmailValidation } from '../hooks';
 
+const userModel = {
+  email: 'test@test.com',
+  password: '123456'
+}
+
 export const Login = () => {
   const [email, setEmail] = useState("");
+  const [invalidCredentials, setInvalidCredentials] = useState(false)
   const validEmail = UseEmailValidation(email);
   const setNewEmail = (event) => {
     setEmail(event.target.value);
   };
 
+  const login = (event) => {
+    event.preventDefault()
+    debugger
+    const correctEmail = event.target.email.value === userModel.email
+    const correctPassword = event.target.password.value === userModel.password
+    if(correctEmail && correctPassword) {
+      setInvalidCredentials(false)
+    }
+    else {
+      setInvalidCredentials(true)
+    }
+  }
+
   return (
-    <div className={styles.formContainer}>
+    <div className={styles.formContainer} onSubmit={login}>
       <h3 className={styles.text}>Iniciar sesión</h3>
+      {invalidCredentials ? (
+        <p className={styles.error}>
+          Los datos ingresados son incorrectos, intentá nuevamente.
+        </p>
+      ) : null}
       <form className={styles.customForm}>
         <label className={styles.label} htmlFor="email">
           Correo electrónico
@@ -29,7 +53,9 @@ export const Login = () => {
         />
         {email ? (
           !validEmail ? (
-            <p className={styles.error}>El email debe tener el formato email@email.com</p>
+            <p className={styles.error}>
+              El email debe tener el formato email@email.com
+            </p>
           ) : null
         ) : null}
         <label className={styles.label} htmlFor="password">
