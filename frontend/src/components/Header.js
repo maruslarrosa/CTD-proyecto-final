@@ -1,11 +1,12 @@
 import styles from '../styles/header.module.css';
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { Button, Menu } from './index';
 import { logoLarge, logoSmall, menu } from '../assets/index'
+import { GlobalContext } from '../GlobalContext';
 
-export const Header = ({ isMobile }) => {
-
-  const [menuVisibility, setMenuVisibility] = useState(false)
+export const Header = () => {
+  const isMobile = useContext(GlobalContext)
+  const [menuVisibility, setMenuVisibility] = useState(false);
 
   const renderUserButtons = () => {
     return (
@@ -37,17 +38,20 @@ export const Header = ({ isMobile }) => {
 
   return (
     <>
-      <div className={styles.header}>
-        <img
-          src={isMobile ? logoSmall : logoLarge}
-          className={styles.logo}
-          alt="Logo digital bookign"
-        />
-        <div className={styles.buttonContainer}>
-          {isMobile ? renderMobileButtons() : renderUserButtons()}
+      {menuVisibility ? (
+        <Menu />
+      ) : (
+        <div className={styles.header}>
+          <img
+            src={isMobile ? logoSmall : logoLarge}
+            className={styles.logo}
+            alt="Logo digital bookign"
+          />
+          <div className={styles.buttonContainer}>
+            {isMobile ? renderMobileButtons() : renderUserButtons()}
+          </div>
         </div>
-      </div>
-      {menuVisibility ? <Menu /> : null}
+      )}
     </>
   );
 };
