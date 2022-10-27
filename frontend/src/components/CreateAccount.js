@@ -2,29 +2,30 @@ import styles from '../styles/form.module.css';
 import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import { UsePasswordValidation } from '../hooks/UsePasswordValidation';
-import { useEffect, useState } from 'react';
+import { UseEmailValidation } from '../hooks';
+import { useState } from 'react';
 
 export const CreateAccount = () => {
   const [passwords, setPasswords] = useState({
     password: "",
     confirmPassword: ""
   })
-
   const [validLength, match] = UsePasswordValidation({
     password: passwords.password,
     confirmPassword: passwords.confirmPassword
   })
 
-  const [hasValue, sethasValue] = useState(false)
-  
+  const [email, setEmail] = useState("")
+  const validEmail = UseEmailValidation(email)
 
+  const setNewEmail = (event) => {
+    setEmail(event.target.value)
+  };
   const setPassword = (event) => {
     setPasswords({...passwords, password: event.target.value});
   }
-  
   const setConfirmPassword = (event) => {
     setPasswords({...passwords, confirmPassword: event.target.value});
-    sethasValue(event.target.value.length > 0)
   }
 
   const submitForm = (event) => {
@@ -72,7 +73,13 @@ export const CreateAccount = () => {
           placeholder="ejemplo@ejemplo.com"
           autoComplete="email"
           required={true}
+          onChange={setNewEmail}
         />
+        {email ? (
+          !validEmail ? (
+            <p className={styles.error}>El email debe tener el formato email@email.com</p>
+          ) : null
+        ) : null}
         <label className={styles.label} htmlFor="password">
           Contraseña
         </label>

@@ -1,7 +1,5 @@
 import styles from '../styles/main.module.css'
-import { CategoryContainer } from './CategoryContainer'
-import { SearchBlock } from './SearchBlock'
-
+import { CategoryContainer, SearchBlock } from './index'
 export const Main = () => {
 
     return (
