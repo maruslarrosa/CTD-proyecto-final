@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Button } from './Button'
 import styles from '../styles/searchBlock.module.css'
-import { Calendar } from './Calendar'
+import { Button, Calendar } from './index'
 
 
 const locaciones = [

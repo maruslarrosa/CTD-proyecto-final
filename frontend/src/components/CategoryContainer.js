@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from '../styles/categoryBlock.module.css'
-import { CategoryBlock } from './CategoryBlock'
+import { CategoryBlock } from './index'
 
 export const CategoryContainer = () => {
     const categories = [
@@ -39,7 +39,7 @@ export const CategoryContainer = () => {
             <h2 className={styles.categoryContainerTitle}>Buscar por tipo de alojamiento</h2>
 
             <div className={styles.categoryCardContainer}>
-                {categories.map(categorie => <CategoryBlock category={categorie} />)}
+                {categories.map(category => <CategoryBlock key={category.id} category={category} />)}
             </div>
         </div>
     )

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from '../styles/calendar.module.css'
-export const Calendar = () => {
 
+export const Calendar = () => {
     const [prevMonth, setPrevMonth] = useState({ year: new Date().getFullYear(), month: new Date().getMonth() + 1, days: 30 })
     const [nextMonth, setNextMonth] = useState({ year: new Date().getFullYear(), month: new Date().getMonth() + 2, days: 30 })
     const [datePicked, setDatePicked] = useState({ startDate: new Date().getDate(), endDate: 5 })
@@ -27,15 +27,6 @@ export const Calendar = () => {
         let daysInPrevMonth = new Date(year, monthPrev, 0).getDate()
         let daysInNextMonth = new Date(year, monthNext, 0).getDate()
 
-
-
-        // console.log(meses[monthPrev.getMonth()]);
-
-        console.log(meses.filter((month, index) => index === monthPrev));
-        console.log(meses.filter((month, index) => index === monthNext));
-
-
-
         setPrevMonth({ year, month: monthPrev, days: daysInPrevMonth })
         setNextMonth({ year, month: monthNext, days: daysInNextMonth })
     }
@@ -44,9 +35,7 @@ export const Calendar = () => {
         handleMonths("prev")
     }, [])
     useEffect(() => {
-
-        console.log(prevMonth);
-        console.log(nextMonth);
+        // allows to re-render when month changes
     }, [prevMonth, nextMonth])
 
 
