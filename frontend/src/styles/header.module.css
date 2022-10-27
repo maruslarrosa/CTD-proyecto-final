@@ -24,6 +24,11 @@
     width: 40%;
 }
 
+.userButtonContainer {
+    text-decoration: none;
+    display: flex;
+}
+
 .userButton {
     padding: 1rem;
     height: inherit;
