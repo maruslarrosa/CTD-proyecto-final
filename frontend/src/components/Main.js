@@ -8,7 +8,6 @@ export const Main = () => {
         <div className={styles.container}>
             <SearchBlock/>
             <CategoryContainer/>
-            <p>Main</p>
         </div>
     )
 }
