@@ -1,10 +1,10 @@
 import styles from '../styles/footer.module.css'
-import iconFacebook from '../assets/iconFacebook.png'
-import iconInstagram from '../assets/iconInstagram.png'
-import iconLinkedin from '../assets/iconLinkedin.png'
-import iconTwitter from '../assets/iconTwitter.png'
+import { useContext } from 'react';
+import { iconFacebook, iconInstagram, iconLinkedin, iconTwitter } from '../assets'
+import { GlobalContext } from '../GlobalContext';
 
-export const Footer = ({ isMobile }) => {
+export const Footer = () => {
+  const isMobile = useContext(GlobalContext)
 
     const socialIcons = () => {
         return (
