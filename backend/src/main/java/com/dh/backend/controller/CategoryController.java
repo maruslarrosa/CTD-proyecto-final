@@ -27,12 +27,21 @@ public class CategoryController {
         return categoryService.readCategory(id);
     }
 
+    @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteCategory(@PathVariable Long id) {
         categoryService.deleteCategory(id);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
+    @GetMapping("/")
     public Set<CategoryDTO> getListCategories() {
         return categoryService.getListCategory();
     }
+
+    @PutMapping
+    public ResponseEntity<Category> updateCategory(@RequestBody Category category) {
+        return ResponseEntity.ok(categoryService.updateCategory(category));
+    }
+
+
 }
