@@ -19,7 +19,7 @@ function App() {
     };
   },[]);
 
-  const isMobile = width <= 414;
+  const isMobile = width <= 500;
   return (
     <div className="App">
       <GlobalContext.Provider value={isMobile}>
