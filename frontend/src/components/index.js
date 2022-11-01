@@ -4,10 +4,11 @@ import { CategoryBlock } from './CategoryBlock';
 import { CategoryContainer } from './CategoryContainer';
 import { CreateAccount } from './CreateAccount';
 import { Footer } from './Footer';
+import { Hamburguer } from './Hamburguer';
 import { Header } from './Header';
 import { Login } from './Login';
 import { Main } from './Main';
-import { Menu } from './Menu';
+import { RightNav } from './RightNav';
 import { SearchBlock } from './SearchBlock';
 
 // This file allows to import components without
@@ -20,9 +21,10 @@ export {
     CategoryContainer,
     CreateAccount,
     Footer,
+    Hamburguer,
     Header,
     Login,
     Main,
-    Menu,
+    RightNav,
     SearchBlock
 }
