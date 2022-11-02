@@ -1,6 +1,7 @@
 import styles from '../styles/form.module.css'
 import { Button } from './Button';
 import { useState } from 'react';
+import { useNavigate  } from 'react-router-dom'
 import { UseEmailValidation } from '../hooks';
 
 const userModel = {
@@ -9,6 +10,7 @@ const userModel = {
 }
 
 export const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [invalidCredentials, setInvalidCredentials] = useState(false)
   const validEmail = UseEmailValidation(email);
@@ -23,6 +25,7 @@ export const Login = () => {
     const correctPassword = event.target.password.value === userModel.password
     if(correctEmail && correctPassword) {
       setInvalidCredentials(false)
+      navigate("/")
     }
     else {
       setInvalidCredentials(true)
