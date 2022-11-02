@@ -42,6 +42,4 @@ public class CategoryController {
     public ResponseEntity<Category> updateCategory(@RequestBody Category category) {
         return ResponseEntity.ok(categoryService.updateCategory(category));
     }
-
-
 }
