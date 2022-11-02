@@ -1,6 +1,6 @@
 @import './colors.css';
 
 .container {
-    height: 84vh;
-    background-color: var(--light-yellow);
+    background-color: white;
+    height: calc(100vh - 5rem);
 }

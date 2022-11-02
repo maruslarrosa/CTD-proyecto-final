@@ -50,4 +50,14 @@ public class CategoryServiceTest {
         Assert.assertTrue( !categories.isEmpty() );
         Assert.assertTrue( categories.size() == 1 );
     }
+
+
+
+//    @Test
+//    @Order(4)
+//    @DisplayName("Category Delete -> Category")
+//    public void deleteCategory() {
+//        categoryService.deleteCategory(1L);
+//        Assert.assertTrue(categoryService.readCategory(1L).isEmpty());
+//    }
 }

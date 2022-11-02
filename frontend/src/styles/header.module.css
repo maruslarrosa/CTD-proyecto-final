@@ -12,9 +12,7 @@
 
 .logo {
     max-width: 90%;
-    height: 80%;
     padding: 1rem;
-    
 }
 
 .buttonContainer {
@@ -23,9 +21,7 @@
     justify-content: space-around;
     align-items: center;
     height: 100%;
-    width: 30%;
-    margin-right: 1rem;
-
+    width: 40%;
 }
 
 .userButton {
