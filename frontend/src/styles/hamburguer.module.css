@@ -1,0 +1,20 @@
+@import './colors.css';
+
+.hamburguerContainer {
+    position: fixed;
+    right: 2.5rem;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: column;
+    z-index: 20;
+}
+
+.menuContainer {
+    margin-top: calc(33rem);
+    z-index: 25;
+    height: 600px;
+    background-color: red;
+    margin-left: -30vh;
+    width: 420px;
+}
+

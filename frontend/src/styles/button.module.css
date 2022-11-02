@@ -10,10 +10,11 @@ button {
     align-items: center;
     margin: 0.5rem;
     font-weight: 700;
+    text-decoration: none;
 }
 
 .primary {
-    background-color: var(--light-yellow);
+    background-color: white ;
     color: var(--gray);
     border: 1px solid var(--gray);
     box-shadow: none;

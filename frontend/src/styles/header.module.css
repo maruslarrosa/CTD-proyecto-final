@@ -1,30 +1,13 @@
 @import './colors.css';
 
-.header {
-    background-color: var(--yellow);
-    height: 5rem;
-    width: 100%;
+.nav {
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-between;
-}
+    background-color: var(--yellow);
+    padding: 0.5rem;
+    height: 5rem;
+    position: fixed;
+    width: 100%;
 
-.logo {
-    max-width: 90%;
-    padding: 1rem;
-}
-
-.buttonContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    height: 100%;
-    width: 40%;
-}
-
-.userButton {
-    padding: 1rem;
-    height: inherit;
 }
