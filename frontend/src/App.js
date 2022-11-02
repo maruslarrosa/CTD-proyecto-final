@@ -5,7 +5,7 @@ import { CreateAccount, Footer, Header, Login, Main } from './components'
 import { GlobalContext } from './GlobalContext';
 
 function App() {
-
+  const [isLogged, setIsLogged] = useState(true)
   const [width, setWidth] = useState(window.innerWidth);
 
   function handleWindowResizing() {
@@ -22,7 +22,7 @@ function App() {
   const isMobile = width <= 500;
   return (
     <div className="App">
-      <GlobalContext.Provider value={isMobile}>
+      <GlobalContext.Provider value={{isMobile: isMobile, logged:[isLogged, setIsLogged]}}>
       <BrowserRouter>
 
         <Header />
