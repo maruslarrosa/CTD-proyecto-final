@@ -10,6 +10,7 @@ import { Login } from './Login';
 import { Main } from './Main';
 import { RightNav } from './RightNav';
 import { SearchBlock } from './SearchBlock';
+import { User } from './User'
 
 // This file allows to import components without
 // specifying the complete component location's path
@@ -26,5 +27,6 @@ export {
     Login,
     Main,
     RightNav,
-    SearchBlock
+    SearchBlock,
+    User
 }

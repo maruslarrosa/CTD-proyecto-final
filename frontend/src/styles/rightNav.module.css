@@ -1,5 +1,9 @@
 @import './colors.css';
 
+a {
+    text-decoration: none;
+}
+
 .buttonContainer {
     list-style: none;
     display: flex;

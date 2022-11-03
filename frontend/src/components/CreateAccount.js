@@ -73,7 +73,7 @@ export const CreateAccount = () => {
           placeholder="ejemplo@ejemplo.com"
           autoComplete="email"
           required={true}
-          onChange={setNewEmail}
+          onBlur={setNewEmail}
         />
         {email ? (
           !validEmail ? (
@@ -84,7 +84,7 @@ export const CreateAccount = () => {
           Contraseña
         </label>
         <input
-          onChange={setPassword}
+          onBlur={setPassword}
           className={styles.input}
           type="password"
           id="password"
@@ -104,7 +104,7 @@ export const CreateAccount = () => {
           Confirmar contraseña
         </label>
         <input
-          onChange={setConfirmPassword}
+          onBlur={setConfirmPassword}
           className={styles.input}
           type="password"
           id="confirmPassword"
