@@ -5,7 +5,7 @@ import { CreateAccount, Footer, Header, Login, Main } from './components'
 import { GlobalContext } from './GlobalContext';
 
 function App() {
-  const [isLogged, setIsLogged] = useState(true)
+  const [isLogged, setIsLogged] = useState(false)
   const [width, setWidth] = useState(window.innerWidth);
 
   function handleWindowResizing() {

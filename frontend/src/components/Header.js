@@ -1,9 +1,9 @@
 import styles from '../styles/header.module.css';
 import { useContext } from 'react'
 import { RightNav, Hamburguer, User } from './index';
-import { logoLarge, logoSmall } from '../assets/index'
+import { logoLarge, logoSmall, menu } from '../assets/index'
 import { GlobalContext } from '../GlobalContext';
-import { Link  } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 export const Header = () => {
@@ -14,14 +14,23 @@ export const Header = () => {
   return (
     <div className={styles.nav}>
       <div className={styles.logo}>
-        <img
-          src={isMobile ? logoSmall : logoLarge}
-          alt="Logo digital booking"
-        />
+        <Link to="/">
+          <img
+            src={isMobile ? logoSmall : logoLarge}
+            alt="Logo digital booking"
+          />
+        </Link>
       </div>
-      {isLogged ? 
-      <User user={{name: 'Maru Larrosa', initials: 'ML'}} logout={() => setIsLogged(false)}/> 
-      : isMobile ? <Hamburguer /> : <RightNav />}
+      {isLogged ? (
+        <User
+          user={{ name: "Maru Larrosa", initials: "ML" }}
+          logout={() => setIsLogged(false)}
+        />
+      ) : isMobile ? (
+        <Hamburguer />
+      ) : (
+        <RightNav />
+      )}
     </div>
   );
 };
