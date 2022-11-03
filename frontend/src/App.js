@@ -24,7 +24,6 @@ function App() {
     <div className="App">
       <GlobalContext.Provider value={{isMobile: isMobile, logged:[isLogged, setIsLogged]}}>
       <BrowserRouter>
-
         <Header />
           <Routes>
             <Route path="/" element={<Main />} />
