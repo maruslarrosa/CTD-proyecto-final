@@ -15,13 +15,6 @@
     margin-bottom: 22px;
 }
 
-.formContainer{
-    display: flex;
-}
-
-.columnSearch {
-    width: 350px;
-}
 
 .searchContainer {
     width: 100%;
@@ -33,11 +26,10 @@
 
 .searchInputContainer {
     width: 30%;
-
 }
 
 .searchInput {
-    width: 100% ;
+    width: 100%;
     border: 1px solid white ;
     background-color: white;
     border-radius: 5px;
@@ -51,21 +43,10 @@
 .searchDropdown {
     background-color: white;
     position: absolute;
-    top: 45px;
-    left: 0px;
-    width: 100%;
+    width: 30%;
     height: 290px;
     overflow: auto;
     z-index: 1;
-}
-
-.searchDatePicker {
-    background-color: white;
-    position: absolute;
-    top: 45px;
-    left: 0px;
-    width: 100%;
-    overflow: hidden;
 }
 
 .dropDown{
@@ -82,9 +63,14 @@
 
 }
 
+.customCalendar {
+        position: absolute;
+        z-index: 1;
+        width: 30%;
+}
+
 @media screen and (max-width:720px) {
     .searchContainer {flex-wrap: wrap;}
     .searchInputContainer {width: 100%;}
     .generalSearchContainer{ padding: 10px;}
   }
-  

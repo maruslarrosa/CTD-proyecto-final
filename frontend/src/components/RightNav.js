@@ -21,26 +21,26 @@ export const RightNav = () => {
     }
   }, [location]);
 
-    return (
-      <ul className={styles.buttonContainer}>
-        {showLogin ? (
-          <Link to="/login">
-            <Button
-              text="Iniciar sesión"
-              label="Botón para iniciar sesión"
-              color="primary"
-            ></Button>
-          </Link>
-        ) : null}
-        {showCreateAccount ? (
-          <Link to="/create-account">
-            <Button
-              text="Crear cuenta"
-              label="Botón para crear cuenta"
-              color="primary"
-            />
-          </Link>
-        ) : null}
-      </ul>
-    );
+  return (
+    <ul className={styles.buttonContainer}>
+      {showLogin ? (
+        <Link to="/login">
+          <Button
+            text="Iniciar sesión"
+            label="Botón para iniciar sesión"
+            color="primary"
+          ></Button>
+        </Link>
+      ) : null}
+      {showCreateAccount ? (
+        <Link to="/create-account">
+          <Button
+            text="Crear cuenta"
+            label="Botón para crear cuenta"
+            color="primary"
+          />
+        </Link>
+      ) : null}
+    </ul>
+  );
 }
