@@ -1,7 +1,7 @@
 import styles from '../styles/header.module.css';
 import { useContext } from 'react'
 import { RightNav, Hamburguer, User } from './index';
-import { logoLarge, logoSmall, menu } from '../assets/index'
+import { logoLarge, logoSmall } from '../assets/index'
 import { GlobalContext } from '../GlobalContext';
 import { Link } from 'react-router-dom'
 

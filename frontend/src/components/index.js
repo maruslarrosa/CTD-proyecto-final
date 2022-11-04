@@ -1,5 +1,5 @@
 import { Button } from './Button';
-import { Calendar } from './Calendar';
+import { NewCalendar } from './NewCalendar'
 import { CategoryBlock } from './CategoryBlock';
 import { CategoryContainer } from './CategoryContainer';
 import { CreateAccount } from './CreateAccount';
@@ -9,7 +9,6 @@ import { Header } from './Header';
 import { Login } from './Login';
 import { Main } from './Main';
 import { RightNav } from './RightNav';
-import { SearchBlock } from './SearchBlock';
 import { User } from './User'
 
 // This file allows to import components without
@@ -17,7 +16,7 @@ import { User } from './User'
 
 export {
     Button,
-    Calendar,
+    NewCalendar,
     CategoryBlock,
     CategoryContainer,
     CreateAccount,
@@ -27,6 +26,5 @@ export {
     Login,
     Main,
     RightNav,
-    SearchBlock,
     User
 }
