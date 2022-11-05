@@ -1,0 +1,18 @@
+@import url('./colors.css');
+
+.cardContainer {
+    display: flex;
+    justify-content: flex-start;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 1rem;
+    height: 15rem;
+}
+
+.img {
+    width: 50%;
+}
+
+.productDetail {
+    padding: 1rem;
+}

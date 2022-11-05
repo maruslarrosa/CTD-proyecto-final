@@ -1,12 +1,17 @@
-import styles from '../styles/product.module.css'
+import styles from '../styles/productList.module.css'
 import { ProductCard } from './index'
 
 export const ProductList = () => {
     return (
       <>
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+        <h2>Recomendaciones</h2>
+        <div className={styles.productListContainer}>
+          {products.map((product) => (
+            <div className={styles.product}>
+              <ProductCard key={product.id} product={product} />
+            </div>
+          ))}
+        </div>
       </>
     );
 }
@@ -69,7 +74,7 @@ const products = [
     },
     {
         "id": 4,
-        "crimg": "https://images.unsplash.com/photo-1563911302283-d2bc129e7570?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
+        "crimg": "https://images.unsplash.com/photo-1444201983204-c43cbd584d93?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGhvc3RlbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
         "category": categories[1].title,
         "title": "Hostería Margarita",
         "location": "Buenos Aires",
@@ -101,7 +106,7 @@ const products = [
     },
     {
         "id": 8,
-        "crimg": "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=749&q=80",
+        "crimg": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjN8fGhvc3RlbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
         "category": categories[3].title,
         "title": "Hotel Playa Bonita",
         "location": "Buenos Aires",

@@ -1,0 +1,14 @@
+.productListContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: #DEDEDE;
+    height: calc(100% - 5rem);
+
+}
+
+.product {
+    width: 50%;
+    padding: 1rem;
+}
