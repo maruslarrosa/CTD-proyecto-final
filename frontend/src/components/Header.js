@@ -10,7 +10,6 @@ export const Header = () => {
   const {isMobile,logged} = useContext(GlobalContext)
   const [isLogged, setIsLogged] = logged
 
-
   return (
     <div className={styles.nav}>
       <div className={styles.logo}>
