@@ -11,8 +11,12 @@
 
 .img {
     width: 50%;
+    border-radius: 1rem;
 }
 
 .productDetail {
     padding: 1rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
 }

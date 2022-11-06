@@ -7,8 +7,8 @@ export const ProductList = () => {
         <h2>Recomendaciones</h2>
         <div className={styles.productListContainer}>
           {products.map((product) => (
-            <div className={styles.product}>
-              <ProductCard key={product.id} product={product} />
+            <div key={product.id} className={styles.product}>
+              <ProductCard product={product} />
             </div>
           ))}
         </div>

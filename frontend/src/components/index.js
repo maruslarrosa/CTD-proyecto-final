@@ -1,5 +1,6 @@
 import { Button } from './Button';
-import { NewCalendar } from './NewCalendar'
+import { NewCalendar } from './NewCalendar';
+import { Calification } from './Calification'
 import { CategoryBlock } from './CategoryBlock';
 import { CategoryContainer } from './CategoryContainer';
 import { CreateAccount } from './CreateAccount';
@@ -19,6 +20,7 @@ import { User } from './User'
 export {
     Button,
     NewCalendar,
+    Calification,
     CategoryBlock,
     CategoryContainer,
     CreateAccount,
