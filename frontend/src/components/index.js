@@ -1,5 +1,6 @@
 import { Button } from './Button';
-import { NewCalendar } from './NewCalendar'
+import { NewCalendar } from './NewCalendar';
+import { Calification } from './Calification'
 import { CategoryBlock } from './CategoryBlock';
 import { CategoryContainer } from './CategoryContainer';
 import { CreateAccount } from './CreateAccount';
@@ -8,6 +9,8 @@ import { Hamburguer } from './Hamburguer';
 import { Header } from './Header';
 import { Login } from './Login';
 import { Main } from './Main';
+import { ProductList } from './ProductList';
+import { ProductCard } from './ProductCard';
 import { RightNav } from './RightNav';
 import { User } from './User'
 
@@ -17,6 +20,7 @@ import { User } from './User'
 export {
     Button,
     NewCalendar,
+    Calification,
     CategoryBlock,
     CategoryContainer,
     CreateAccount,
@@ -25,6 +29,8 @@ export {
     Header,
     Login,
     Main,
+    ProductList,
+    ProductCard,
     RightNav,
     User
 }

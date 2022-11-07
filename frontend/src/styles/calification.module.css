@@ -1,0 +1,41 @@
+@import url('./colors.css');
+
+.calificationContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-left: 1rem;
+}
+
+.leftContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.stars {
+    display: flex;
+    flex-direction: row;
+}
+
+.selectedStar {
+    color: var(--yellow)
+}
+
+.unselectedStar {
+    color: var(--light-gray);
+}
+
+.rightContainer {
+    color: #263238;
+    background-color: #FBC02D;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+    border-radius: 0.5rem;
+    align-items: center;
+    margin-left: 0.5rem;
+}
+
+/* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */
