@@ -1,22 +1,40 @@
 import styles from '../styles/productCard.module.css'
 import { Button, Calification } from './index';
 import { point, pool, wifi } from '../assets'
+import {useContext} from 'react'
+import { GlobalContext } from '../GlobalContext';
 
 export const ProductCard = ({product}) => {
+  const {isMobile} = useContext(GlobalContext)
     return (
       <div className={styles.cardContainer}>
+        <div className={styles.imgContainer}>
         <img src={product.crimg} className={styles.img} />
-        <div className={styles.rightContainer}>
-          <div className={styles.productDetail}>
-            <div className={styles.title}>
-              <p>{product.category.toUpperCase()}</p>
-              <h3>{product.title}</h3>
-            </div>
-            <Calification
+        {
+          isMobile ? <Calification
               key={product.id}
               calification={{ stars: 4, description: "Muy bueno", rating: 8 }}
             />
+            : null
+        }
+        </div>
+        
+        <div className={styles.rightContainer}>
+          <div className={styles.productDetail}>
+            <div className={isMobile ? styles.mobileTitle : styles.title}>
+              <p>{product.category.toUpperCase()}</p>
+              <h3>{product.title}</h3>
+            </div>
+            {
+          !isMobile ? 
+          <Calification
+              key={product.id}
+              calification={{ stars: 4, description: "Muy bueno", rating: 8 }}
+            />
+            : null
+        }
           </div>
+          <div className={isMobile ? styles.mobileCardLocation : ''}>
           <div className={styles.location}>
             <img src={point} className={styles.icon} />
             <p>A 940 m del centro</p>
@@ -25,6 +43,8 @@ export const ProductCard = ({product}) => {
             <img src={wifi} className={styles.icon} />
             <img src={pool} className={styles.icon} />
           </div>
+          </div>
+          
           <div className={styles.descriptionContainer}>
             <p className={styles.shortDescription}>
               Shed everywhere shed everywhere stretching attack your ankles
