@@ -23,48 +23,81 @@ public class CategoryService {
     @Autowired
     ObjectMapper mapper;
 
-    //MÉTODO CRUD MÁS LISTAR CATEGORÍAS
-    //CREA UNA CATEGORÍA
-    public Category createCategory(Category category) {
-        if (this.findCategoryByTitle(category.getTitle()) != null)
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "Esta categoría ya existe");
-        return categoryRepository.save(category);
+
+    /**
+     * Métodos CRUD completo + Método listar
+     */
+
+    /**
+     * Crear
+     * @param categoryDTO
+     * @return Graba en BBDD y retorna un DTO
+     */
+    public CategoryDTO createCategory(CategoryDTO categoryDTO) {
+        Category category = mapper.convertValue(categoryDTO, Category.class);
+        if (this.findCategoryByName(category.getName()) != null)
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Esta categoría ya existe");
+
+        return mapper.convertValue(categoryRepository.save(category), CategoryDTO.class);
     }
-    //BUSCA UNA CATEGORÍA POR ID
+
+    /**
+     * Buscar por id
+     * @param id
+     * @return Retorna el DTO que corresponde a ese ID
+     */
     public CategoryDTO readCategory(Long id) {
         if (categoryRepository.findById(id).isEmpty())
-            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "No existe el categoría con id: " + id);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No existe la categoría con id: " + id);
+
         Optional<Category> category = categoryRepository.findById(id);
         return mapper.convertValue(category, CategoryDTO.class);
     }
 
-    //MODIFICA LA CATEGORÍA
-    public Category updateCategory(Category category) {
+    /**
+     * Modificar
+     * @param categoryDTO
+     * @return Graba cambios en BBDD y retorna el DTO
+     */
+    public CategoryDTO updateCategory(CategoryDTO categoryDTO) {
+        Category category = mapper.convertValue(categoryDTO, Category.class);
         if (categoryRepository.findById(category.getId()).isEmpty())
-            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "No existe la categoría que quieres modificar");
-        return categoryRepository.save(category);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No existe la categoría que quieres modificar");
+
+        return mapper.convertValue(categoryRepository.save(category), CategoryDTO.class);
     }
 
-    //ELIMINA LA CATEGORÍA
+    /**
+     * Eliminar
+     * @param id Elimina según id
+     */
     public void deleteCategory(Long id) {
         if (categoryRepository.findById(id).isEmpty())
-            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "No existe la categoría con id: " + id);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No existe la categoría con id: " + id);
+
         categoryRepository.deleteById(id);
     }
 
-    //LISTA LAS CATEGORÍAS
+    /**
+     * Listar
+     * @return Retorna listado completo de entidades
+     */
     public Set<CategoryDTO> getListCategory() {
         List<Category> categories = categoryRepository.findAll();
         Set<CategoryDTO> categoriesDTO = new HashSet<>();
         for (Category category: categories) {
             categoriesDTO.add(mapper.convertValue(category, CategoryDTO.class));
         }
+
         return categoriesDTO;
     }
 
-    //MÉTODOS A PARTIR DE QUERIES
-    //BUSCA UNA CATEGORÍA POR TÍTULO
-    public Category findCategoryByTitle(String title) {
-        return categoryRepository.findCategoryByTitle(title);
+    /**
+     * Método a partir de Query
+     * @param name Busca entidad por nombre
+     * @return Retorna entidad
+     */
+    public Category findCategoryByName(String name) {
+        return categoryRepository.findCategoryByName(name);
     }
 }

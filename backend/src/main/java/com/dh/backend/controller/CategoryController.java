@@ -1,7 +1,6 @@
 package com.dh.backend.controller;
 
 import com.dh.backend.dto.CategoryDTO;
-import com.dh.backend.model.Category;
 import com.dh.backend.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,14 +16,20 @@ public class CategoryController {
     @Autowired
     CategoryService categoryService;
 
-    @PostMapping
-    public ResponseEntity<Category> createCategory(@RequestBody Category category) {
-        return ResponseEntity.ok(categoryService.createCategory(category));
+
+    @PostMapping()
+    public ResponseEntity<CategoryDTO> createCategory(@RequestBody CategoryDTO categoryDTO) {
+        return ResponseEntity.ok(categoryService.createCategory(categoryDTO));
     }
 
     @GetMapping("/{id}")
     public CategoryDTO readCategory(@PathVariable Long id) {
         return categoryService.readCategory(id);
+    }
+
+    @PutMapping()
+    public ResponseEntity<CategoryDTO> updateCategory(@RequestBody CategoryDTO categoryDTO) {
+        return ResponseEntity.ok(categoryService.updateCategory(categoryDTO));
     }
 
     @DeleteMapping("/{id}")
@@ -38,8 +43,7 @@ public class CategoryController {
         return categoryService.getListCategory();
     }
 
-    @PutMapping
-    public ResponseEntity<Category> updateCategory(@RequestBody Category category) {
-        return ResponseEntity.ok(categoryService.updateCategory(category));
-    }
+
+
+
 }
