@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Set;
 
-@SpringBootTest
+/*@SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class CategoryServiceTest {
 
@@ -60,4 +60,4 @@ public class CategoryServiceTest {
 //        categoryService.deleteCategory(1L);
 //        Assert.assertTrue(categoryService.readCategory(1L).isEmpty());
 //    }
-}
+}*/

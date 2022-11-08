@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -15,29 +17,35 @@ public class Category {
     @Id
     @SequenceGenerator(name = "category_sequence", sequenceName = "category_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "category_sequence")
-    @Column(name = "ID_CATEGORY")
+    @Column(name = "ID")
     private Long id;
-    @Column(name = "TITLE_CATEGORY")
-    private String title;
-    @Column(name = "DESCRIPTION_CATEGORY")
+    @Column(name = "NAME")
+    private String name;
+    @Column(name = "DESCRIPTION")
     private String description;
-    @Column(name = "URL_CATEGORY")
+    @Column(name = "URL")
     private String url;
+
+
+    /*//Una categoría puede pertenecer a muchos productos
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Product> products = new HashSet<>();*/
 
     //Constructores
     public Category() {
 
     }
 
-    public Category(String title, String description, String url) {
-        this.title = title;
+    public Category(String name, String description, String url) {
+        this.name = name;
         this.description = description;
         this.url = url;
     }
 
-    public Category(Long id, String title, String description, String url) {
+    public Category(Long id, String name, String description, String url) {
         this.id = id;
-        this.title = title;
+        this.name = name;
         this.description = description;
         this.url = url;
     }
