@@ -3,9 +3,9 @@ import styles from '../styles/product.module.css'
 import { chevronLeft } from '../assets';
 
 const categories = {
-    1: "Bed and beakfast",
+    1: "Hoteles",
     2: "Departamentos",
-    3: "Hoteles",
+    3: "Bed and beakfast",
     4: "Hostel"
 }
 

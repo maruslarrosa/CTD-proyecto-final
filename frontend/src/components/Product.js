@@ -1,11 +1,12 @@
 import styles from '../styles/product.module.css'
-import { ProductHeader } from './index';
+import { ProductHeader, ProductSubHeader } from './index';
 
 export const Product = () => {
 
     return (
       <div className={styles.container}>
         <ProductHeader categoryId={product.category.id} name={product.name}/>
+        <ProductSubHeader productId={product.id} cityId={product.city.id} />
       </div>
     );
 }

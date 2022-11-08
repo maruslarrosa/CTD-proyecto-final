@@ -13,6 +13,7 @@ import { Product } from './Product';
 import { ProductHeader } from './ProductHeader'; 
 import { ProductList } from './ProductList';
 import { ProductCard } from './ProductCard';
+import { ProductSubHeader } from './ProductSubHeader';
 import { RightNav } from './RightNav';
 import { User } from './User'
 
@@ -35,6 +36,7 @@ export {
     ProductHeader,
     ProductList,
     ProductCard,
+    ProductSubHeader,
     RightNav,
     User
 }
