@@ -1,0 +1,28 @@
+@import url('./colors.css');
+
+.container {
+    background-color: white;
+    height: calc(100% - 5rem);
+    padding-top: 5rem;
+}
+
+.headerContainer {
+    height: 5rem;
+    background-color: var(--light-yellow);
+    border: 1px solid var(--gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 1rem;
+}
+
+.goBack {
+    width: 2rem;
+}

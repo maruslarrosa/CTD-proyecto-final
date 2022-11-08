@@ -9,6 +9,8 @@ import { Hamburguer } from './Hamburguer';
 import { Header } from './Header';
 import { Login } from './Login';
 import { Main } from './Main';
+import { Product } from './Product';
+import { ProductHeader } from './ProductHeader'; 
 import { ProductList } from './ProductList';
 import { ProductCard } from './ProductCard';
 import { RightNav } from './RightNav';
@@ -29,6 +31,8 @@ export {
     Header,
     Login,
     Main,
+    Product,
+    ProductHeader,
     ProductList,
     ProductCard,
     RightNav,

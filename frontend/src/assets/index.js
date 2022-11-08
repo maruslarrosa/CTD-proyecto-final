@@ -1,3 +1,4 @@
+import chevronLeft from './chevronLeft.png'
 import close from './close.png'
 import hamburguer from './hamburguer.png'
 import iconFacebook from './iconFacebook.png'
@@ -14,6 +15,7 @@ import wifi from './wifi.png'
 // specifying the complete asset location's path
 
 export {
+    chevronLeft,
     close,
     hamburguer,
     iconFacebook,
