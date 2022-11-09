@@ -7,6 +7,7 @@ import { CreateAccount } from './CreateAccount';
 import { Footer } from './Footer';
 import { Hamburguer } from './Hamburguer';
 import { Header } from './Header';
+import { LargeGallery } from './LargeGallery';
 import { Login } from './Login';
 import { Main } from './Main';
 import { Product } from './Product';
@@ -29,6 +30,7 @@ export {
     CreateAccount,
     Footer,
     Hamburguer,
+    LargeGallery,
     Header,
     Login,
     Main,

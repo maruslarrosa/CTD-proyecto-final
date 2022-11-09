@@ -14,6 +14,7 @@ export const ProductSubHeader = ({productId, cityId}) => {
     const [location, setlocation] = useState('')
 
     useEffect(() => {
+      //fetch a API
         setlocation(locations[cityId])
     }, [cityId])
 
@@ -29,7 +30,7 @@ export const ProductSubHeader = ({productId, cityId}) => {
         </div>
         <Calification
           key={productId}
-          calification={{ stars: 3, description: "Bueno", rating: 7 }}
+          calification={{ stars: 2, description: "Bueno", rating: 5 }}
         />
       </div>
     );

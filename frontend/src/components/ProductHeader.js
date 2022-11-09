@@ -13,6 +13,7 @@ export const ProductHeader = ({categoryId, name}) => {
     const [category, setCategory] = useState('')
 
     useEffect(() => {
+      // fetch a API
         setCategory(categories[categoryId])
     }, [category])
 
