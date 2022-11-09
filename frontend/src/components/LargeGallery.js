@@ -33,6 +33,8 @@ export const LargeGallery = ({images}) => {
                 nav
                 margin={8}
                 dots={false}
+                autoplay={true}
+                autoplayTimeout={3000}
               >
                 <div key={images[0].id}>
                   <img className={styles.carouselImg} src={images[0].url} />
