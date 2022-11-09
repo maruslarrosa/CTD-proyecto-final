@@ -11,6 +11,7 @@ import { LargeGallery } from './LargeGallery';
 import { Login } from './Login';
 import { Main } from './Main';
 import { Product } from './Product';
+import { ProductDescription } from './ProductDescription';
 import { ProductHeader } from './ProductHeader'; 
 import { ProductList } from './ProductList';
 import { ProductCard } from './ProductCard';
@@ -35,6 +36,7 @@ export {
     Login,
     Main,
     Product,
+    ProductDescription,
     ProductHeader,
     ProductList,
     ProductCard,

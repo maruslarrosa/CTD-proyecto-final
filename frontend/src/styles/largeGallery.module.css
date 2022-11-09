@@ -86,10 +86,6 @@
     background-color: rgba(255, 255, 255, 0.4);
     color: var(--gray)
 }
-.owlContainer{
-    height: 70vh;
-}
-
 
 .carouselImg {
     width: 500px;
@@ -98,7 +94,7 @@
     
 }
 
-@media screen and (max-width: 820px){
+@media screen and (max-width: 819px){
     .carouselImg{height: 300px;}
     .closeCarousel{display:none;}
     .seeMore{display: none;}
