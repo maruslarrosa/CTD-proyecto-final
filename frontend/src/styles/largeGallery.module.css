@@ -51,7 +51,41 @@
     font-size: 1.5vw;
 }
 
-.seeMore:hover {
+.closeCarousel{
+    all: unset;
+    text-decoration: underline;
+    z-index: 99;
+    position: absolute;
+    top: 26%;
+    left: 84%;
+    color: white;
+    font-weight: 900;
+    background-color: rgba(38, 50, 56, 0.4);
+    height: 4vw;
+    width: 10vw;
+    border-radius: 0.5rem;
+    font-size: 1.5vw;
+}
+
+.seeMore:hover, .closeCarousel:hover {
     background-color: rgba(255, 255, 255, 0.4);
     color: var(--gray)
 }
+.owlContainer{
+    height: 70vh;
+}
+
+
+.carouselImg {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+    
+}
+
+@media screen and (max-width: 820px){
+    .carouselImg{height: 300px;}
+    .closeCarousel{display:none;}
+    .seeMore{display: none;}
+}
+
