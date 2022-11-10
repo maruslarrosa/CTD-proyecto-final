@@ -1,9 +1,13 @@
 import styles from '../styles/product.module.css'
 import { Characteristics, LargeGallery, Politics, ProductDescription, ProductHeader, ProductSubHeader } from './index';
 import { kitchen, car, air, wifi, tv, pet, pool } from '../assets';
+import { useEffect } from 'react';
 
 export const Product = () => {
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     // fetch producto
 
     return (

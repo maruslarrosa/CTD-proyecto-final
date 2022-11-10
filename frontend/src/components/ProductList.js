@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from '../styles/productList.module.css'
 import { ProductCard } from './index'
 
@@ -8,7 +9,9 @@ export const ProductList = () => {
         <div className={styles.productListContainer}>
           {products.map((product) => (
             <div key={product.id} className={styles.product}>
-              <ProductCard product={product} />
+              <Link to="/product">
+                <ProductCard product={product} />
+              </Link>
             </div>
           ))}
         </div>

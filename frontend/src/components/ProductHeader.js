@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from '../styles/product.module.css'
 import { chevronLeft } from '../assets';
+import { Link } from 'react-router-dom';
 
 const categories = {
     1: "Hoteles",
@@ -23,7 +24,13 @@ export const ProductHeader = ({categoryId, name}) => {
           <h5>{category.toLocaleUpperCase()}</h5>
           <h2>{name}</h2>
         </div>
-        <img className={styles.goBack} src={chevronLeft} alt="Volver al listado de productos" />
+        <Link to="/">
+          <img
+            className={styles.goBack}
+            src={chevronLeft}
+            alt="Volver al listado de productos"
+          />
+        </Link>
       </div>
     );
 }
