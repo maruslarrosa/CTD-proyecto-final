@@ -35,10 +35,8 @@ frontend_build_job:
   artifacts:
     paths:
       - frontend/build/
-  # rules:
-  #   - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
-  #     changes:
-  #       - frontend/**/*
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
 
 test-backend:
   stage: test
@@ -81,7 +79,5 @@ frontend_deploy_job:
     - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
     - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
     - aws s3 sync ./frontend/build s3://$S3_BUCKET_NAME --delete
-  # rules:
-  #   - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
-  #     changes:
-  #       - frontend/**/*
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
