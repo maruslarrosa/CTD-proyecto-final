@@ -1,0 +1,87 @@
+stages:
+  - build
+  - test
+  - deploy
+
+
+build-backend:
+  stage: build
+  image: maven:3.8.6-openjdk-18-slim
+  script:
+    - cd ./backend
+    - echo "Compiling the code..."
+    - mvn clean install
+    - mvn compile war:war
+    - mvn package
+
+  artifacts:
+    paths:
+      - backend/target/backend.war
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
+      changes:
+        - backend/**/*
+
+
+frontend_build_job:
+  stage: build
+  image: node:latest
+  script:
+    - cd ./frontend
+    - echo "Start building App"
+    - npm install
+    - CI=false npm run build
+    - echo "Build successfully!"
+  artifacts:
+    paths:
+      - frontend/build/
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
+      changes:
+        - frontend/**/*
+
+test-backend:
+  stage: test
+  script:
+    - echo "Running unit tests..."
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
+      changes:
+        - backend/**/*
+
+deploy-backend:
+  stage: deploy
+  image: alpine:3.11
+  before_script:
+    - apk update && apk add openssh-client bash
+    - mkdir -p ~/.ssh
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - touch ~/.ssh/config
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - ssh-keyscan -H $DEPLOY_SERVER_IP >> ~/.ssh/known_hosts
+    
+  script:
+    - ssh ubuntu@$DEPLOY_SERVER_IP "sudo apt install openjdk-18-jdk -y"
+    - ssh ubuntu@$DEPLOY_SERVER_IP "sudo systemctl stop tomcat"
+    - scp ./backend/target/backend.war ubuntu@$DEPLOY_SERVER_IP:/opt/tomcat/webapps/backend.war
+    - ssh ubuntu@$DEPLOY_SERVER_IP "sudo systemctl start tomcat"
+
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
+      changes:
+        - backend/**/*
+
+frontend_deploy_job:
+  stage: deploy
+  image: python:latest
+  script:
+    - echo "Deploying App"
+    - pip3 install awscli
+    - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+    - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+    - aws s3 sync ./frontend/build s3://$S3_BUCKET_NAME --delete
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
+      changes:
+        - frontend/**/*
