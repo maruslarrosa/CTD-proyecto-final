@@ -1,5 +1,14 @@
 import styles from '../styles/product.module.css'
-import { Characteristics, LargeGallery, Map, Politics, ProductDescription, ProductHeader, ProductSubHeader } from './index';
+import {
+  Booking,
+  Characteristics,
+  LargeGallery,
+  Map,
+  Politics,
+  ProductDescription,
+  ProductHeader,
+  ProductSubHeader,
+} from "./index";
 import { kitchen, car, air, wifi, tv, pet, pool } from '../assets';
 import { useEffect } from 'react';
 
@@ -8,7 +17,7 @@ export const Product = () => {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
-    // fetch producto
+    // fetch product
 
     return (
       <div className={styles.container}>
@@ -19,6 +28,7 @@ export const Product = () => {
         <Characteristics characteristics={product.characteristics} />
         <Map />
         <Politics />
+        <Booking />
       </div>
     );
 }
