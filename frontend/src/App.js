@@ -1,7 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { CreateAccount, Footer, Header, Login, Main } from './components'
+import { CreateAccount, Footer, Header, Login, Main, Product } from './components'
 import { GlobalContext } from './GlobalContext';
 
 function App() {
@@ -29,6 +29,7 @@ function App() {
             <Route path="/" element={<Main />} />
             <Route path="/login" element={<Login />} />
             <Route path="/create-account" element={<CreateAccount />} />
+            <Route path="/product" element={<Product />}/>
           </Routes>
         <Footer isMobile={isMobile} />
         </BrowserRouter>

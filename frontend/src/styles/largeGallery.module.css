@@ -1,0 +1,117 @@
+@import './colors.css';
+
+
+.imgContainer {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 0.5rem;
+    position: relative;
+}
+
+.imgColumn {
+    display: flex;
+    flex: 50%;
+    max-width: 50%;
+    padding: 0 4px;
+}
+.largeImg {
+    margin-top: 1rem;
+    vertical-align: middle;
+    width: 100%;
+    border-radius: 0.5rem;
+    border: 1px solid white;
+  }
+
+.imgGrid {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 0.5rem;
+}
+
+.smallImg {
+    vertical-align: middle;
+    width: 50%;
+    border-radius: 0.5rem;
+    border: 1px solid white;
+}
+
+.seeMore {
+    all: unset;
+    text-decoration: underline;
+    z-index: 99;
+    position: absolute;
+    top: 83%;
+    left: 84%;
+    color: white;
+    font-weight: 900;
+    background-color: rgba(38, 50, 56, 0.4);
+    height: 4vw;
+    width: 10vw;
+    border-radius: 0.5rem;
+    font-size: 1.5vw;
+}
+
+.closeCarousel{
+    all: unset;
+    text-decoration: underline;
+    z-index: 99;
+    position: absolute;
+    top: 26%;
+    left: 84%;
+    color: white;
+    font-weight: 900;
+    background-color: rgba(38, 50, 56, 0.4);
+    height: 4vw;
+    width: 10vw;
+    border-radius: 0.5rem;
+    font-size: 1.5vw;
+}
+.currentItem{
+    all: unset;
+    text-decoration: underline;
+    z-index: 99;
+    position: absolute;
+    top: 26%;
+    left: 84%;
+    color: white;
+    font-weight: 900;
+    background-color: rgba(38, 50, 56, 0.4);
+    height: 4vw;
+    width: 10vw;
+    border-radius: 0.5rem;
+    font-size: 1.5vw;
+}
+
+.seeMore:hover, .closeCarousel:hover, .currentItem {
+    background-color: rgba(255, 255, 255, 0.4);
+    color: var(--gray)
+}
+
+@media screen and (max-width: 819px){
+    .carouselImg{height: 300px;}
+    .closeCarousel{display:none;}
+    .seeMore{display: none;}
+}
+
+@media screen and (min-width: 821px) {
+    .sliderContainer {
+        display: flex;
+        justify-content: center;
+    }
+    .carouselStyle {
+        height: inherit;
+        height: 75vh !important;
+        width: 60vw;
+        display: flex;
+        flex-direction: column;
+        justify-content:  center;
+    }
+    .sliderItemDiv {
+        padding: 20px;
+        background-color: white;
+        text-align: center;
+        height: 60vh !important;
+    }
+}
+
