@@ -3,6 +3,7 @@ import { NewCalendar } from './NewCalendar';
 import { Calification } from './Calification'
 import { CategoryBlock } from './CategoryBlock';
 import { CategoryContainer } from './CategoryContainer';
+import { Characteristics } from './Characteristcs';
 import { CreateAccount } from './CreateAccount';
 import { Footer } from './Footer';
 import { Hamburguer } from './Hamburguer';
@@ -28,6 +29,7 @@ export {
     Calification,
     CategoryBlock,
     CategoryContainer,
+    Characteristics,
     CreateAccount,
     Footer,
     Hamburguer,

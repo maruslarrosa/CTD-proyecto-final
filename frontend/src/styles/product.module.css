@@ -64,3 +64,45 @@
     color: var(--gray);
     padding: 1rem 0;
 }
+
+.characteristicsContainer {
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.characteristicsItemContainer {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 0.5rem;
+    position: relative;
+}
+
+.characteristcsGrid {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 0.5rem;
+}
+
+.characteristicsColumn {
+    display: flex;
+    flex: 20%;
+    max-width: 25%;
+    padding: 0 4px;
+}
+
+@media screen and (max-width: 819px) {
+    .characteristicsColumn {
+        flex: 50%;
+        max-width: 50%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .characteristicsColumn {
+        flex: 100%;
+        max-width: 100%;
+    }
+}

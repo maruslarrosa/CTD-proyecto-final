@@ -1,5 +1,5 @@
 import styles from '../styles/product.module.css'
-import { LargeGallery, ProductDescription, ProductHeader, ProductSubHeader } from './index';
+import { Characteristics, LargeGallery, ProductDescription, ProductHeader, ProductSubHeader } from './index';
 
 export const Product = () => {
 
@@ -11,6 +11,7 @@ export const Product = () => {
         <ProductSubHeader productId={product.id} cityId={product.city.id} />
         <LargeGallery images={product.images}/>
         <ProductDescription description={product.description} />
+        <Characteristics />
       </div>
     );
 }
