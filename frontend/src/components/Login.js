@@ -20,7 +20,6 @@ export const Login = () => {
 
   const login = (event) => {
     event.preventDefault()
-    debugger
     const correctEmail = event.target.email.value === userModel.email
     const correctPassword = event.target.password.value === userModel.password
     if(correctEmail && correctPassword) {
@@ -52,7 +51,7 @@ export const Login = () => {
           placeholder="ejemplo@ejemplo.com"
           autoComplete="email"
           required={true}
-          onChange={setNewEmail}
+          onBlur={setNewEmail}
         />
         {email ? (
           !validEmail ? (
@@ -74,7 +73,7 @@ export const Login = () => {
           label="Ingrese una contraseña"
           required={true}
         />
-        <Button text="Crear cuenta" label="Ingresar" color="primary" />
+        <Button text="Ingresar" label="Ingresar" color="primary" />
       </form>
     </div>
   );

@@ -9,7 +9,10 @@ import iconLinkedin from './iconLinkedin.png'
 import iconTwitter from './iconTwitter.png'
 import kitchen from './kitchen.png'
 import logoSmall from './logoSmall.png'
-import logoLarge from './logoLarge.png';
+import logoLarge from './logoLarge.png'
+import mapDesktop from './mapDesktop.png'
+import mapPhone from './mapPhone.png'
+import mapTablet from './mapTablet.png'
 import pet from './pet.png'
 import point from './point.png'
 import pool from './pool.png'
@@ -32,6 +35,9 @@ export {
     kitchen,
     logoSmall,
     logoLarge,
+    mapDesktop,
+    mapPhone,
+    mapTablet,
     pet,
     point,
     pool,

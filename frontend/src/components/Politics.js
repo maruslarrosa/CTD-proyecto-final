@@ -3,7 +3,7 @@ import styles from '../styles/product.module.css'
 export const Politics = () => {
     return (
       <div className={styles.politicsContainer}>
-        <h2 className={styles.productSubtitle}>Politics</h2>
+        <h2 className={styles.productSubtitle}>Qué tenés que saber</h2>
         <hr />
         <div className={styles.politicsGrid}>
             <div className={styles.politicsColumn}>

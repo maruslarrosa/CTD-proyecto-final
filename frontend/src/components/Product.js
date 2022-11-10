@@ -1,5 +1,5 @@
 import styles from '../styles/product.module.css'
-import { Characteristics, LargeGallery, Politics, ProductDescription, ProductHeader, ProductSubHeader } from './index';
+import { Characteristics, LargeGallery, Map, Politics, ProductDescription, ProductHeader, ProductSubHeader } from './index';
 import { kitchen, car, air, wifi, tv, pet, pool } from '../assets';
 import { useEffect } from 'react';
 
@@ -17,6 +17,7 @@ export const Product = () => {
         <LargeGallery images={product.images}/>
         <ProductDescription description={product.description} />
         <Characteristics characteristics={product.characteristics} />
+        <Map />
         <Politics />
       </div>
     );
@@ -34,7 +35,7 @@ const product = {
         {
             id: 1,
             name: "Pileta",
-            url: kitchen
+            url: pool
         },
         {
             id: 2,
