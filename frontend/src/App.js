@@ -1,23 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState, useEffect } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { CreateAccount, Footer, Header, Login, Main, Product } from './components'
+import { GlobalContext } from './GlobalContext';
 
 function App() {
+  const [isLogged, setIsLogged] = useState(false)
+  const [width, setWidth] = useState(window.innerWidth);
+
+  function handleWindowResizing() {
+    setWidth(window.innerWidth);
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowResizing);
+    return () => {
+      window.removeEventListener("resize", handleWindowResizing);
+    };
+  },[]);
+
+  const isMobile = width <= 500;
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <GlobalContext.Provider value={{isMobile: isMobile, logged:[isLogged, setIsLogged]}}>
+      <BrowserRouter>
+        <Header />
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/create-account" element={<CreateAccount />} />
+            <Route path="/product" element={<Product />}/>
+          </Routes>
+        <Footer isMobile={isMobile} />
+        </BrowserRouter>
+
+      </GlobalContext.Provider>
     </div>
   );
 }

@@ -1,0 +1,7 @@
+@import './colors.css';
+
+.container {
+    background-color: white;
+    height: calc(100% - 5rem);
+    padding-top: 5rem;
+}

@@ -1,0 +1,76 @@
+.generalSearchContainer {
+    background-color: var(--gray);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.title {
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 22px;
+}
+
+
+.searchContainer {
+    width: 100%;
+    gap: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchInputContainer {
+    width: 30%;
+}
+
+.searchInput {
+    width: 100%;
+    border: 1px solid white ;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    height: 40px;
+    padding-left: 12px;
+    gap: 10px;
+    align-items: center;
+}
+
+.searchDropdown {
+    background-color: white;
+    position: absolute;
+    width: 30%;
+    height: 290px;
+    overflow: auto;
+    z-index: 1;
+}
+
+.dropDown{
+    display: flex;
+    align-items: center;
+    padding: 10px 0px 10px 12px;
+    border-bottom: 0.5px solid var(--light-gray);
+}
+
+.dropDown div p {
+    margin-bottom: 0px;
+    margin-left: 12px;
+    text-align: left;
+
+}
+
+.customCalendar {
+        position: absolute;
+        z-index: 1;
+        width: 30%;
+}
+
+@media screen and (max-width:720px) {
+    .searchContainer {flex-wrap: wrap;}
+    .searchInputContainer {width: 100%;}
+    .generalSearchContainer{ padding: 10px;}
+  }

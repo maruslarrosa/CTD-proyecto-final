@@ -1,0 +1,21 @@
+.productListContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: #DEDEDE;
+    height: calc(100% - 5rem);
+    margin-bottom: 5rem;
+    justify-content: space-around;
+}
+
+.product {
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem;
+    height: inherit;
+}
+
+@media screen and (min-width: 820px){
+    .product{max-width: 45%;}
+}

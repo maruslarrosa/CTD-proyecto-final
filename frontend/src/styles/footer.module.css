@@ -1,0 +1,22 @@
+@import './colors.css';
+
+.iconContainer {
+    width: 15rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer {
+    width: 100%;
+    height: 5rem;
+    background-color: var(--light-gray);
+    color: var(--light-yellow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    position: fixed;
+    bottom: 0;
+    z-index: 100;
+}
