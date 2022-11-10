@@ -1,5 +1,5 @@
 export const Booking = () => {
     return (
-        <p>Booking</p>
+        <p>Booking template</p>
     )
 }
