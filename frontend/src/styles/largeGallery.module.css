@@ -1,5 +1,6 @@
 @import './colors.css';
 
+
 .imgContainer {
     display: flex;
     flex-wrap: wrap;
@@ -87,16 +88,30 @@
     color: var(--gray)
 }
 
-.carouselImg {
-    width: 500px;
-    height: 500px;
-    object-fit: cover;
-    
-}
-
 @media screen and (max-width: 819px){
     .carouselImg{height: 300px;}
     .closeCarousel{display:none;}
     .seeMore{display: none;}
+}
+
+@media screen and (min-width: 821px) {
+    .sliderContainer {
+        display: flex;
+        justify-content: center;
+    }
+    .carouselStyle {
+        height: inherit;
+        height: 75vh !important;
+        width: 60vw;
+        display: flex;
+        flex-direction: column;
+        justify-content:  center;
+    }
+    .sliderItemDiv {
+        padding: 20px;
+        background-color: white;
+        text-align: center;
+        height: 60vh !important;
+    }
 }
 

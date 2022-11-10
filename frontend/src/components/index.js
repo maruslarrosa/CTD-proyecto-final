@@ -11,6 +11,7 @@ import { Header } from './Header';
 import { LargeGallery } from './LargeGallery';
 import { Login } from './Login';
 import { Main } from './Main';
+import { Politics } from './Politics';
 import { Product } from './Product';
 import { ProductDescription } from './ProductDescription';
 import { ProductHeader } from './ProductHeader'; 
@@ -37,6 +38,7 @@ export {
     Header,
     Login,
     Main,
+    Politics,
     Product,
     ProductDescription,
     ProductHeader,

@@ -1,8 +1,8 @@
-import styles from '../styles/largeGallery.module.css'
-import OwlCarousel from 'react-owl-carousel';  
-import 'owl.carousel/dist/assets/owl.carousel.css';  
-import 'owl.carousel/dist/assets/owl.theme.default.css'; 
+
 import { useState } from 'react';
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; 
+import styles from '../styles/largeGallery.module.css'
 
 export const LargeGallery = ({images}) => {
   const [openCarousel, setOpenCarousel] = useState(false)
@@ -14,45 +14,29 @@ export const LargeGallery = ({images}) => {
       return array;
     }
 
+    const createCarouselItemImage = (index, options = {}) => (
+      <div key={index} className={styles.sliderItemDiv}>
+          <img src={images[index].url} />
+          <p className="legend">{images[index].name}</p>
+      </div>
+  );
+  
+  const baseChildren = <div className={styles.carouselStyle}>{[...Array(images.length).keys()]
+    .map(createCarouselItemImage)}</div>;
 
     return (
-      <div>
-        {openCarousel || (window.innerWidth < 820) ? (
-          <div className={styles.owlContainer}>
+      <div className={styles.sliderContainer}>
+        {openCarousel || window.innerWidth < 820 ? (
+          <div>
             <button
               onClick={() => setOpenCarousel(false)}
               className={styles.closeCarousel}
             >
               Cerrar
             </button>
-            <div className="container-fluid">
-              <OwlCarousel
-                items={1}
-                className="owl-theme owl-height"
-                loop
-                nav
-                margin={8}
-                dots={false}
-                autoplay={true}
-                autoplayTimeout={3000}
-              >
-                <div key={images[0].id}>
-                  <img className={styles.carouselImg} src={images[0].url} />
-                </div>
-                <div key={images[1].id}>
-                  <img className={styles.carouselImg} src={images[1].url} />
-                </div>
-                <div key={images[2].id}>
-                  <img className={styles.carouselImg} src={images[2].url} />
-                </div>
-                <div key={images[3].id}>
-                  <img className={styles.carouselImg} src={images[3].url} />
-                </div>
-                <div key={images[4].id}>
-                  <img className={styles.carouselImg} src={images[4].url} />
-                </div>
-              </OwlCarousel>
-            </div>
+            <Carousel className={styles.carouselStyle} autoPlay={true} interval={3000} transitionTime={500}>
+              {baseChildren.props.children}
+            </Carousel>
           </div>
         ) : (
           <div className={styles.imgContainer}>

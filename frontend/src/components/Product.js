@@ -1,5 +1,6 @@
 import styles from '../styles/product.module.css'
-import { Characteristics, LargeGallery, ProductDescription, ProductHeader, ProductSubHeader } from './index';
+import { Characteristics, LargeGallery, Politics, ProductDescription, ProductHeader, ProductSubHeader } from './index';
+import { kitchen, car, air, wifi, tv, pet, pool } from '../assets';
 
 export const Product = () => {
 
@@ -11,7 +12,8 @@ export const Product = () => {
         <ProductSubHeader productId={product.id} cityId={product.city.id} />
         <LargeGallery images={product.images}/>
         <ProductDescription description={product.description} />
-        <Characteristics />
+        <Characteristics characteristics={product.characteristics} />
+        <Politics />
       </div>
     );
 }
@@ -28,23 +30,38 @@ const product = {
         {
             id: 1,
             name: "Pileta",
-            url: "icono"
+            url: kitchen
         },
         {
             id: 2,
-            name: "Desayuno",
-            url: "icono"
+            name: "Cocina",
+            url: kitchen
         },
         {
             id: 3,
             name: "Aire acondicionado",
-            url: "icono"
+            url: air
         },
         {
             id: 4,
             name: "Estacionamiento",
-            url: "icono"
+            url: car
         },
+        {
+            id: 5,
+            name: "Televisor",
+            url: tv
+        },
+        {
+            id: 6,
+            name: "Apto mascotas",
+            url: pet
+        },
+        {
+            id: 7,
+            name: "Wifi",
+            url: wifi
+        }
     ],
     longitude: "1",
     latitude: "1",

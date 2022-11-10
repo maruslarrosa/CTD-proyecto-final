@@ -10,6 +10,12 @@
     
 }
 
+hr{
+    height: 2px;
+    border: 0;
+    border-top: 1px solid var(--yellow);
+}
+
 .headerContainer {
     height: 5rem;
     background-color: var(--light-yellow);
@@ -65,25 +71,17 @@
     padding: 1rem 0;
 }
 
-.characteristicsContainer {
-    padding: 0 1rem;
+.characteristicsContainer, .politicsContainer {
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     text-align: left;
 }
 
-.characteristicsItemContainer {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0 0.5rem;
-    position: relative;
-}
-
-.characteristcsGrid {
+.characteristcsGrid, .politicsGrid {
     margin-top: 1rem;
     display: flex;
     flex-wrap: wrap;
-    padding: 0 0.5rem;
 }
 
 .characteristicsColumn {
@@ -91,18 +89,50 @@
     flex: 20%;
     max-width: 25%;
     padding: 0 4px;
+    align-items: center;
 }
 
+.characteristcsIcon {
+    width: 2rem;
+    margin: 0.5rem;
+}
+
+h4 {
+    color: var(--gray);
+}
+
+.politicsItem {
+    word-wrap: break-word;
+    padding-top: 1rem;
+    padding-right: 1rem
+}
+
+.politicsColumn {
+    display: flex;
+    flex-direction: column;
+    flex: 20%;
+    max-width: 33%;
+    padding: 0 4px;
+    align-items: flex-start;
+}
+
+/* media queries */
 @media screen and (max-width: 819px) {
-    .characteristicsColumn {
+    .characteristicsColumn, .politicsColumn {
         flex: 50%;
         max-width: 50%;
+    }
+    .politicsColumn {
+        padding: 1rem
     }
 }
 
 @media screen and (max-width: 500px) {
-    .characteristicsColumn {
+    .politicsColumn {
         flex: 100%;
         max-width: 100%;
+    }
+    .politicsColumn {
+        padding: 1rem
     }
 }

@@ -1,43 +1,26 @@
 import styles from "../styles/product.module.css"
 
-export const Characteristics = () => {
+export const Characteristics = ({characteristics}) => {
+
+    const renderCharacteristicsItems = () => {
+        const list =  characteristics.map((item) => {
+            return (
+                <div className={styles.characteristicsColumn}>
+                <img className={styles.characteristcsIcon} src={item.url} />
+                <p>{item.name}</p>
+              </div>
+            )
+
+          })
+        return list
+    }
+    
     return (
       <div className={styles.characteristicsContainer}>
         <h2 className={styles.productSubtitle}>¿Qué ofrece este lugar?</h2>
+        <hr />
         <div className={styles.characteristcsGrid}>
-            <div className={styles.characteristicsColumn}>
-                <p>item1</p>
-            </div>
-            <div className={styles.characteristicsColumn}>
-                <p>item2</p>
-            </div>
-            <div className={styles.characteristicsColumn}>
-                <p>item3</p>
-            </div>
-            <div className={styles.characteristicsColumn}>
-                <p>item4</p>
-            </div>
-            <div className={styles.characteristicsColumn}>
-                <p>item5</p>
-            </div>
-            {/* <div className={styles.characteristicsColumn}>
-                <p>item1</p>
-                <p>item2</p>
-                <p>item3</p>
-                <p>item4</p>
-            </div>
-            <div className={styles.characteristicsColumn}>
-                <p>item1</p>
-                <p>item2</p>
-                <p>item3</p>
-                <p>item4</p>
-            </div>
-            <div className={styles.characteristicsColumn}>
-                <p>item1</p>
-                <p>item2</p>
-                <p>item3</p>
-                <p>item4</p>
-            </div> */}
+          {renderCharacteristicsItems()}
         </div>
       </div>
     );
