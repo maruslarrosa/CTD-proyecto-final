@@ -17,6 +17,7 @@ build-backend:
   artifacts:
     paths:
       - backend/target/backend.war
+
   rules:
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
       changes:
@@ -37,7 +38,7 @@ frontend_build_job:
       - frontend/build/
   rules:
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
-          changes:
+      changes:
         - frontend/**/*
 
 test-backend:
@@ -83,5 +84,5 @@ frontend_deploy_job:
     - aws s3 sync ./frontend/build s3://$S3_BUCKET_NAME --delete
   rules:
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
-       changes:
-         - frontend/**/*
+      changes:
+        - frontend/**/*
