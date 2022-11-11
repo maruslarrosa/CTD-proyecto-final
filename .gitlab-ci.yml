@@ -85,6 +85,3 @@ frontend_deploy_job:
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
        changes:
          - frontend/**/*
-
-
-a
