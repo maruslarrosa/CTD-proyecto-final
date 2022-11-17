@@ -16,6 +16,11 @@
     height: inherit;
 }
 
+.title {
+    height: 2rem;
+    font-size: 1.5rem;
+}
+
 @media screen and (min-width: 820px){
     .product{max-width: 45%;}
 }

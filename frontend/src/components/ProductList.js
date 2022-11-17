@@ -5,7 +5,7 @@ import { ProductCard } from './index'
 export const ProductList = () => {
     return (
       <>
-        <h2>Recomendaciones</h2>
+        <h1 className={styles.title}>Recomendaciones</h1>
         <div className={styles.productListContainer}>
           {products.map((product) => (
             <div key={product.id} className={styles.product}>
