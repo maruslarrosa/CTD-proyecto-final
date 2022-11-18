@@ -1,4 +1,5 @@
 import { Availability } from './Availability';
+import { Booking } from './Booking';
 import { Button } from './Button';
 import { NewCalendar } from './NewCalendar';
 import { Calification } from './Calification'
@@ -28,6 +29,7 @@ import { User } from './User'
 
 export {
     Availability,
+    Booking,
     Button,
     NewCalendar,
     Calification,
