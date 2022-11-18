@@ -1,13 +1,33 @@
-@import './colors.css';
-
-.bookingContainer {
-    background-color: #F2F3F4;
+.bookingContainer{
     display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    background-color: #F1F2F3;
+    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
+
+}
+.leftContainer {
+    display: flex;
+    flex-direction: column;
 }
 
 .title {
-    color: var(--gray);
-    padding: 1rem 0;
-    padding-left: 1rem;
+    padding: 1rem;
+}
+.startBooking {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 1rem;
+    align-items: center;
+    margin: 1rem;
+    border-radius: 1rem;
+}
 
+@media screen and (max-width: 820px) {
+    .bookingContainer {
+        flex-direction: column;
+    }
 }
