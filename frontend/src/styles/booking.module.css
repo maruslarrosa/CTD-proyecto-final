@@ -1,0 +1,8 @@
+.container {
+    background-color: white;
+    height: calc(100% - 5rem);
+    padding-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5rem;
+}
