@@ -25,11 +25,11 @@ export const Header = () => {
           user={{ name: "Maru Larrosa", initials: "ML" }}
           logout={() => setIsLogged(false)}
         />
-      ) : isMobile ? (
+      ) :( isMobile ? (
         <Hamburguer />
       ) : (
         <RightNav />
-      )}
+      ))}
     </div>
   );
 };
