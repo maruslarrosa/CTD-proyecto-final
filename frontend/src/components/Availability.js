@@ -1,8 +1,8 @@
-import styles from '../styles/booking.module.css'
+import styles from '../styles/availability.module.css'
 import Calendar from "react-calendar";
 import { useState, useEffect } from 'react';
 import { Button } from './Button';
-export const Booking = () => {
+export const Availability = () => {
     const [width, setWidth] = useState(window.innerWidth);
 
     function handleWindowResizing() {
@@ -19,12 +19,12 @@ export const Booking = () => {
     const doubleCalendar = width >= 820;
 
     return (
-      <div className={styles.bookingContainer}>
+      <div className={styles.availabilityContainer}>
         <div className={styles.leftContainer}>
           <h2 className={styles.title}>Fechas disponibles</h2>
           <Calendar showDoubleView={doubleCalendar} />
         </div>
-        <div className={styles.startBooking}>
+        <div className={styles.startavailability}>
           <p>Agregá tus fechas de viaje para obtener precios exactos</p>
           <Button
             text="Iniciar reserva"

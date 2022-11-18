@@ -1,4 +1,4 @@
-import { Booking } from './Booking';
+import { Availability } from './Availability';
 import { Button } from './Button';
 import { NewCalendar } from './NewCalendar';
 import { Calification } from './Calification'
@@ -27,7 +27,7 @@ import { User } from './User'
 // specifying the complete component location's path
 
 export {
-    Booking,
+    Availability,
     Button,
     NewCalendar,
     Calification,
