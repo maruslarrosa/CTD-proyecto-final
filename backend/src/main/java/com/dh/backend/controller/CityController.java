@@ -1,6 +1,8 @@
 package com.dh.backend.controller;
 
 import com.dh.backend.dto.CityDTO;
+import com.dh.backend.exceptions.BadRequestException;
+import com.dh.backend.exceptions.ResourceNotFoundException;
 import com.dh.backend.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,29 +20,28 @@ public class CityController {
 
 
     @PostMapping()
-    public ResponseEntity<CityDTO> createCity(@RequestBody CityDTO cityDTO) {
+    public ResponseEntity<CityDTO> createCity(@RequestBody CityDTO cityDTO) throws BadRequestException {
         return ResponseEntity.ok(cityService.createCity(cityDTO));
     }
 
     @GetMapping("/{id}")
-    public CityDTO readCity(@PathVariable Long id) {
+    public CityDTO readCity(@PathVariable Long id) throws BadRequestException{
         return cityService.readCity(id);
     }
 
     @PutMapping()
-    public ResponseEntity<CityDTO> updateCity(@RequestBody CityDTO cityDTO) {
+    public ResponseEntity<CityDTO> updateCity(@RequestBody CityDTO cityDTO) throws BadRequestException, ResourceNotFoundException {
         return ResponseEntity.ok(cityService.updateCity(cityDTO));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deleteCity(@PathVariable Long id) {
+    public ResponseEntity<HttpStatus> deleteCity(@PathVariable Long id) throws BadRequestException, ResourceNotFoundException{
         cityService.deleteCity(id);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @GetMapping("/")
+    @GetMapping
     public Set<CityDTO> getListCategories() {
         return cityService.getListCity();
     }
-
 }
