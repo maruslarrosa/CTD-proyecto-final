@@ -1,47 +1,36 @@
 package com.dh.backend.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 
 @Entity
 @Table(name = "CHARACTERISTICS")
-/*@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})*/
 @Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Characteristic {
+
     @Id
-    @SequenceGenerator(name = "characteristic_sequence", sequenceName = "characteristic_sequence", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "characteristic_sequence")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "characteristic_sequence")
     @Column(name = "ID")
     private Long id;
+
+    @NotNull
+    @NotBlank
+    @Size(min = 3, max = 45)
     @Column(name = "NAME")
     private String name;
+
+    @NotNull
+    @NotBlank
+    @Size(min = 8, max = 200)
     @Column(name = "ICON_URL")
     private String iconUrl;
-
-    /*// Una característica puede corresponder a muchos productos
-    @OneToMany(mappedBy = "characteristic", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonIgnore
-    private Set<Product> products = new HashSet<>();*/
-
-    // Constructores
-    public Characteristic() {
-
-    }
-
-    public Characteristic(String name, String iconUrl) {
-        this.name = name;
-        this.iconUrl = iconUrl;
-    }
-
-    public Characteristic(Long id, String name, String iconUrl) {
-        this.id = id;
-        this.name = name;
-        this.iconUrl = iconUrl;
-    }
 }

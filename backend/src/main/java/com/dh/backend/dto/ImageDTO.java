@@ -1,28 +1,29 @@
 package com.dh.backend.dto;
 
-import com.dh.backend.model.Product;
+
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 @Getter @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ImageDTO {
+
     private Long id;
+
+    @NotNull
+    @NotBlank
+    @Size(min = 3, max = 45)
     private String name;
+
+    @NotNull
+    @NotBlank
+    @Size( min = 8, max = 200)
     private String url;
-
-    // Constructores
-    public ImageDTO() {
-
-    }
-
-    public ImageDTO(String name, String url) {
-        this.name = name;
-        this.url = url;
-    }
-
-    public ImageDTO(Long id, String name, String url) {
-        this.id = id;
-        this.name = name;
-        this.url = url;
-    }
 }

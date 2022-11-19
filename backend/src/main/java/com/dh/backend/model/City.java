@@ -1,39 +1,29 @@
 package com.dh.backend.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
-import lombok.Setter;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 
 @Entity
 @Table(name = "CITIES")
-/*@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})*/
 @Getter @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class City {
     @Id
-    @SequenceGenerator(name = "city_sequence", sequenceName = "city_sequence", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "city_sequence")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "city_sequence")
     @Column(name = "ID")
     private Long id;
+    @NotNull
+    @NotBlank
+    @Size(min = 3, max = 45)
     @Column(name = "NAME")
     private String name;
-
-    /*// Una ciudad puede tener muchos productos
-    @OneToMany(mappedBy = "city", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonIgnore
-    private Set<Product> products = new HashSet<>();*/
-
-    //Constructores
-    public City() {
-
-    }
-
-    public City(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
 }

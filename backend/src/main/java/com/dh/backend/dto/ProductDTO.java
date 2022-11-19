@@ -1,46 +1,51 @@
 package com.dh.backend.dto;
 
-import com.dh.backend.model.Image;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.HashSet;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.List;
 import java.util.Set;
 
+
 @Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProductDTO {
+
     private Long id;
+
+    @NotNull
+    @NotBlank
+    @Size(min = 3, max = 45)
     private String name;
+    @NotNull
+    @NotBlank
+    @Size(min = 3, max = 400)
     private String description;
-    private String availabity;
+    @NotNull
+    @NotBlank
+    @Size(min = 3, max = 45)
+    private String availability;
+    @NotNull
+    @NotBlank
+    @Size(min = 3, max = 45)
     private String policies;
+    @NotNull
+    @NotBlank
+    @Size(min = 3, max = 45)
     private String longitude;
+    @NotNull
+    @NotBlank
+    @Size(min = 3, max = 45)
     private String latitude;
-    private Set<ImageDTO> images;
 
-    //Constructores
-    public ProductDTO() {
-
-    }
-
-    public ProductDTO(String name, String description, String availabity, String policies, String longitude, String latitude) {
-        this.name = name;
-        this.description = description;
-        this.availabity = availabity;
-        this.policies = policies;
-        this.longitude = longitude;
-        this.latitude = latitude;
-        this.images = new HashSet<>();
-    }
-
-    public ProductDTO(Long id, String name, String description, String availabity, String policies, String longitude, String latitude) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.availabity = availabity;
-        this.policies = policies;
-        this.longitude = longitude;
-        this.latitude = latitude;
-        this.images = new HashSet<>();
-    }
+    private List<ImageDTO> images;
+    private CityDTO city_id;
+    private CategoryDTO category_id;
+    private Set<CharacteristicDTO> characteristicsInProducts_id;
 }
