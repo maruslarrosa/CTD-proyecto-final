@@ -6,3 +6,25 @@
     flex-direction: column;
     margin-bottom: 5rem;
 }
+
+.subtitle {
+    color: var(--gray);
+    padding: 1rem 0;
+}
+
+/* .personalDataContainer {
+    display: flex;
+} */
+.personalDataContainer {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0 0.5rem;
+}
+
+.smallImg {
+    vertical-align: middle;
+    width: 50%;
+    border-radius: 0.5rem;
+    border: 1px solid white;
+}
