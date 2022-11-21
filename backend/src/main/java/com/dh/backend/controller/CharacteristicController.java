@@ -1,6 +1,8 @@
 package com.dh.backend.controller;
 
 import com.dh.backend.dto.CharacteristicDTO;
+import com.dh.backend.exceptions.BadRequestException;
+import com.dh.backend.exceptions.ResourceNotFoundException;
 import com.dh.backend.service.CharacteristicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,27 +19,27 @@ public class CharacteristicController {
 
 
     @PostMapping()
-    public ResponseEntity<CharacteristicDTO> createCharacteristic(@RequestBody CharacteristicDTO characteristicDTO) {
+    public ResponseEntity<CharacteristicDTO> createCharacteristic(@RequestBody CharacteristicDTO characteristicDTO) throws BadRequestException {
         return ResponseEntity.ok(characteristicService.createCharacteristic(characteristicDTO));
     }
 
     @GetMapping("/{id}")
-    public CharacteristicDTO readCharacteristic(@PathVariable Long id) {
+    public CharacteristicDTO readCharacteristic(@PathVariable Long id) throws BadRequestException {
         return characteristicService.readCharacteristic(id);
     }
 
-    @PutMapping()
-    public ResponseEntity<CharacteristicDTO> updateCharacteristic(@RequestBody CharacteristicDTO characteristicDTO) {
+    @PutMapping
+    public ResponseEntity<CharacteristicDTO> updateCharacteristic(@RequestBody CharacteristicDTO characteristicDTO) throws BadRequestException, ResourceNotFoundException {
         return ResponseEntity.ok(characteristicService.updateCharacteristic(characteristicDTO));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deleteCharacteristic(@PathVariable Long id) {
+    public ResponseEntity<HttpStatus> deleteCharacteristic(@PathVariable Long id) throws BadRequestException, ResourceNotFoundException {
         characteristicService.deleteCharacteristic(id);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @GetMapping("/")
+    @GetMapping
     public Set<CharacteristicDTO> getListCategories() {
         return characteristicService.getListCharacteristic();
     }
