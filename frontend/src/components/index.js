@@ -7,6 +7,7 @@ import { CategoryBlock } from './CategoryBlock';
 import { CategoryContainer } from './CategoryContainer';
 import { Characteristics } from './Characteristcs';
 import { CreateAccount } from './CreateAccount';
+import { Error } from './Error';
 import { Footer } from './Footer';
 import { Hamburguer } from './Hamburguer';
 import { Header } from './Header';
@@ -37,6 +38,7 @@ export {
     CategoryContainer,
     Characteristics,
     CreateAccount,
+    Error,
     Footer,
     Hamburguer,
     LargeGallery,

@@ -1,9 +1,5 @@
 @import url('./colors.css');
 
-* {
-    color: black;
-}
-
 .cardContainer {
     display: flex;
     justify-content: space-between;
@@ -11,6 +7,7 @@
     background-color: white;
     border-radius: 1rem;
     box-shadow: 4px 4px 13px var(--gray);
+    color: black;
 }
 .imgContainer {
     width: 40%;

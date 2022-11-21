@@ -2,6 +2,7 @@ import air from './air.png'
 import car from './car.png'
 import chevronLeft from './chevronLeft.png'
 import close from './close.png'
+import error from './error.png'
 import hamburguer from './hamburguer.png'
 import hotelPNG from './hotelPNG.png'
 import iconFacebook from './iconFacebook.png'
@@ -28,6 +29,7 @@ export {
     car,
     chevronLeft,
     close,
+    error,
     hamburguer,
     hotelPNG,
     iconFacebook,
