@@ -3,6 +3,7 @@ import car from './car.png'
 import chevronLeft from './chevronLeft.png'
 import close from './close.png'
 import hamburguer from './hamburguer.png'
+import hotelPNG from './hotelPNG.png'
 import iconFacebook from './iconFacebook.png'
 import iconInstagram from './iconInstagram.png'
 import iconLinkedin from './iconLinkedin.png'
@@ -28,6 +29,7 @@ export {
     chevronLeft,
     close,
     hamburguer,
+    hotelPNG,
     iconFacebook,
     iconInstagram,
     iconLinkedin,

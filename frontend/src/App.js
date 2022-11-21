@@ -1,7 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { CreateAccount, Footer, Header, Login, Main, Product } from './components'
+import { Booking, CreateAccount, Footer, Header, Login, Main, Product } from './components'
 import { GlobalContext } from './GlobalContext';
 
 function App() {
@@ -30,6 +30,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/create-account" element={<CreateAccount />} />
             <Route path="/product" element={<Product />}/>
+            <Route path="/booking" element={<Booking />}/>
           </Routes>
         <Footer isMobile={isMobile} />
         </BrowserRouter>

@@ -1,5 +1,9 @@
 @import url('./colors.css');
 
+* {
+    color: black;
+}
+
 .cardContainer {
     display: flex;
     justify-content: space-between;

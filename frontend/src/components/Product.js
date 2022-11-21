@@ -1,6 +1,6 @@
 import styles from '../styles/product.module.css'
 import {
-  Booking,
+  Availability,
   Characteristics,
   LargeGallery,
   Map,
@@ -28,7 +28,7 @@ export const Product = () => {
         <Characteristics characteristics={product.characteristics} />
         <Map />
         <Politics />
-        <Booking />
+        <Availability />
       </div>
     );
 }
