@@ -1,5 +1,6 @@
 import styles from "../styles/booking.module.css"
 import { Politics, ProductHeader } from "./index"
+import Calendar from "react-calendar";
 
 
 export const Booking = () => {
@@ -54,16 +55,28 @@ export const Booking = () => {
         );
     }
 
-    const renderProductDetail = () => {
+    const renderBookingDetail = () => {
         return (
-            <div>Product Detail</div>
+          <div className={styles.bookingDetailContainer}>
+          <h2>
+            Detalle de la reserva
+          </h2>
+          <p>imagen</p>
+          <div>
+          <p>{"hotel".toUpperCase()}</p>
+          <h3>Hotel Maravilla</h3>
+          </div>
+        </div>
         )
     }
 
     const renderBookingDate = () => {
         return (
-            <div>Dates</div>
-        )
+          <div className={styles.bookingDateContainer}>
+            <h2 className={styles.subtitle}>Seleccioná tu fecha de reserva</h2>
+            <Calendar showDoubleView={true}/>
+          </div>
+        );
     }
 
     const renderArrival = () => {
@@ -78,11 +91,13 @@ export const Booking = () => {
       <p className={styles.container}>
         <ProductHeader categoryId={"1"} name={"Nombre del hotel"} />
         <div className={styles.section}>
-          {renderPersonalData()}
-          {renderProductDetail()}
+          <div className={styles.column}>
+            {renderPersonalData()}
+            {renderBookingDate()}
+          </div>
+          {renderBookingDetail()}
         </div>
 
-        {renderBookingDate()}
         {renderArrival()}
         <Politics />
       </p>

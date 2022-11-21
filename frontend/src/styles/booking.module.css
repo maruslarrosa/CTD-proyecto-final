@@ -11,16 +11,15 @@
     color: var(--gray);
     display: flex;
     padding: 1rem;
-    padding-bottom: 0px;
 }
 
 /* Personal Data */
 .personalDataContainer {
     display: flex;
-    width: 60%;
     flex-direction: column;
     background-color: white;
     border-radius: 1rem;
+    margin-bottom: 2rem;
 }
 
 .personalDataColumn {
@@ -28,13 +27,29 @@
     display: flex;
     flex-direction: column;
     padding: 1rem;
+    padding-top: 0px;
     height: 10rem;
     justify-content: space-around;
     align-items: flex-start;
 }
 
 
+/* Booking Detail */
+.bookingDetailContainer {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    border-radius: 1rem;
+}
 
+/* Booking Date */
+.bookingDateContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 1rem;
+}
 /* common */
 
 .row{
@@ -42,7 +57,16 @@
     flex-direction: row;
 }
 
+.column{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
 .section {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
     padding-top: 2rem;
     padding-left: 2rem;
     padding-right: 2rem;
