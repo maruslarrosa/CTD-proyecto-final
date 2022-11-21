@@ -1,5 +1,6 @@
 import air from './air.png'
 import car from './car.png'
+import check from './check.png'
 import chevronLeft from './chevronLeft.png'
 import close from './close.png'
 import error from './error.png'
@@ -27,6 +28,7 @@ import wifi from './wifi.png'
 export {
     air,
     car,
+    check,
     chevronLeft,
     close,
     error,

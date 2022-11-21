@@ -23,6 +23,7 @@ import { ProductList } from './ProductList';
 import { ProductCard } from './ProductCard';
 import { ProductSubHeader } from './ProductSubHeader';
 import { RightNav } from './RightNav';
+import { Success } from './Success';
 import { User } from './User'
 
 // This file allows to import components without
@@ -54,5 +55,6 @@ export {
     ProductCard,
     ProductSubHeader,
     RightNav,
+    Success,
     User
 }
