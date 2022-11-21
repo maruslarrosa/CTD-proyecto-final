@@ -41,7 +41,37 @@
     flex-direction: column;
     width: 30%;
     border-radius: 1rem;
+    padding: 1rem;
+    justify-content: space-between;
 }
+
+.bookingLocation {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+.hotelInfoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 1rem;
+}
+
+.hotelName {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 1rem;
+}
+
+button {
+    width: 90%;
+    margin: 0;
+    display: flex;
+    align-self: center;
+}
+
 
 /* Booking Date */
 .bookingDateContainer {
@@ -49,7 +79,16 @@
     flex-direction: column;
     background-color: white;
     border-radius: 1rem;
+    padding: 1rem
 }
+
+/* Politics Container */
+.politicsContainer {
+    background-color: white;
+    border-radius: 1rem;
+    margin: 4rem;
+}
+
 /* common */
 
 .row{
@@ -70,4 +109,8 @@
     padding-top: 2rem;
     padding-left: 2rem;
     padding-right: 2rem;
+}
+
+.icon {
+    width: 1rem;
 }

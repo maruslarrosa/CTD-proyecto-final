@@ -1,6 +1,7 @@
 import styles from "../styles/booking.module.css"
-import { Politics, ProductHeader } from "./index"
+import { Calification, Button, Politics, ProductHeader } from "./index"
 import Calendar from "react-calendar";
+import { point, hotelPNG } from '../assets/index.js'
 
 
 export const Booking = () => {
@@ -58,16 +59,34 @@ export const Booking = () => {
     const renderBookingDetail = () => {
         return (
           <div className={styles.bookingDetailContainer}>
-          <h2>
-            Detalle de la reserva
-          </h2>
-          <p>imagen</p>
-          <div>
-          <p>{"hotel".toUpperCase()}</p>
-          <h3>Hotel Maravilla</h3>
+            <h2>Detalle de la reserva</h2>
+            <img src={hotelPNG} />
+            <hr></hr>
+            <div className={styles.hotelInfoContainer}>
+              <div className={styles.hotelName}>
+                <p>{"hotel".toUpperCase()}</p>
+                <h3>Hotel Maravilla</h3>
+              </div>
+              <div className={styles.bookingLocation}>
+                <img
+                  className={styles.icon}
+                  src={point}
+                  alt="Icono de ubicación"
+                />
+                <p>Mar del plata, Buenos Aires</p>
+              </div>
+              <Calification
+                calification={{ stars: 4, description: "Muy bueno", rating: 8 }}
+              />
+            </div>
+            <hr></hr>
+            <h3>Check-in: <span>14pm</span></h3> 
+            <hr></hr>
+            <h3>Check-out: <span>11am</span></h3>
+            <hr></hr>
+            <Button text={"Confirmar reserva"} label={"Confirmar la reserva"} color={"secondary"}/>
           </div>
-        </div>
-        )
+        );
     }
 
     const renderBookingDate = () => {
@@ -94,12 +113,13 @@ export const Booking = () => {
           <div className={styles.column}>
             {renderPersonalData()}
             {renderBookingDate()}
+            {renderArrival()}
           </div>
           {renderBookingDetail()}
         </div>
-
-        {renderArrival()}
+        <div className={styles.politicsContainer}>
         <Politics />
+        </div>
       </p>
     );
 }
