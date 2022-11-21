@@ -65,13 +65,29 @@
     padding-left: 1rem;
 }
 
-button {
-    width: 90%;
-    margin: 0;
+.button {
     display: flex;
     align-self: center;
+    justify-content: center;
 }
 
+
+/* Arrival */
+.arrivalContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    align-items: flex-start;
+    height: 9rem;
+    justify-content: space-between;
+}
+
+.arrivalSelector {
+    width: 60%;
+    border-radius: 0.5rem;
+}
 
 /* Booking Date */
 .bookingDateContainer {
@@ -79,7 +95,8 @@ button {
     flex-direction: column;
     background-color: white;
     border-radius: 1rem;
-    padding: 1rem
+    padding: 1rem;
+    margin-bottom: 2rem
 }
 
 /* Politics Container */

@@ -80,11 +80,21 @@ export const Booking = () => {
               />
             </div>
             <hr></hr>
-            <h3>Check-in: <span>14pm</span></h3> 
+            <h3>
+              Check-in: <span>14pm</span>
+            </h3>
             <hr></hr>
-            <h3>Check-out: <span>11am</span></h3>
+            <h3>
+              Check-out: <span>11am</span>
+            </h3>
             <hr></hr>
-            <Button text={"Confirmar reserva"} label={"Confirmar la reserva"} color={"secondary"}/>
+            <div className={styles.button}>
+              <Button
+                text={"Confirmar reserva"}
+                label={"Confirmar la reserva"}
+                color={"secondary"}
+              />
+            </div>
           </div>
         );
     }
@@ -100,10 +110,25 @@ export const Booking = () => {
 
     const renderArrival = () => {
         return (
-            <div>
-                Arrival
-            </div>
-        )
+          <div className={styles.arrivalContainer}>
+            <h2>Tu horario de llegada</h2>
+            <p>
+              Tu habitación va a estar lista para el check-in entre las 10:00 AM
+              y las 11:00 AM
+            </p>
+            <label htmlFor="hours">Indicá tu horario estimado de llegada</label>
+            <select className={styles.arrivalSelector} name="hours" id="hours">
+              <option value="10">10:00 AM</option>
+              <option value="11">11:00 AM</option>
+              <option value="12">12:00 PM</option>
+              <option value="13">13:00 PM</option>
+              <option value="14">14:00 PM</option>
+              <option value="15">15:00 PM</option>
+              <option value="16">16:00 PM</option>
+              <option value="17">17:00 PM</option>
+            </select>
+          </div>
+        );
     }
 
     return (
