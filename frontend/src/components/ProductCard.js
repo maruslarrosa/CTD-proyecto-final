@@ -9,7 +9,7 @@ export const ProductCard = ({product}) => {
     return (
       <div className={styles.cardContainer}>
         <div className={styles.imgContainer}>
-        <img src={product.crimg} className={styles.img} />
+        <img src={product.images[0].url} className={styles.img} />
         {
           isMobile ? <Calification
               key={product.id}
@@ -22,8 +22,8 @@ export const ProductCard = ({product}) => {
         <div className={styles.rightContainer}>
           <div className={styles.productDetail}>
             <div className={isMobile ? styles.mobileTitle : styles.title}>
-              <p>{product.category.toUpperCase()}</p>
-              <h3>{product.title}</h3>
+              <p>{product.category_id.name.toUpperCase()}</p>
+              <h3>{product.name}</h3>
             </div>
             {
           !isMobile ? 

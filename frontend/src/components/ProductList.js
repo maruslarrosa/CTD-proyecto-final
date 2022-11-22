@@ -1,8 +1,19 @@
 import { Link } from 'react-router-dom';
 import styles from '../styles/productList.module.css'
 import { ProductCard } from './index'
+import { useEffect, useState } from 'react';
+import {getProducts} from '../services';
 
 export const ProductList = () => {
+    const [products, setProducts] = useState([])
+
+    useEffect(() => {
+        getProducts().then(data => {
+            setProducts(data)
+        })
+
+    }, [])
+
     return (
       <>
         <h1 className={styles.title}>Recomendaciones</h1>
