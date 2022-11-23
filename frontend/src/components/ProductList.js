@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import styles from '../styles/productList.module.css'
 import { CategoryContainer, NewCalendar, ProductCard } from './index'
 import { useEffect, useState } from 'react';
@@ -23,15 +22,13 @@ export const ProductList = () => {
 
     return (
       <>
-        <NewCalendar handleSearchClick={handleSearchClick}/>
+        <NewCalendar handleSearchClick={handleSearchClick} />
         <CategoryContainer handleCategoryClick={handleCategoryClick} />
         <h1 className={styles.title}>Recomendaciones</h1>
         <div className={styles.productListContainer}>
           {products.map((product) => (
             <div key={product.id} className={styles.product}>
-              <Link to="/product">
-                <ProductCard product={product} />
-              </Link>
+              <ProductCard product={product} />
             </div>
           ))}
         </div>

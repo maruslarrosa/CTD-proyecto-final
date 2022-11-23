@@ -6,7 +6,7 @@ export const Characteristics = ({characteristics}) => {
         const list =  characteristics.map((item) => {
             return (
                 <div className={styles.characteristicsColumn}>
-                <img className={styles.characteristcsIcon} src={item.url} />
+                <img className={styles.characteristcsIcon} src={item.iconUrl} />
                 <p>{item.name}</p>
               </div>
             )
