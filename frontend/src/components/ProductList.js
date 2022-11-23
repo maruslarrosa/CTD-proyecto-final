@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import styles from '../styles/productList.module.css'
-import { ProductCard } from './index'
+import { CategoryContainer, ProductCard } from './index'
 import { useEffect, useState } from 'react';
-import {getProducts} from '../services';
+import { getProducts, getProductsByCategory } from '../services';
 
 export const ProductList = () => {
     const [products, setProducts] = useState([])
@@ -11,11 +11,16 @@ export const ProductList = () => {
         getProducts().then(data => {
             setProducts(data)
         })
-
     }, [])
+
+    const handleCategoryClick = (id) => {
+        console.log(id)
+        getProductsByCategory(id).then((response) => setProducts(response))
+    }
 
     return (
       <>
+        <CategoryContainer handleCategoryClick={handleCategoryClick}/>
         <h1 className={styles.title}>Recomendaciones</h1>
         <div className={styles.productListContainer}>
           {products.map((product) => (

@@ -11,6 +11,14 @@ export const getProducts = async () => {
   return products;
 }
 
+export const getProductsByCategory = async (categoryId) => {
+  const endpoint = `${baseUrl}productos/categorias/${categoryId}`
+  const response = await axios.get(endpoint);
+  const products = response.data
+
+  return products
+}
+
 export const getCategories = async () => {
   const endpoint = `${baseUrl}categorias`
   const response = await axios.get(endpoint)

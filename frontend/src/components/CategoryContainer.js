@@ -3,7 +3,7 @@ import styles from '../styles/categoryBlock.module.css'
 import { CategoryBlock } from './index'
 import { getCategories } from '../services'
 
-export const CategoryContainer = () => {
+export const CategoryContainer = ({handleCategoryClick}) => {
     const [categories, setCategories] = useState([])
     useEffect (() => {
         getCategories().then((response) => setCategories(response))
@@ -14,7 +14,7 @@ export const CategoryContainer = () => {
             <h2 className={styles.categoryContainerTitle}>Buscar por tipo de alojamiento</h2>
 
             <div className={styles.categoryCardContainer}>
-                {categories.map(category => <CategoryBlock key={category.id} category={category} />)}
+                {categories.map(category => <CategoryBlock key={category.id} category={category} handleCategoryClick={handleCategoryClick} />)}
             </div>
         </div>
     )
