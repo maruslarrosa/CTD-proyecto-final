@@ -46,7 +46,7 @@ export const Product = () => {
             <Characteristics characteristics={product.characteristicsInProducts_id} />
             <Map />
             <Politics />
-            <Availability />
+            <Availability product={product}/>
           </div>
         )}
       </>
