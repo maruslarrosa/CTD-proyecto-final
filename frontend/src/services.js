@@ -10,3 +10,11 @@ export const getProducts = async () => {
 
   return products;
 }
+
+export const getCategories = async () => {
+  const endpoint = `${baseUrl}categorias`
+  const response = await axios.get(endpoint)
+  const categories = response.data
+
+  return categories
+}
