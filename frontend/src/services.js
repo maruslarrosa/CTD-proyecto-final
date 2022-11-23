@@ -2,7 +2,6 @@ import axios from "axios";
 
 const baseUrl = "http://ec2-3-140-200-1.us-east-2.compute.amazonaws.com:8080/backend/";
 
-
 export const getProducts = async () => {
   const endpoint   =  `${baseUrl}productos`
   const response   =  await axios.get(endpoint);
@@ -25,4 +24,12 @@ export const getCategories = async () => {
   const categories = response.data
 
   return categories
+}
+
+export const getCities = async () => {
+  const endpoint = `${baseUrl}ciudades`
+  const response = axios.get(endpoint)
+  const cities = (await response).data
+
+  return cities
 }
