@@ -26,6 +26,14 @@ export const getProductsByCity = async (cityId) => {
   return products
 }
 
+export const getProductById = async (productId) => {
+  const endpoint = `${baseUrl}productos/${productId}`
+  const response = await axios.get(endpoint);
+  const product = response.data
+
+  return product
+}
+
 export const getCategories = async () => {
   const endpoint = `${baseUrl}categorias`
   const response = await axios.get(endpoint)
@@ -36,8 +44,8 @@ export const getCategories = async () => {
 
 export const getCities = async () => {
   const endpoint = `${baseUrl}ciudades`
-  const response = axios.get(endpoint)
-  const cities = (await response).data
+  const response = await axios.get(endpoint)
+  const cities = response.data
 
   return cities
 }
