@@ -7,7 +7,7 @@ import "react-calendar/dist/Calendar.css"
 import { getCities } from '../services';
 
 
-export const NewCalendar = () => {
+export const NewCalendar = ({ handleSearchClick }) => {
     // Location related
     const [cities, setCities] = useState([])
     const [listVisibility, setListVisibility] = useState(false)
@@ -38,6 +38,10 @@ export const NewCalendar = () => {
         setCalendarVisibility(false)
     }, [date])
 
+    const handleButtonClick = () => {
+      handleSearchClick(selectedLocation.id)
+    }
+
     return (
       <div className={styles.generalSearchContainer}>
         <h2 className={styles.title}>
@@ -52,7 +56,7 @@ export const NewCalendar = () => {
               >
                 <img className={styles.icon} src={point} alt="Icono de ubicación" s />
                 <p>
-                  {!!selectedLocation ? selectedLocation : "¿A dónde vamos?"}
+                  {!!selectedLocation ? selectedLocation.name : "¿A dónde vamos?"}
                 </p>
               </div>
 
@@ -62,7 +66,7 @@ export const NewCalendar = () => {
                     <div
                       key={city.id}
                       className={styles.dropDown}
-                      onClick={() => handleLocationList(city.name)}
+                      onClick={() => handleLocationList(city)}
                     >
                       <img className={styles.icon} src={point} alt="Icono de ubicación" s />
                       <div className={styles.location}>
@@ -92,7 +96,7 @@ export const NewCalendar = () => {
               />
             ) : null}
           </div>
-          <Button text={"Buscar"} color={"secondary"} />
+          <Button handleButtonClick={handleButtonClick} text={"Buscar"} color={"secondary"} />
         </div>
       </div>
     );
