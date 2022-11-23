@@ -1,0 +1,546 @@
+{
+	"id": "dc2e64d6-42d9-4a71-851e-a879591432fc",
+	"name": "CTD Proyecto Final",
+	"timestamp": "2022-11-10T13:47:48.740Z",
+	"collection_id": "21651169-ae189085-7f53-4b63-9b64-59f4f12b2dd4",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 0,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "cecf1f9a-2aab-42c7-9948-27cb08de792b",
+			"name": "Crear producto",
+			"url": "http://localhost:8080/productos",
+			"time": 86,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				86
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "2f408286-42c6-4143-ba82-d0a0f8f333a2",
+			"name": "Buscar producto por id",
+			"url": "http://localhost:8080/productos/1",
+			"time": 33,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				33
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "6b1b5442-bd7c-4e57-8cd2-d82c0f8150a3",
+			"name": "Traer listado de productos",
+			"url": "http://localhost:8080/productos/",
+			"time": 222,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				222
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "d34708ca-b53f-4775-9bb0-69709178b789",
+			"name": "Modificar producto",
+			"url": "http://localhost:8080/productos/",
+			"time": 86,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				86
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "9f082cfd-749d-4bd2-8150-88826ae3ed51",
+			"name": "Eliminar producto",
+			"url": "http://localhost:8080/productos/1",
+			"time": 56,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				56
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e7990b33-2228-46e7-a8d9-b9c39b4f7d5d",
+			"name": "Buscar imagen por id",
+			"url": "http://localhost:8080/imagenes/1",
+			"time": 22,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				22
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "8f0dbf09-88e8-4792-9934-d2ead4103ead",
+			"name": "Traer listado de imágenes",
+			"url": "http://localhost:8080/imagenes/",
+			"time": 20,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				20
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "71f31d17-8cc2-4319-89c7-1a7593e17210",
+			"name": "Modificar imagen",
+			"url": "http://localhost:8080/imagenes",
+			"time": 24,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				24
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "2a08c960-a18d-422e-b212-2c48039e6f32",
+			"name": "Eliminar imagen",
+			"url": "http://localhost:8080/imagenes/1",
+			"time": 20,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				20
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "dfc6b34d-9277-49e2-9c7f-b7110c330a74",
+			"name": "Crear categoría",
+			"url": "http://localhost:8080/categorias",
+			"time": 124,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				124
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "2339e48f-2c46-4ae3-916a-1fd27bb386ce",
+			"name": "Buscar categoría por id",
+			"url": "http://localhost:8080/categorias/1",
+			"time": 14,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				14
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "d9fc5930-42b7-4cf6-bb21-081091369c13",
+			"name": "Traer listado de categorías",
+			"url": "http://localhost:8080/categorias/",
+			"time": 16,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				16
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "87ff53c3-7f0e-4f39-aef0-26566cbd67e8",
+			"name": "Modificar categorìa",
+			"url": "http://localhost:8080/categorias/",
+			"time": 20,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				20
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "7e0ddcf6-59be-4a3e-b1e6-2cc94fee6599",
+			"name": "Eliminar categorìa",
+			"url": "http://localhost:8080/categorias/1",
+			"time": 23,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				23
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "a3cddbae-a622-43ab-a4c9-99de63903940",
+			"name": "Crear característica",
+			"url": "http://localhost:8080/caracteristicas",
+			"time": 52,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				52
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "d16d4d33-96eb-4dcb-8ccd-7ad0c4258ca5",
+			"name": "Buscar característica por id",
+			"url": "http://localhost:8080/caracteristicas/1",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				11
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "602df2b7-5d3b-4fed-a63a-89fecdcd4b33",
+			"name": "Traer listado de características",
+			"url": "http://localhost:8080/caracteristicas/",
+			"time": 13,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				13
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "89f1a6f1-029a-44ba-b80b-5954d644f1fc",
+			"name": "Modificar característica",
+			"url": "http://localhost:8080/caracteristicas",
+			"time": 21,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				21
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e364b235-f9c7-4719-9b0c-3a9547a57b74",
+			"name": "Eliminar característica",
+			"url": "http://localhost:8080/caracteristicas/1",
+			"time": 22,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				22
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "b23f7bf0-e328-463a-9f18-7ad0245d494d",
+			"name": "Crear ciudad",
+			"url": "http://localhost:8080/ciudades",
+			"time": 149,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				149
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "86b6fd9b-17bd-4605-bcaf-f91675f14198",
+			"name": "Buscar ciudad por id",
+			"url": "http://localhost:8080/ciudades/1",
+			"time": 18,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				18
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "827963af-32f3-47de-80df-6a4d352f2b56",
+			"name": "Traer listado de ciudades",
+			"url": "http://localhost:8080/ciudades/",
+			"time": 14,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				14
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "53e2725b-9a8d-4ef0-91e4-078eac916093",
+			"name": "Modificar ciudad",
+			"url": "http://localhost:8080/ciudades",
+			"time": 22,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				22
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "694fda23-f0ad-4c84-b9e7-20cfecb493f6",
+			"name": "Eliminar ciudad",
+			"url": "http://localhost:8080/ciudades/1",
+			"time": 25,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				25
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1113,
+	"collection": {
+		"requests": [
+			{
+				"id": "cecf1f9a-2aab-42c7-9948-27cb08de792b",
+				"method": "POST"
+			},
+			{
+				"id": "2f408286-42c6-4143-ba82-d0a0f8f333a2",
+				"method": "GET"
+			},
+			{
+				"id": "6b1b5442-bd7c-4e57-8cd2-d82c0f8150a3",
+				"method": "GET"
+			},
+			{
+				"id": "d34708ca-b53f-4775-9bb0-69709178b789",
+				"method": "PUT"
+			},
+			{
+				"id": "9f082cfd-749d-4bd2-8150-88826ae3ed51",
+				"method": "DELETE"
+			},
+			{
+				"id": "e7990b33-2228-46e7-a8d9-b9c39b4f7d5d",
+				"method": "GET"
+			},
+			{
+				"id": "8f0dbf09-88e8-4792-9934-d2ead4103ead",
+				"method": "GET"
+			},
+			{
+				"id": "71f31d17-8cc2-4319-89c7-1a7593e17210",
+				"method": "PUT"
+			},
+			{
+				"id": "2a08c960-a18d-422e-b212-2c48039e6f32",
+				"method": "DELETE"
+			},
+			{
+				"id": "dfc6b34d-9277-49e2-9c7f-b7110c330a74",
+				"method": "POST"
+			},
+			{
+				"id": "2339e48f-2c46-4ae3-916a-1fd27bb386ce",
+				"method": "GET"
+			},
+			{
+				"id": "d9fc5930-42b7-4cf6-bb21-081091369c13",
+				"method": "GET"
+			},
+			{
+				"id": "87ff53c3-7f0e-4f39-aef0-26566cbd67e8",
+				"method": "PUT"
+			},
+			{
+				"id": "7e0ddcf6-59be-4a3e-b1e6-2cc94fee6599",
+				"method": "DELETE"
+			},
+			{
+				"id": "a3cddbae-a622-43ab-a4c9-99de63903940",
+				"method": "POST"
+			},
+			{
+				"id": "d16d4d33-96eb-4dcb-8ccd-7ad0c4258ca5",
+				"method": "GET"
+			},
+			{
+				"id": "602df2b7-5d3b-4fed-a63a-89fecdcd4b33",
+				"method": "GET"
+			},
+			{
+				"id": "89f1a6f1-029a-44ba-b80b-5954d644f1fc",
+				"method": "PUT"
+			},
+			{
+				"id": "e364b235-f9c7-4719-9b0c-3a9547a57b74",
+				"method": "DELETE"
+			},
+			{
+				"id": "b23f7bf0-e328-463a-9f18-7ad0245d494d",
+				"method": "POST"
+			},
+			{
+				"id": "86b6fd9b-17bd-4605-bcaf-f91675f14198",
+				"method": "GET"
+			},
+			{
+				"id": "827963af-32f3-47de-80df-6a4d352f2b56",
+				"method": "GET"
+			},
+			{
+				"id": "53e2725b-9a8d-4ef0-91e4-078eac916093",
+				"method": "PUT"
+			},
+			{
+				"id": "694fda23-f0ad-4c84-b9e7-20cfecb493f6",
+				"method": "DELETE"
+			}
+		]
+	}
+}

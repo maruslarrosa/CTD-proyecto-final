@@ -1,0 +1,236 @@
+{
+  "id": "1ac0d919-70d8-44a3-8546-9bfa67d21855",
+  "version": "2.0",
+  "name": "Digital Booking - G7",
+  "url": "http://localhost:3000/",
+  "tests": [{
+    "id": "11888c3a-af02-4eff-b8bd-fcf97fcbb25c",
+    "name": "Logotipo - Redirección Home",
+    "commands": [{
+      "id": "746e2d8d-1a26-47d1-af4a-c522f46c42ad",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/1",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "866e79c9-06d2-4bd0-8f84-c06e689bd647",
+      "comment": "",
+      "command": "click",
+      "target": "css=img",
+      "targets": [
+        ["css=img", "css:finder"],
+        ["xpath=//img[@alt='Logo digital booking']", "xpath:img"],
+        ["xpath=//div[@id='root']/div/div/div/a/img", "xpath:idRelative"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fbade3b7-3567-499d-92c5-e8152cc7edf9",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.searchBlock_title__-eQxd",
+      "targets": [
+        ["css=.searchBlock_title__-eQxd", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/h2", "xpath:idRelative"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Busca ofertas en hoteles, casas y mucho más')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "fb748f24-bdcf-40b7-b363-51be12c3368b",
+    "name": "Header - Inicio sesión",
+    "commands": [{
+      "id": "13bf8eec-788c-472e-aa93-0fea3fe39f6a",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "72baf833-19a6-4adb-afcd-a3474aa1f029",
+      "comment": "",
+      "command": "click",
+      "target": "css=a:nth-child(1) span",
+      "targets": [
+        ["css=a:nth-child(1) span", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/ul/a/button/span", "xpath:idRelative"],
+        ["xpath=//span", "xpath:position"],
+        ["xpath=//span[contains(.,'Iniciar sesión')]", "xpath:innerText"]
+      ],
+      "value": "Iniciar sesión"
+    }, {
+      "id": "1f3b253e-f7e0-49c8-a347-fa1535a4801f",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.form_text__jNA0L",
+      "targets": [
+        ["css=.form_text__jNA0L", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/h3", "xpath:idRelative"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Iniciar sesión')]", "xpath:innerText"]
+      ],
+      "value": "Iniciar sesión"
+    }]
+  }, {
+    "id": "8f1cc11f-bfc1-4064-a4a0-be822effa55c",
+    "name": "Header - Crear cuenta",
+    "commands": [{
+      "id": "065d6d84-5185-4ff2-87db-6ed97184d2b6",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "00ae95d7-1f6b-4b95-8611-b2a501d59f7f",
+      "comment": "",
+      "command": "click",
+      "target": "css=a:nth-child(2) span",
+      "targets": [
+        ["css=a:nth-child(2) span", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/ul/a[2]/button/span", "xpath:idRelative"],
+        ["xpath=//a[2]/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Crear cuenta')]", "xpath:innerText"]
+      ],
+      "value": "Crear cuenta"
+    }, {
+      "id": "7fb270cc-aa76-4e49-ac40-58d6eaa79171",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.form_text__jNA0L:nth-child(1)",
+      "targets": [
+        ["css=.form_text__jNA0L:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/h3", "xpath:idRelative"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Crear cuenta')]", "xpath:innerText"]
+      ],
+      "value": "Crear cuenta"
+    }, {
+      "id": "80c2b9c2-6316-4248-a0a0-d0b60c82b385",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.form_label__WcqlX:nth-child(9)",
+      "targets": [
+        ["css=.form_label__WcqlX:nth-child(9)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/form/label[5]", "xpath:idRelative"],
+        ["xpath=//label[5]", "xpath:position"],
+        ["xpath=//label[contains(.,'Confirmar contraseña')]", "xpath:innerText"]
+      ],
+      "value": "Confirmar contraseña"
+    }]
+  }, {
+    "id": "2d6988c6-d82e-4c2e-80c5-a4cca8d85259",
+    "name": "Crear cuenta - Redirección Inicio sesión",
+    "commands": [{
+      "id": "f0c1554d-fe09-4b88-b8a5-2189718b7914",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/create-account",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "afdedc9c-d1a4-4152-81d7-8b008e07171e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form_text__jNA0L > a",
+      "targets": [
+        ["css=.form_text__jNA0L > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Iniciar sesión')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/div[2]/form/h5/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/login')])[2]", "xpath:href"],
+        ["xpath=//h5/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "24eb70ed-4386-4d6a-84ea-67f07fe0ed34",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.form_text__jNA0L",
+      "targets": [
+        ["css=.form_text__jNA0L", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/h3", "xpath:idRelative"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Iniciar sesión')]", "xpath:innerText"]
+      ],
+      "value": "Iniciar sesión"
+    }]
+  }, {
+    "id": "f7874c96-a77f-44d6-8569-c54c5095eb4e",
+    "name": "Cierre menú Hamburguesa",
+    "commands": [{
+      "id": "39471535-e8cf-4dd3-9a6c-d5125f412d4f",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9c0ed1ed-a76f-4d33-8b74-f8bdc5afb2b2",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "400x800",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "115a9ae5-73e0-43ea-afc9-a0514a9b59dd",
+      "comment": "",
+      "command": "click",
+      "target": "css=.header_nav__-ze9O > img",
+      "targets": [
+        ["css=.header_nav__-ze9O > img", "css:finder"],
+        ["xpath=//img[@alt='Menu de opciones']", "xpath:img"],
+        ["xpath=//div[@id='root']/div/div/img", "xpath:idRelative"],
+        ["xpath=//div/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cbe4baa2-becb-4efe-b45a-beef95be77ef",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=.hamburguer_menuContainer__rnX\\+Q > img",
+      "targets": [
+        ["css=.hamburguer_menuContainer__rnX\\+Q > img", "css:finder"],
+        ["xpath=//img[@alt='Cerrar menu de opciones']", "xpath:img"],
+        ["xpath=//div[@id='root']/div/div/div[2]/img", "xpath:idRelative"],
+        ["xpath=//div[2]/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f65eee22-9a5e-4467-8b63-544900b07fdb",
+      "comment": "",
+      "command": "click",
+      "target": "css=.hamburguer_menuContainer__rnX\\+Q > img",
+      "targets": [
+        ["css=.hamburguer_menuContainer__rnX\\+Q > img", "css:finder"],
+        ["xpath=//img[@alt='Cerrar menu de opciones']", "xpath:img"],
+        ["xpath=//div[@id='root']/div/div/div[2]/img", "xpath:idRelative"],
+        ["xpath=//div[2]/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a0e947ec-ea73-42a5-acc9-0179ea0142ed",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.searchBlock_title__-eQxd",
+      "targets": [
+        ["css=.searchBlock_title__-eQxd", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/h2", "xpath:idRelative"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Busca ofertas en hoteles, casas y mucho más')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "f7af57a1-feb2-4380-a4a2-44c3138a67ad",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["11888c3a-af02-4eff-b8bd-fcf97fcbb25c"]
+  }],
+  "urls": ["http://localhost:3000/1", "http://localhost:3000/", "http://localhost:3000/create-account"],
+  "plugins": []
+}
