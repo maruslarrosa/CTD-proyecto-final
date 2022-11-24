@@ -9,7 +9,6 @@ import {
   ProductHeader,
   ProductSubHeader,
 } from "./index";
-import { kitchen, car, air, wifi, tv, pet, pool } from '../assets';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProductById } from '../services';
@@ -26,7 +25,7 @@ export const Product = () => {
             setProduct(response)
             setLoading(false)
         })
-    }, [])
+    }, [data])
 
 
 

@@ -62,7 +62,7 @@ export const Booking = () => {
     return (
       <div className={styles.bookingDetailContainer}>
         <h2>Detalle de la reserva</h2>
-        <img src={hotelPNG} />
+        <img src={hotelPNG} alt="Imagen de Hotel"/>
         <hr></hr>
         <div className={styles.hotelInfoContainer}>
           <div className={styles.hotelName}>

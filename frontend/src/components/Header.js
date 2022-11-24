@@ -10,6 +10,11 @@ export const Header = () => {
   const {isMobile,logged} = useContext(GlobalContext)
   const [isLogged, setIsLogged] = logged
 
+  const handleLogout = () => {
+    sessionStorage.removeItem('bookingUser')
+    setIsLogged(false)
+  }
+
   return (
     <div className={styles.nav}>
       <div className={styles.logo}>
@@ -22,8 +27,7 @@ export const Header = () => {
       </div>
       {isLogged ? (
         <User
-          user={{ name: "Maru Larrosa", initials: "ML" }}
-          logout={() => setIsLogged(false)}
+          logout={handleLogout}
         />
       ) :( isMobile ? (
         <Hamburguer />
