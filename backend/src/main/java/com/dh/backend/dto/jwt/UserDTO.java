@@ -1,19 +1,19 @@
-package com.dh.backend.dto;
+package com.dh.backend.dto.jwt;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import javax.persistence.Column;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@Getter @Setter
-@NoArgsConstructor
+@Getter
+@Setter
 @AllArgsConstructor
-public class CategoryDTO {
+@NoArgsConstructor
+public class UserDTO {
 
     private Long id;
 
@@ -24,12 +24,19 @@ public class CategoryDTO {
 
     @NotNull
     @NotBlank
-    @Size(min = 5, max = 400)
-    private String description;
+    @Size(min = 3, max = 45)
+    private String lastName;
 
     @NotNull
     @NotBlank
-    @Size( min = 8, max = 200)
-    private String url;
+    @Email
+    private String email;
 
+    @NotNull
+    @NotBlank
+    @Size(min = 6)
+    private String password;
+
+    // role
+    private RoleDTO role;
 }

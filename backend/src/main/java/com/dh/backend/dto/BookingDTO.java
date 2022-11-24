@@ -1,35 +1,36 @@
 package com.dh.backend.dto;
 
+import com.dh.backend.model.Product;
+import com.dh.backend.model.jwt.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import java.util.Date;
 
-@Getter @Setter
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CategoryDTO {
+public class BookingDTO {
 
     private Long id;
 
     @NotNull
     @NotBlank
-    @Size(min = 3, max = 45)
-    private String name;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date checkIn;
 
     @NotNull
     @NotBlank
-    @Size(min = 5, max = 400)
-    private String description;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date checkOut;
 
-    @NotNull
-    @NotBlank
-    @Size( min = 8, max = 200)
-    private String url;
+    private Product product;
 
+    private User user;
 }

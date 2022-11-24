@@ -18,27 +18,32 @@ public class CharacteristicController {
     CharacteristicService characteristicService;
 
 
+    // ADMIN
     @PostMapping()
     public ResponseEntity<CharacteristicDTO> createCharacteristic(@RequestBody CharacteristicDTO characteristicDTO) throws BadRequestException {
         return ResponseEntity.ok(characteristicService.createCharacteristic(characteristicDTO));
     }
 
+    // ALL
     @GetMapping("/{id}")
     public CharacteristicDTO readCharacteristic(@PathVariable Long id) throws BadRequestException {
         return characteristicService.readCharacteristic(id);
     }
 
+    // ADMIN
     @PutMapping
     public ResponseEntity<CharacteristicDTO> updateCharacteristic(@RequestBody CharacteristicDTO characteristicDTO) throws BadRequestException, ResourceNotFoundException {
         return ResponseEntity.ok(characteristicService.updateCharacteristic(characteristicDTO));
     }
 
+    // ADMIN
     @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteCharacteristic(@PathVariable Long id) throws BadRequestException, ResourceNotFoundException {
         characteristicService.deleteCharacteristic(id);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
+    // ALL
     @GetMapping
     public Set<CharacteristicDTO> getListCategories() {
         return characteristicService.getListCharacteristic();
