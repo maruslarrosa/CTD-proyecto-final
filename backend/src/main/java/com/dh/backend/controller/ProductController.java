@@ -24,33 +24,38 @@ public class ProductController {
     @Autowired
     ObjectMapper mapper;
 
-
+    // ADMIN
     @PostMapping
     public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO productDTO) throws Exception {
         return ResponseEntity.ok(productService.createProduct(productDTO));
     }
 
+    // ALL
     @GetMapping("/{id}")
     public ProductDTO readProduct(@PathVariable Long id) throws BadRequestException, ResourceNotFoundException {
         return productService.readProduct(id);
     }
 
+    // ADMIN
     @PutMapping
     public ResponseEntity<ProductDTO> updateProduct(@RequestBody ProductDTO productDTO) throws BadRequestException, ResourceNotFoundException {
         return ResponseEntity.ok(productService.updateProduct(productDTO));
     }
 
+    // ADMIN
     @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteProduct(@PathVariable Long id) throws BadRequestException, ResourceNotFoundException {
         productService.deleteProduct(id);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
+    // ALL
     @GetMapping
     public Set<ProductDTO> getListProducts() {
         return productService.getListProduct();
     }
 
+    // ALL
     // lista de productos según ciudad
     @GetMapping("/ciudades/{id}")
     public ResponseEntity<List<ProductDTO>> findProductsByCity(@PathVariable(name = "id") Long id)  throws BadRequestException {
@@ -58,6 +63,7 @@ public class ProductController {
         return ResponseEntity.ok(productsDTO);
     }
 
+    // ALL
     // Lista de productos según categoría
     @GetMapping("/categorias/{id}")
     public ResponseEntity<List<ProductDTO>> findProductsByCategory(@PathVariable(name = "id") Long id)  throws BadRequestException {
@@ -65,6 +71,7 @@ public class ProductController {
         return ResponseEntity.ok(productsDTO);
     }
 
+    // ALL
     // lista de productos Random
     @GetMapping("/random")
     public ResponseEntity<List<ProductDTO>> getProductsRandom() {

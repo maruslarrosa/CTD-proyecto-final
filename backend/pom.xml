@@ -181,6 +181,18 @@
 				spring-boot-starter-validation
 			</artifactId>
 		</dependency>
+<<<<<<< HEAD
+=======
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+>>>>>>> f65620d03dd4480a6f58bab909d863706d567aeb
 	</dependencies>
 	<build>
 		<finalName>
