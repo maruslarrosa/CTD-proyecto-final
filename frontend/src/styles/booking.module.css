@@ -1,33 +1,133 @@
-.bookingContainer{
-    display: flex;
-    flex-direction: row;
-    padding: 1rem;
-    background-color: #F1F2F3;
-    align-items: flex-start;
-    align-items: center;
-    justify-content: center;
-
-}
-.leftContainer {
+.container {
+    background-color: #DEDEDE;
+    height: calc(100% - 5rem);
+    padding-top: 5rem;
     display: flex;
     flex-direction: column;
+    margin-bottom: 5rem;
 }
 
-.title {
+.subtitle {
+    color: var(--gray);
+    display: flex;
     padding: 1rem;
 }
-.startBooking {
+
+/* Personal Data */
+.personalDataContainer {
     display: flex;
     flex-direction: column;
     background-color: white;
-    padding: 1rem;
-    align-items: center;
-    margin: 1rem;
     border-radius: 1rem;
+    margin-bottom: 2rem;
 }
 
-@media screen and (max-width: 820px) {
-    .bookingContainer {
-        flex-direction: column;
-    }
+.personalDataColumn {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    padding-top: 0px;
+    height: 10rem;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+
+/* Booking Detail */
+.bookingDetailContainer {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    border-radius: 1rem;
+    padding: 1rem;
+    justify-content: space-between;
+}
+
+.bookingLocation {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+.hotelInfoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 1rem;
+}
+
+.hotelName {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 1rem;
+}
+
+.button {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+
+
+/* Arrival */
+.arrivalContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    align-items: flex-start;
+    height: 9rem;
+    justify-content: space-between;
+}
+
+.arrivalSelector {
+    width: 60%;
+    border-radius: 0.5rem;
+}
+
+/* Booking Date */
+.bookingDateContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-bottom: 2rem
+}
+
+/* Politics Container */
+.politicsContainer {
+    background-color: white;
+    border-radius: 1rem;
+    margin: 4rem;
+}
+
+/* common */
+
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+.section {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding-top: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.icon {
+    width: 1rem;
 }

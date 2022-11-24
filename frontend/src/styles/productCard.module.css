@@ -7,6 +7,8 @@
     background-color: white;
     border-radius: 1rem;
     box-shadow: 4px 4px 13px var(--gray);
+    color: black;
+    height: 20rem;
 }
 .imgContainer {
     width: 40%;
@@ -16,6 +18,7 @@
 .img {
     width: 100%;
     border-radius: 1rem;
+    object-fit: cover;
 }
 .rightContainer {
     display: flex;

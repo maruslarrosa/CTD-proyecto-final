@@ -69,6 +69,10 @@
         width: 30%;
 }
 
+.icon {
+    width: 1.5rem;
+}
+
 @media screen and (max-width:720px) {
     .searchContainer {flex-wrap: wrap;}
     .searchInputContainer {width: 100%;}

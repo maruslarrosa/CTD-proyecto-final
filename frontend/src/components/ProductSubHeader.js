@@ -10,13 +10,7 @@ const locations = {
     4: 'Tucumán, Argentina'
 }
 
-export const ProductSubHeader = ({productId, cityId}) => {
-    const [location, setlocation] = useState('')
-
-    useEffect(() => {
-      //fetch a API
-        setlocation(locations[cityId])
-    }, [cityId])
+export const ProductSubHeader = ({productId, city}) => {
 
     return (
       <div className={styles.subHeaderContainer}>
@@ -26,7 +20,7 @@ export const ProductSubHeader = ({productId, cityId}) => {
             src={point}
             alt="Icono de ubicación"
           />
-          <p>{location}</p>
+          <p>{city.name}</p>
         </div>
         <Calification
           key={productId}
