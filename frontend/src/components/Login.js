@@ -1,8 +1,9 @@
 import styles from '../styles/form.module.css'
-import { Button } from './Button';
-import { useState } from 'react';
-import { useNavigate  } from 'react-router-dom'
+import { Button, Error } from './index';
+import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom'
 import { UseEmailValidation } from '../hooks';
+import { GlobalContext } from '../GlobalContext';
 
 const userModel = {
   email: 'test@test.com',
@@ -10,10 +11,14 @@ const userModel = {
 }
 
 export const Login = () => {
+  const {logged, fromBooking} = useContext(GlobalContext)
+  const [,setIsLogged] = logged
+  const [isFromBooking, setIsFromBooking] = fromBooking
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [invalidCredentials, setInvalidCredentials] = useState(false)
-  const validEmail = UseEmailValidation(email);
+  const validEmail = UseEmailValidation(email)
+
   const setNewEmail = (event) => {
     setEmail(event.target.value);
   };
@@ -24,7 +29,11 @@ export const Login = () => {
     const correctPassword = event.target.password.value === userModel.password
     if(correctEmail && correctPassword) {
       setInvalidCredentials(false)
-      navigate("/")
+      window.sessionStorage.setItem('bookingUser', 'Marilina Larrosa')
+      const url = isFromBooking ? -1 : "/"
+      navigate(url)
+      setIsLogged(true)
+      setIsFromBooking(false)
     }
     else {
       setInvalidCredentials(true)
@@ -33,6 +42,7 @@ export const Login = () => {
 
   return (
     <div className={styles.formContainer} onSubmit={login}>
+      {isFromBooking ? <Error text="Para realizar una reserva necesitas estar logueado"/> : null}
       <h3 className={styles.text}>Iniciar sesión</h3>
       {invalidCredentials ? (
         <p className={styles.error}>

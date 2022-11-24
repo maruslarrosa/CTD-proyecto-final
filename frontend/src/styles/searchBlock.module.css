@@ -66,8 +66,7 @@
 .customCalendar {
         position: absolute;
         z-index: 1;
-        width: 30%;
-}
+    }
 
 .icon {
     width: 1.5rem;
@@ -77,4 +76,5 @@
     .searchContainer {flex-wrap: wrap;}
     .searchInputContainer {width: 100%;}
     .generalSearchContainer{ padding: 10px;}
-  }
+    .searchDropdown {width: 90%;}
+ }

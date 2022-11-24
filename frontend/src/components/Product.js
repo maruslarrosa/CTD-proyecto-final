@@ -9,11 +9,9 @@ import {
   ProductHeader,
   ProductSubHeader,
 } from "./index";
-import { kitchen, car, air, wifi, tv, pet, pool } from '../assets';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProductById } from '../services';
-import { useState } from 'react';
 
 export const Product = () => {
     const {data} = useParams()
@@ -26,7 +24,7 @@ export const Product = () => {
             setProduct(response)
             setLoading(false)
         })
-    }, [])
+    }, [data])
 
 
 
@@ -46,7 +44,7 @@ export const Product = () => {
             <Characteristics characteristics={product.characteristicsInProducts_id} />
             <Map />
             <Politics />
-            <Availability product={product}/>
+            <Availability/>
           </div>
         )}
       </>

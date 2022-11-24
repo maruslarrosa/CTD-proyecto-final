@@ -1,14 +1,6 @@
 import styles from '../styles/product.module.css'
 import { point } from '../assets'
 import { Calification } from './Calification'
-import { useEffect, useState } from 'react'
-
-const locations = {
-    1: 'Ciudad Autónoma de Buenos Aires, Argentina',
-    2:'Cordoba, Argentina',
-    3: 'Mendoza, Argentina',
-    4: 'Tucumán, Argentina'
-}
 
 export const ProductSubHeader = ({productId, city}) => {
 

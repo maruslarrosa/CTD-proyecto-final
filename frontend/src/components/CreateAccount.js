@@ -128,3 +128,10 @@ export const CreateAccount = () => {
     </div>
   );
 }
+
+
+// creo cuenta (devuelve 200) /users
+// mando post a auth/auth con email y passw
+// devuelve un 200 y token y lo guardo en sessionstorage
+// envío token donde sea necesario (/booking en la reserva)
+// con el token hago un get a users x id users/id

@@ -6,6 +6,7 @@ import { GlobalContext } from './GlobalContext';
 
 function App() {
   const [isLogged, setIsLogged] = useState(false)
+  const [isFromBooking, setIsFromBooking] = useState(false)
   const [width, setWidth] = useState(window.innerWidth);
 
   function handleWindowResizing() {
@@ -19,23 +20,33 @@ function App() {
     };
   },[]);
 
+  useEffect(() => {
+    const token = window.sessionStorage.getItem('bookingUser');
+    setIsLogged(!!token)
+  },[isLogged])
+
   const isMobile = width <= 500;
   return (
     <div className="App">
-      <GlobalContext.Provider value={{isMobile: isMobile, logged:[isLogged, setIsLogged]}}>
-      <BrowserRouter>
-        <Header />
+      <GlobalContext.Provider
+        value={{
+          isMobile: isMobile,
+          logged: [isLogged, setIsLogged],
+          fromBooking: [isFromBooking, setIsFromBooking],
+        }}
+      >
+        <BrowserRouter>
+          <Header />
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/login" element={<Login />} />
             <Route path="/create-account" element={<CreateAccount />} />
-            <Route path="/product/:data" element={<Product />}/>
-            <Route path="/product/:data/booking" element={<Booking />}/>
-            <Route path="/success" element={<Success />}/>
+            <Route path="/product/:data" element={<Product />} />
+            <Route path="/product/:data/booking" element={<Booking />} />
+            <Route path="/success" element={<Success />} />
           </Routes>
-        <Footer isMobile={isMobile} />
+          <Footer isMobile={isMobile} />
         </BrowserRouter>
-
       </GlobalContext.Provider>
     </div>
   );
