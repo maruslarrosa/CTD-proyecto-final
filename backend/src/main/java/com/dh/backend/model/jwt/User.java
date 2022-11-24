@@ -1,19 +1,22 @@
 package com.dh.backend.model.jwt;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-@Entity
-@Table(name = "USERS")
-@Getter
-@Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Getter @Setter
+@Entity
+@Table(name = "Users")
 public class User {
 
     @Id
@@ -35,7 +38,8 @@ public class User {
 
     @NotNull
     @NotBlank
-    @Email(regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}", flags = Pattern.Flag.CASE_INSENSITIVE)
+    @Email
+    @Column(name = "EMAIL")
     private String email;
 
     @NotNull
@@ -43,12 +47,6 @@ public class User {
     @Size(min = 6)
     @Column(name = "PASSWORD")
     private String password;
-
-    @NotNull
-    @NotBlank
-    @Size(min = 3, max = 45)
-    @Column(name = "CITY")
-    private String city;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "role_id", nullable = false)

@@ -23,13 +23,11 @@ public class BookingDTO {
     @NotNull
     @NotBlank
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "CHECK_IN")
     private Date checkIn;
 
     @NotNull
     @NotBlank
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "CHECK_OUT")
     private Date checkOut;
 
     private Product product;

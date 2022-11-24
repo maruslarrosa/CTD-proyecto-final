@@ -4,14 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import javax.persistence.Column;
-import javax.validation.constraints.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class UserDTO {
 
     private Long id;
@@ -19,31 +20,23 @@ public class UserDTO {
     @NotNull
     @NotBlank
     @Size(min = 3, max = 45)
-    @Column(name = "NAME")
     private String name;
 
     @NotNull
     @NotBlank
     @Size(min = 3, max = 45)
-    @Column(name = "LASTNAME")
     private String lastName;
 
     @NotNull
     @NotBlank
-    @Email(regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}", flags = Pattern.Flag.CASE_INSENSITIVE)
+    @Email
     private String email;
 
     @NotNull
     @NotBlank
     @Size(min = 6)
-    @Column(name = "PASSWORD")
     private String password;
 
-    @NotNull
-    @NotBlank
-    @Size(min = 3, max = 45)
-    @Column(name = "CITY")
-    private String city;
-
+    // role
     private RoleDTO role;
 }
