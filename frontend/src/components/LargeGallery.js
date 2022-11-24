@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import styles from '../styles/largeGallery.module.css'
+import '../styles/Carousel.css'
 
 export const LargeGallery = ({images}) => {
   const [openCarousel, setOpenCarousel] = useState(false)
@@ -34,7 +35,7 @@ export const LargeGallery = ({images}) => {
             >
               Cerrar
             </button>
-            <Carousel className={styles.carouselStyle} autoPlay={true} interval={3000} transitionTime={500}>
+            <Carousel style={{'height': '50vh'}} className={styles.carouselStyle} autoPlay={true} interval={3000} transitionTime={500}>
               {baseChildren.props.children}
             </Carousel>
           </div>

@@ -9,10 +9,9 @@ import {
   ProductHeader,
   ProductSubHeader,
 } from "./index";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProductById } from '../services';
-import { useState } from 'react';
 
 export const Product = () => {
     const {data} = useParams()
@@ -45,7 +44,7 @@ export const Product = () => {
             <Characteristics characteristics={product.characteristicsInProducts_id} />
             <Map />
             <Politics />
-            <Availability product={product}/>
+            <Availability/>
           </div>
         )}
       </>

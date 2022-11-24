@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { GlobalContext } from '../GlobalContext'
 import { useContext } from 'react';
 
-export const Availability = ({ product }) => {
-  const {logged, fromBooking} = useContext(GlobalContext)
+export const Availability = () => {
+  const {logged, fromBooking, isMobile} = useContext(GlobalContext)
   const [isLogged] = logged
   const [,setIsFromBooking] = fromBooking
   const navigate = useNavigate()
@@ -24,8 +24,6 @@ export const Availability = ({ product }) => {
     };
   }, []);
 
-  const doubleCalendar = width >= 820;
-
   const handleButtonClick = () => {
     if(isLogged) {
       navigate('booking')
@@ -39,7 +37,7 @@ export const Availability = ({ product }) => {
       <div className={styles.availabilityContainer}>
         <div className={styles.leftContainer}>
           <h2 className={styles.title}>Fechas disponibles</h2>
-          <Calendar showDoubleView={doubleCalendar} />
+          <Calendar showDoubleView={!isMobile} />
         </div>
         <div className={styles.startavailability}>
           <p>Agregá tus fechas de viaje para obtener precios exactos</p>

@@ -1,60 +1,96 @@
-import styles from "../styles/booking.module.css"
-import { Calification, Button, Politics, ProductHeader } from "./index"
+import styles from "../styles/booking.module.css";
+import { Calification, Button, Politics, ProductHeader } from "./index";
 import Calendar from "react-calendar";
-import { point, hotelPNG } from '../assets/index.js'
-import { useParams } from "react-router-dom";
-
+import { point } from "../assets/index.js";
+import { useNavigate, useParams } from "react-router-dom";
+import { getProductById } from '../services';
+import { useContext, useEffect, useState } from "react";
+import { GlobalContext } from "../GlobalContext";
 
 export const Booking = () => {
-  const {data} = useParams();
-  
+  const { isMobile } = useContext(GlobalContext)
+  const { data } = useParams();
+  const navigate = useNavigate()
+  const [product, setproduct] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [userName, setUserName] = useState(
+    window.sessionStorage.getItem("bookingUser")
+  );
+  const names = userName.split(" ");
+
+  useEffect(() => {
+    setUserName(window.sessionStorage.getItem("bookingUser"));
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    getProductById(data).then(response => {
+        setproduct(response)
+        setLoading(false)
+    })
+}, [data])
+
+  const handleButtonClick = () => {
+    navigate('/success')
+  };
+
   const renderPersonalData = () => {
     return (
-      <div className={styles.personalDataContainer}>
-        <h2 className={styles.subtitle}>Completá tus datos</h2>
-        <div className={styles.row}>
-          <div className={styles.personalDataColumn}>
-            <label htmlFor="name">Nombre</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Ingresá tu nombre"
-              autoComplete="name"
-              required={true}
-            ></input>
-            <label htmlFor="email">email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="ejemplo@ejemplo.com"
-              autoComplete="email"
-              required={true}
-            ></input>
+      <>
+        {loading ? (
+          <p>cargando</p>
+        ) : (
+          <div className={styles.personalDataContainer}>
+            <h2 className={styles.subtitle}>Completá tus datos</h2>
+            <div className={styles.row}>
+              <div className={styles.personalDataColumn}>
+                <label htmlFor="name">Nombre</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Ingresá tu nombre"
+                  autoComplete="name"
+                  value={names[0]}
+                  disabled
+                ></input>
+                <label htmlFor="email">email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="ejemplo@ejemplo.com"
+                  autoComplete="email"
+                  disabled
+                  value="email@example.com"
+                ></input>
+              </div>
+              <div className={styles.personalDataColumn}>
+                <label htmlFor="lastname">Apellido</label>
+                <input
+                  type="text"
+                  id="lastname"
+                  name="lastname"
+                  placeholder="Ingresá tu apellido"
+                  autoComplete="family-name"
+                  value={names[1]}
+                  disabled
+                ></input>
+                <label htmlFor="city">Ciudad</label>
+                <input
+                  type="text"
+                  id="city"
+                  name="city"
+                  placeholder="Seleccioná tu ciudad"
+                  autoComplete="home city"
+                  value={product.city_id.name}
+                  disabled
+                ></input>
+              </div>
+            </div>
           </div>
-          <div className={styles.personalDataColumn}>
-            <label htmlFor="lastname">Apellido</label>
-            <input
-              type="text"
-              id="lastname"
-              name="lastname"
-              placeholder="Ingresá tu apellido"
-              autoComplete="family-name"
-              required={true}
-            ></input>
-            <label htmlFor="city">Ciudad</label>
-            <input
-              type="text"
-              id="city"
-              name="city"
-              placeholder="Seleccioná tu ciudad"
-              autoComplete="home city"
-              required={true}
-            ></input>
-          </div>
-        </div>
-      </div>
+        )}
+      </>
     );
   };
 
@@ -62,16 +98,16 @@ export const Booking = () => {
     return (
       <div className={styles.bookingDetailContainer}>
         <h2>Detalle de la reserva</h2>
-        <img src={hotelPNG} alt="Imagen de Hotel"/>
+        <img src={product.images[0].url} alt="Imagen de Hotel" />
         <hr></hr>
         <div className={styles.hotelInfoContainer}>
           <div className={styles.hotelName}>
-            <p>{"hotel".toUpperCase()}</p>
+            <p>{product.category_id.name.toUpperCase()}</p>
             <h3>Hotel Maravilla</h3>
           </div>
           <div className={styles.bookingLocation}>
             <img className={styles.icon} src={point} alt="Icono de ubicación" />
-            <p>Mar del plata, Buenos Aires</p>
+            <p>{product.city_id.name}</p>
           </div>
           <Calification
             calification={{ stars: 4, description: "Muy bueno", rating: 8 }}
@@ -91,6 +127,7 @@ export const Booking = () => {
             text={"Confirmar reserva"}
             label={"Confirmar la reserva"}
             color={"secondary"}
+            handleButtonClick={handleButtonClick}
           />
         </div>
       </div>
@@ -101,7 +138,7 @@ export const Booking = () => {
     return (
       <div className={styles.bookingDateContainer}>
         <h2 className={styles.subtitle}>Seleccioná tu fecha de reserva</h2>
-        <Calendar showDoubleView={true} />
+        <Calendar showDoubleView={!isMobile} />
       </div>
     );
   };
@@ -130,19 +167,28 @@ export const Booking = () => {
   };
 
   return (
-    <p className={styles.container}>
-      <ProductHeader categoryId={"1"} name={"Nombre del hotel"} />
-      <div className={styles.section}>
-        <div className={styles.column}>
-          {renderPersonalData()}
-          {renderBookingDate()}
-          {renderArrival()}
-        </div>
-        {renderBookingDetail()}
-      </div>
-      <div className={styles.politicsContainer}>
-        <Politics />
-      </div>
-    </p>
+    <div className={styles.container}>
+      {loading ? (
+        <p>Cargando</p>
+      ) : (
+        <>
+          <ProductHeader
+            categoryId={product.category_id.id}
+            name={product.name}
+          />{" "}
+          <div className={styles.section}>
+            <div className={styles.column}>
+              {renderPersonalData()}
+              {renderBookingDate()}
+              {renderArrival()}
+            </div>
+            {renderBookingDetail()}
+          </div>
+          <div className={styles.politicsContainer}>
+            <Politics />
+          </div>
+        </>
+      )}
+    </div>
   );
-}
+};
