@@ -1,13 +1,15 @@
 import styles from '../styles/searchBlock.module.css'
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Calendar from "react-calendar";
 import { point } from '../assets'
 import { Button } from './index';
-import "react-calendar/dist/Calendar.css"
+import '../styles/Calendar.css'
 import { getCities } from '../services';
+import { GlobalContext } from '../GlobalContext';
 
 
 export const NewCalendar = ({ handleSearchClick }) => {
+    const { isMobile } = useContext(GlobalContext)
     // Location related
     const [cities, setCities] = useState([])
     const [listVisibility, setListVisibility] = useState(false)
@@ -93,6 +95,7 @@ export const NewCalendar = ({ handleSearchClick }) => {
                 isOpen={calendarVisibility}
                 minDate={new Date()}
                 className={styles.customCalendar}
+                showDoubleView={!isMobile}
               />
             ) : null}
           </div>

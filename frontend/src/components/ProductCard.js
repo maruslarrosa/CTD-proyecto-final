@@ -1,6 +1,6 @@
 import styles from '../styles/productCard.module.css'
 import { Button, Calification } from './index';
-import { point, pool, wifi } from '../assets'
+import { point } from '../assets'
 import {useContext} from 'react'
 import { GlobalContext } from '../GlobalContext';
 import { useNavigate } from 'react-router-dom';
@@ -16,7 +16,7 @@ export const ProductCard = ({product}) => {
   return (
     <div className={styles.cardContainer}>
       <div className={styles.imgContainer}>
-        <img src={product.images[0].url} className={styles.img} />
+        <img src={product.images[0].url} className={styles.img} alt={product.images[0].name}/>
         {isMobile ? (
           <Calification
             key={product.id}
@@ -40,12 +40,12 @@ export const ProductCard = ({product}) => {
         </div>
         <div className={isMobile ? styles.mobileCardLocation : ""}>
           <div className={styles.location}>
-            <img src={point} className={styles.icon} />
+            <img src={point} className={styles.icon} alt="Icono de ubicación"/>
             <p>A 940 m del centro</p>
           </div>
           <div className={styles.services}>
-            <img src={wifi} className={styles.icon} />
-            <img src={pool} className={styles.icon} />
+            <img src={product.characteristicsInProducts_id[0].iconUrl} className={styles.icon} alt={product.characteristicsInProducts_id[0].name}/>
+            <img src={product.characteristicsInProducts_id[1].iconUrl} className={styles.icon} alt={product.characteristicsInProducts_id[1].name}/>
           </div>
         </div>
 
