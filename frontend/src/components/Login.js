@@ -11,7 +11,6 @@ const userModel = {
 }
 
 export const Login = () => {
-  debugger
   const {logged, fromBooking} = useContext(GlobalContext)
   const [,setIsLogged] = logged
   const [isFromBooking, setIsFromBooking] = fromBooking
@@ -31,7 +30,8 @@ export const Login = () => {
     if(correctEmail && correctPassword) {
       setInvalidCredentials(false)
       window.sessionStorage.setItem('bookingUser', 'Marilina Larrosa')
-      navigate("/")
+      const url = isFromBooking ? -1 : "/"
+      navigate(url)
       setIsLogged(true)
       setIsFromBooking(false)
     }
