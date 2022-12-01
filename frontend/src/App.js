@@ -26,11 +26,14 @@ function App() {
   },[isLogged])
 
   const isMobile = width <= 500;
+  const isTablet = width <= 820;
+  
   return (
     <div className="App">
       <GlobalContext.Provider
         value={{
           isMobile: isMobile,
+          isTablet: isTablet,
           logged: [isLogged, setIsLogged],
           fromBooking: [isFromBooking, setIsFromBooking],
         }}
