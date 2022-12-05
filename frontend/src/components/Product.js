@@ -26,8 +26,6 @@ export const Product = () => {
         })
     }, [data])
 
-
-
     return (
       <>
         {loading ? (
