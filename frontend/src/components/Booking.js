@@ -3,35 +3,46 @@ import { Calification, Button, Politics, ProductHeader } from "./index";
 import Calendar from "react-calendar";
 import { point } from "../assets/index.js";
 import { useNavigate, useParams } from "react-router-dom";
-import { getProductById } from '../services';
+import { getProductById } from "../services";
 import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../GlobalContext";
+import { isWithinInterval } from "date-fns";
 
 export const Booking = () => {
-  const { isMobile } = useContext(GlobalContext)
+  const { isMobile } = useContext(GlobalContext);
   const { data } = useParams();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [product, setproduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const [userName, setUserName] = useState(
     window.sessionStorage.getItem("bookingUser")
   );
   const names = userName.split(" ");
+  const [checkin, setCheckin] = useState("");
+  const [date, setDate] = useState();
+  const [inputRange, setInputRange] = useState("Seleccioná tus fechas");
 
   useEffect(() => {
     setUserName(window.sessionStorage.getItem("bookingUser"));
   }, []);
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-    getProductById(data).then(response => {
-        setproduct(response)
-        setLoading(false)
-    })
-}, [data])
+    window.scrollTo(0, 0);
+    getProductById(data).then((response) => {
+      setproduct(response);
+      setLoading(false);
+    });
+  }, [data]);
 
+  useEffect(() => {
+    if (!!date) {
+      const initDate = date[0].toLocaleDateString();
+      const endDate = date[1].toLocaleDateString();
+      setInputRange(`${initDate} - ${endDate}`);
+    }
+  }, [date]);
   const handleButtonClick = () => {
-    navigate('/success')
+    navigate("/success");
   };
 
   const renderPersonalData = () => {
@@ -41,7 +52,7 @@ export const Booking = () => {
           <p>cargando</p>
         ) : (
           <div className={styles.personalDataContainer}>
-            <h2 className={styles.subtitle}>Completá tus datos</h2>
+            <h2 className={styles.subtitle}>Verificá tus datos</h2>
             <div className={styles.row}>
               <div className={styles.personalDataColumn}>
                 <label htmlFor="name">Nombre</label>
@@ -114,13 +125,16 @@ export const Booking = () => {
           />
         </div>
         <hr></hr>
-        <h3>
-          Check-in: <span>14pm</span>
-        </h3>
-        <hr></hr>
-        <h3>
-          Check-out: <span>11am</span>
-        </h3>
+        <div className={styles.checkIn}>
+          <h4>
+            Check-in: <span>{checkin || "seleccioná un horario"}</span>
+          </h4>
+          <h4>
+            Check-out: <span>11:00 AM</span>
+          </h4>
+        </div>
+        <h4>{inputRange}</h4>
+
         <hr></hr>
         <div className={styles.button}>
           <Button
@@ -134,13 +148,49 @@ export const Booking = () => {
     );
   };
 
+  const d1 = new Date(2022, 12, 7);
+  const d2 = new Date(2022, 12, 9);
+  const d3 = new Date(2022, 12, 19);
+  const d4 = new Date(2022, 12, 25);
+
+  const disabledRanges = [
+    [d1, d2],
+    [d3, d4],
+  ];
+
+  function isWithinRange(date, range) {
+    return isWithinInterval(date, { start: range[0], end: range[1] });
+  }
+
+  function isWithinRanges(date, ranges) {
+    return ranges.some((range) => isWithinRange(date, range));
+  }
+
+  function tileDisabled({ date, view }) {
+    // Add class to tiles in month view only
+    if (view === "month") {
+      // Check if a date React-Calendar wants to check is within any of the ranges
+      return isWithinRanges(date, disabledRanges);
+    }
+  }
+
   const renderBookingDate = () => {
     return (
       <div className={styles.bookingDateContainer}>
         <h2 className={styles.subtitle}>Seleccioná tu fecha de reserva</h2>
-        <Calendar showDoubleView={!isMobile} />
+        <Calendar
+          showDoubleView={!isMobile}
+          tileDisabled={tileDisabled}
+          onChange={setDate}
+          selectRange={true}
+          minDate={new Date()}
+        />
       </div>
     );
+  };
+
+  const handleSelectChange = (e) => {
+    setCheckin(e.target.value);
   };
 
   const renderArrival = () => {
@@ -152,15 +202,24 @@ export const Booking = () => {
           las 11:00 AM
         </p>
         <label htmlFor="hours">Indicá tu horario estimado de llegada</label>
-        <select className={styles.arrivalSelector} name="hours" id="hours">
-          <option value="10">10:00 AM</option>
-          <option value="11">11:00 AM</option>
-          <option value="12">12:00 PM</option>
-          <option value="13">13:00 PM</option>
-          <option value="14">14:00 PM</option>
-          <option value="15">15:00 PM</option>
-          <option value="16">16:00 PM</option>
-          <option value="17">17:00 PM</option>
+        <select
+          className={styles.arrivalSelector}
+          name="hours"
+          id="checkin"
+          onChange={handleSelectChange}
+        >
+          <option value="12:00 PM">12:00 PM</option>
+          <option value="13:00 PM">13:00 PM</option>
+          <option value="14:00 PM">14:00 PM</option>
+          <option value="15:00 PM">15:00 PM</option>
+          <option value="16:00 PM">16:00 PM</option>
+          <option value="17:00 PM">17:00 PM</option>
+          <option value="18:00 PM">17:00 PM</option>
+          <option value="19:00 PM">17:00 PM</option>
+          <option value="20:00 PM">17:00 PM</option>
+          <option value="21:00 PM">17:00 PM</option>
+          <option value="22:00 PM">17:00 PM</option>
+          <option value="23:00 PM">17:00 PM</option>
         </select>
       </div>
     );
@@ -175,7 +234,7 @@ export const Booking = () => {
           <ProductHeader
             categoryId={product.category_id.id}
             name={product.name}
-          />{" "}
+          />
           <div className={styles.section}>
             <div className={styles.column}>
               {renderPersonalData()}

@@ -49,3 +49,9 @@ export const getCities = async () => {
 
   return cities
 }
+
+export const postUser = async (data) => {
+  const endpoint = `${baseUrl}usuarios`
+  const response = await axios.post(endpoint, data)
+  return response;
+}

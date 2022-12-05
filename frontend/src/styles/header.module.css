@@ -24,5 +24,12 @@
 }
 
 .imgLogo {
-    width: 90%;
+    width:90%;
+    max-width: 9rem;
+}
+
+.imgLogo:hover {
+    width: 100%;
+    transition: width 150ms linear;
+
 }
