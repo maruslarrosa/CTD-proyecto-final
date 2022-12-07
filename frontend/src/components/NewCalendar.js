@@ -1,5 +1,5 @@
 import styles from '../styles/searchBlock.module.css'
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import Calendar from "react-calendar";
 import { point } from '../assets'
 import { Button } from './index';
@@ -9,11 +9,12 @@ import { GlobalContext } from '../GlobalContext';
 
 
 export const NewCalendar = ({ handleSearchClick }) => {
-    const { isMobile } = useContext(GlobalContext)
+    const { isMobile, isTablet } = useContext(GlobalContext)
     // Location related
     const [cities, setCities] = useState([])
     const [listVisibility, setListVisibility] = useState(false)
     const [selectedLocation , setSelectedLocation] = useState("")
+    const locationRef = useRef()
 
     useEffect(()=>{
       getCities().then((response) => {
@@ -30,6 +31,7 @@ export const NewCalendar = ({ handleSearchClick }) => {
     const [date, setDate] = useState();
     const [inputRange, setInputRange] = useState("Seleccioná tus fechas");
     const [calendarVisibility, setCalendarVisibility] = useState(false);
+    const calendarRef = useRef()
 
     useEffect(() => {
         if(!!date) {
@@ -40,6 +42,21 @@ export const NewCalendar = ({ handleSearchClick }) => {
         setCalendarVisibility(false)
     }, [date])
 
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (calendarRef.current && !calendarRef.current.contains(event.target)) {
+          setCalendarVisibility(false)
+        } else if (locationRef.current && !locationRef.current.contains(event.target)) {
+          setListVisibility(false)
+        }
+      }
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [calendarRef, locationRef]);
+
+    // Common
     const handleButtonClick = () => {
       handleSearchClick(selectedLocation.id)
     }
@@ -63,7 +80,7 @@ export const NewCalendar = ({ handleSearchClick }) => {
               </div>
 
               {listVisibility ? (
-                <div className={styles.searchDropdown}>
+                <div className={styles.searchDropdown} ref={locationRef}>
                   {cities.map((city) => (
                     <div
                       key={city.id}
@@ -91,11 +108,13 @@ export const NewCalendar = ({ handleSearchClick }) => {
               <Calendar
                 value={date}
                 onChange={setDate}
-                selectRange="true"
+                selectRange={true}
                 isOpen={calendarVisibility}
                 minDate={new Date()}
                 className={styles.customCalendar}
-                showDoubleView={!isMobile}
+                showDoubleView={!isMobile && !isTablet}
+                closeCalendar={false}
+                inputRef={calendarRef}
               />
             ) : null}
           </div>

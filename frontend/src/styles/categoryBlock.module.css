@@ -15,7 +15,12 @@
 .cardContainer{
     width: 25%;
     border-radius: 8px;
-    box-shadow: 4px 4px 13px rgba(0, 0, 0, 0.267);
+    box-shadow: 4px 4px 13px rgba(0, 0, 0, 0.267);   
+}
+
+.cardContainer:hover {
+    box-shadow: 4px 4px 13px rgba(0, 0, 0, 0.6);
+    transition: box-shadow 200ms linear;
 }
 
 .cardContainer img {
@@ -38,8 +43,6 @@
     text-align: left;
     margin-top: 5px;
     font-weight: 600;
-    color: rgb(167, 167, 167);
-
 }
 
 

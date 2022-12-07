@@ -6,9 +6,14 @@
     padding: 1rem;
     background-color: white;
     border-radius: 1rem;
-    box-shadow: 4px 4px 13px var(--gray);
+    box-shadow: 4px 4px 13px rgba(0, 0, 0, 0.3);
     color: black;
     height: 20rem;
+}
+
+.cardContainer:hover {
+    box-shadow: 4px 4px 13px rgba(0, 0, 0, 0.6);
+    transition: box-shadow 200ms linear
 }
 .imgContainer {
     width: 40%;

@@ -1,7 +1,7 @@
 import styles from '../styles/form.module.css'
 import { Button, Error } from './index';
 import { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { UseEmailValidation } from '../hooks';
 import { GlobalContext } from '../GlobalContext';
 
@@ -42,7 +42,9 @@ export const Login = () => {
 
   return (
     <div className={styles.formContainer} onSubmit={login}>
-      {isFromBooking ? <Error text="Para realizar una reserva necesitas estar logueado"/> : null}
+      {isFromBooking ? (
+        <Error text="Para realizar una reserva necesitas estar logueado" />
+      ) : null}
       <h3 className={styles.text}>Iniciar sesión</h3>
       {invalidCredentials ? (
         <p className={styles.error}>
@@ -84,6 +86,10 @@ export const Login = () => {
           required={true}
         />
         <Button text="Ingresar" label="Ingresar" color="primary" />
+        <h5 className={styles.text}>
+          ¿Aún no tenés cuenta?
+          <Link to="/create-account">Registrate</Link>
+        </h5>
       </form>
     </div>
   );

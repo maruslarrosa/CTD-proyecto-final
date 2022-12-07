@@ -1,38 +1,71 @@
-import styles from '../styles/form.module.css';
-import { Button } from './Button';
-import { Link } from 'react-router-dom';
-import { UsePasswordValidation } from '../hooks/UsePasswordValidation';
-import { UseEmailValidation } from '../hooks';
-import { useState } from 'react';
+import styles from "../styles/form.module.css";
+import { Button } from "./Button";
+import { Link } from "react-router-dom";
+import { UseEmailValidation, UsePasswordValidation } from "../hooks";
+import { useState } from "react";
+import { postUser } from "../services";
 
 export const CreateAccount = () => {
   const [passwords, setPasswords] = useState({
     password: "",
-    confirmPassword: ""
-  })
+    confirmPassword: "",
+  });
   const [validLength, match] = UsePasswordValidation({
     password: passwords.password,
-    confirmPassword: passwords.confirmPassword
-  })
+    confirmPassword: passwords.confirmPassword,
+  });
 
-  const [email, setEmail] = useState("")
-  const validEmail = UseEmailValidation(email)
+  const [email, setEmail] = useState("");
+  const validEmail = UseEmailValidation(email);
 
   const setNewEmail = (event) => {
-    setEmail(event.target.value)
+    setEmail(event.target.value);
   };
   const setPassword = (event) => {
-    setPasswords({...passwords, password: event.target.value});
-  }
+    setPasswords({ ...passwords, password: event.target.value });
+  };
   const setConfirmPassword = (event) => {
-    setPasswords({...passwords, confirmPassword: event.target.value});
-  }
+    setPasswords({ ...passwords, confirmPassword: event.target.value });
+  };
 
   const submitForm = (event) => {
-    if(!match) {
+    event.preventDefault();
+    if (!match) {
       event.preventDefault();
+    } else {
+      const formattedUser = formatUser(event.target);
+      fetch(
+        "http://ec2-3-140-200-1.us-east-2.compute.amazonaws.com:8080/backend/usuarios",
+        {
+          method: "POST",
+          body: JSON.stringify(formattedUser),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+        });
     }
-  }
+  };
+
+  const formatUser = (data) => {
+    // TODO Role is hardcoded
+    const formattedUser = {
+      name: data.name.value,
+      lastName: data.lastname.value,
+      email: data.email.value,
+      password: data.password.value,
+      role: {
+        id: 1,
+        name: "name",
+      },
+    };
+
+    return formattedUser;
+  };
 
   return (
     <div className={styles.formContainer} onSubmit={submitForm}>
@@ -46,7 +79,7 @@ export const CreateAccount = () => {
           type="text"
           id="name"
           name="name"
-          autoComplete="name"
+          autoComplete="given-name"
           required={true}
           aria-describedby="Ingrese su nombre"
         />
@@ -77,7 +110,9 @@ export const CreateAccount = () => {
         />
         {email ? (
           !validEmail ? (
-            <p className={styles.error}>El email debe tener el formato email@email.com</p>
+            <p className={styles.error}>
+              El email debe tener el formato email@email.com
+            </p>
           ) : null
         ) : null}
         <label className={styles.label} htmlFor="password">
@@ -96,7 +131,9 @@ export const CreateAccount = () => {
         />
         {passwords.password ? (
           !validLength ? (
-            <p className={styles.error}>La contraseña debe tener al menos 6 caracteres</p>
+            <p className={styles.error}>
+              La contraseña debe tener al menos 6 caracteres
+            </p>
           ) : null
         ) : null}
 
@@ -127,8 +164,7 @@ export const CreateAccount = () => {
       </form>
     </div>
   );
-}
-
+};
 
 // creo cuenta (devuelve 200) /users
 // mando post a auth/auth con email y passw

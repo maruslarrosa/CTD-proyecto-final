@@ -13,12 +13,12 @@
     -ms-transition: all 0.25s ease-in;
     -o-transition: all 0.25s ease-in;
     transition: all 0.25s ease-in;
-    opacity: 0.4;
+    opacity: 0.7;
     filter: alpha(opacity=40);
     position: absolute;
     z-index: 2;
     top: 20px;
-    background: none;
+    background-color: rgba(38, 50, 56, 0.7);
     border: 0;
     font-size: 32px;
     cursor: pointer; }
@@ -118,7 +118,6 @@
         .carousel.carousel-slider .control-arrow:hover {
           background: rgba(0, 0, 0, 0.2); }
     .carousel .slider-wrapper {
-        height: 50vh;
       overflow: hidden;
       margin: auto;
       width: 100%;
@@ -169,7 +168,10 @@
       .carousel .slide img {
         width: 100%;
         vertical-align: top;
-        border: 0; }
+        border: 0; 
+        height: inherit;
+        object-fit: cover;
+      }
       .carousel .slide iframe {
         display: inline-block;
         width: calc(100% - 80px);

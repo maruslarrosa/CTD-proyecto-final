@@ -8,6 +8,28 @@
     padding: 0.5rem;
     height: 5rem;
     position: fixed;
-    width: 100%;
+    width: 100vw;
     z-index: 100;
+}
+
+.logo {
+    display: flex;
+    font-style: italic;
+    font-weight: 600;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+.theme {
+    padding-bottom: 0.7rem;
+}
+
+.imgLogo {
+    width:90%;
+    max-width: 9rem;
+}
+
+.imgLogo:hover {
+    width: 100%;
+    transition: width 150ms linear;
+
 }
