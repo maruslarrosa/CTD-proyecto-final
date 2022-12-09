@@ -3,7 +3,6 @@ import { Button } from "./Button";
 import { Link } from "react-router-dom";
 import { UseEmailValidation, UsePasswordValidation } from "../hooks";
 import { useState } from "react";
-import { postUser } from "../services";
 
 export const CreateAccount = () => {
   const [passwords, setPasswords] = useState({
@@ -59,8 +58,8 @@ export const CreateAccount = () => {
       email: data.email.value,
       password: data.password.value,
       role: {
-        id: 1,
-        name: "name",
+        id: 2,
+        name: "ROLE_CLIENT"
       },
     };
 

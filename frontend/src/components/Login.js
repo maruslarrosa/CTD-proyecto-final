@@ -5,11 +5,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import { UseEmailValidation } from '../hooks';
 import { GlobalContext } from '../GlobalContext';
 
-const userModel = {
-  email: 'test@test.com',
-  password: '123456'
-}
-
 export const Login = () => {
   const {logged, fromBooking} = useContext(GlobalContext)
   const [,setIsLogged] = logged
@@ -25,20 +20,42 @@ export const Login = () => {
 
   const login = (event) => {
     event.preventDefault()
-    const correctEmail = event.target.email.value === userModel.email
-    const correctPassword = event.target.password.value === userModel.password
-    if(correctEmail && correctPassword) {
-      setInvalidCredentials(false)
-      window.sessionStorage.setItem('bookingUser', 'Marilina Larrosa')
-      const url = isFromBooking ? -1 : "/"
-      navigate(url)
-      setIsLogged(true)
-      setIsFromBooking(false)
+    // const correctEmail = event.target.email.value === userModel.email
+    // const correctPassword = event.target.password.value === userModel.password
+      // setInvalidCredentials(false)
+      // window.sessionStorage.setItem('bookingUser', 'Marilina Larrosa')
+      // const url = isFromBooking ? -1 : "/"
+      // navigate(url)
+      // setIsLogged(true)
+      // setIsFromBooking(false)
+      debugger
+      const user = {
+        email: event.target.email.value,
+        password: event.target.password.value
+      }
+      fetch(
+        "http://ec2-3-140-200-1.us-east-2.compute.amazonaws.com:8080/backend/auth/auth",
+        {
+          method: "POST",
+          body: JSON.stringify(user),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          debugger
+          console.log(data);
+          window.sessionStorage.setItem('bookingUser', data.respuesta.token)
+          const url = isFromBooking ? -1 : "/"
+          navigate(url)
+          setIsLogged(true)
+          setIsFromBooking(false)
+        });
     }
-    else {
-      setInvalidCredentials(true)
-    }
-  }
+
+
 
   return (
     <div className={styles.formContainer} onSubmit={login}>
