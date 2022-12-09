@@ -4,8 +4,9 @@ import App from '../App';
 
 describe ('App', ()=>{
     test ('La app se renderiza correctamente', ()=>{
-        const app = render(<App />)
-        expect(app.container).toBeInTheDocument();
+        const app = render(<App />);
+        expect(app.container).toBeInTheDocument;
+
     });
 
 });
