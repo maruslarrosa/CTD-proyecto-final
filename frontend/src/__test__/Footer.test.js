@@ -3,7 +3,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { GlobalContext } from "../GlobalContext";
 import "../styles/footer.module.css";
-import { is } from "date-fns/locale";
+//import { is } from "date-fns/locale";
 
 describe('Footer', ()=>{
     const isMobile = true;
@@ -17,6 +17,6 @@ describe('Footer', ()=>{
 
         </GlobalContext.Provider>);
 
-        screen.getByText('© Digital Booking 2022');
+        expect(screen.getByText('© Digital Booking 2022')).toBeInTheDocument;
     });
 });
