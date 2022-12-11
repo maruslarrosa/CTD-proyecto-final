@@ -1,17 +1,35 @@
+import { CreateProduct } from "../components";
 import React from "react";
-import { CreateProduct } from "../components/CreateProduct";
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from "@testing-library/react";
+import { GlobalContext } from "../GlobalContext";
+import "../styles/footer.module.css";
+import userEvent from "@testing-library/user-event";
+//import { is } from "date-fns/locale";
 
-const setup = () => render(<CreateProduct />)
+describe('CreateProduct', () => {
 
-describe('CreateProduct', ()=>{
+    test('Renderizado del componente CreateProduct', async () => {
+        render(
+            <CreateProduct />
+        );
 
-    test('Renderizado de CreateProduct', ()=>{
-        setup();
-
-        expect(screen.getByText(/Crear propiedad/)).toBeInTheDocument();
-
+        expect(screen.getByText('Crear propiedad')).toBeInTheDocument();
+        expect(screen.getByText('Cargando')).toBeInTheDocument();
+        await waitFor(() => expect(screen.queryByText("Nombre de la propiedad")));
+        await waitFor(() => expect(screen.queryByText("Categoría")));
+        await waitFor(() => expect(screen.queryByText("Dirección")));
+        await waitFor(() => expect(screen.queryByText("Ciudad")));
     });
 
-    
+
+    // test('Renderizado del form', async () => {
+    //     render(<CreateProduct />);
+
+    //     await waitFor(() => {
+    //         const categoryInput = screen.queryByLabelText('Categoría')
+    //         expect(categoryInput).toHaveValue('');
+
+    //     })
+    // });
+
 })
