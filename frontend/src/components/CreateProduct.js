@@ -1,6 +1,7 @@
 import styles from "../styles/createProduct.module.css";
 import { useEffect, useState } from "react";
 import { getCategories, getCharacteristics, getCities } from "../services";
+import { Button } from "./Button";
 
 export const CreateProduct = () => {
   const [loading, setLoading] = useState(true);
@@ -131,6 +132,78 @@ export const CreateProduct = () => {
               </div>
             </div>
           </div>
+{/* Apartir de aquí empiezo a editar */}
+          {/* Bloque políticas del producto */}
+          <div className={styles.propertyData}>
+                  <label className={styles.label}>
+                    Políticas del producto
+                  </label>
+                  {/* Columna Normas */}
+                  <div className={styles.column}>
+                    <div className={styles.inputContainer}>
+                      <label className={styles.label} htmlFor="policies">
+                        Normas de la casa
+                      </label>
+                      <input
+                        className={styles.input}
+                        type="text"
+                        id="name"
+                        name="name"
+                        required={true}
+                        aria-describedby="Normas de la casa"
+                      />
+                    </div>
+                  </div>
+                  {/* Columna Salud y Seguridad */}
+                  <div className={styles.column}>
+                    <div className={styles.inputContainer}>
+                      <label className={styles.label} htmlFor="policies">
+                        Salud y seguridad
+                      </label>
+                      <input
+                        className={styles.input}
+                        type="text"
+                        id="name"
+                        name="name"
+                        required={true}
+                        aria-describedby="Salud y seguridad"
+                      />
+                    </div>
+                  </div>
+                  {/* Columna Política de cancelación */}
+                  <div className={styles.column}>
+                    <div className={styles.inputContainer}>
+                      <label className={styles.label} htmlFor="policies">
+                        Política de cancelación
+                      </label>
+                      <input
+                        className={styles.input}
+                        type="text"
+                        id="name"
+                        name="name"
+                        required={true}
+                        aria-describedby="Política de cancelación"
+                      />
+                    </div>
+                  </div>      
+          </div> 
+          {/* Bloque Imagenes */}           
+          <div>
+            <div className={styles.inputContainer}>
+              <label htmlFor="" className={styles.label}>
+                Cargar imágenes
+              </label>
+              <input
+                  className={styles.input}
+                  type="text"
+                  id="name"
+                  name="name"
+                  required={true}
+                  aria-describedby="URL imagen"
+                />
+            </div>
+          </div>
+          <Button text="Crear" label="Crear producto" color="primary"/>
         </form>
       )}
     </div>

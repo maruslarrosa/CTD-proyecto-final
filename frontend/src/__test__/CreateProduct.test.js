@@ -2,16 +2,15 @@ import { CreateProduct } from "../components";
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import { GlobalContext } from "../GlobalContext";
-import "../styles/footer.module.css";
 import userEvent from "@testing-library/user-event";
 //import { is } from "date-fns/locale";
+
+const setup = () => render(<CreateProduct />)
 
 describe('CreateProduct', () => {
 
     test('Renderizado del componente CreateProduct', async () => {
-        render(
-            <CreateProduct />
-        );
+        setup();
 
         expect(screen.getByText('Crear propiedad')).toBeInTheDocument();
         expect(screen.getByText('Cargando')).toBeInTheDocument();
@@ -19,17 +18,33 @@ describe('CreateProduct', () => {
         await waitFor(() => expect(screen.queryByText("Categoría")));
         await waitFor(() => expect(screen.queryByText("Dirección")));
         await waitFor(() => expect(screen.queryByText("Ciudad")));
+        await waitFor(() => expect(screen.queryByText("Descripción")));
+        await waitFor(() => expect(screen.queryByText("Características")));
+        await waitFor(() => expect(screen.queryByText("Políticas del producto")));
+        await waitFor(() => expect(screen.queryByText("Salud y seguridad")));
+        await waitFor(() => expect(screen.queryByText("Políticas de cancelación")));
+
+        await screen.debug()
     });
 
 
-    // test('Renderizado del form', async () => {
-    //     render(<CreateProduct />);
+    // test('Funcionamiento del formulario', async () => {
+    //     setup();
 
-    //     await waitFor(() => {
-    //         const categoryInput = screen.queryByLabelText('Categoría')
-    //         expect(categoryInput).toHaveValue('');
 
-    //     })
+
+
+    //     // const nameInput = screen.queryByText('Nombre de la propiedad');
+
+    //     // userEvent.type(nameInput, "Hotel 1")
+
+    //     // await expect(nameInput).toHaveValue('Hotel 1')
+
+    //     // await waitFor(() => {
+    //     //     const categoryInput = screen.queryByLabelText('Categoría')
+    //     //     expect(categoryInput).toHaveValue('');
+
+    //     // })
     // });
 
 })
