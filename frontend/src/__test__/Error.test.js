@@ -1,8 +1,6 @@
 import { Error } from "../components";
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { GlobalContext } from "../GlobalContext";
-//import { is } from "date-fns/locale";
 
 describe('Error', () => {
 
