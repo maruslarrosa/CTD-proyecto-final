@@ -155,7 +155,7 @@ export const CreateProduct = () => {
   const handleButtonClick = (event) => {
     event.preventDefault();
     const producto = {
-      name: "Hotel Prueba 11",
+      name: "Hotel Prueba 13git",
       description: "Conoce el mejor Hotel de la ciudad",
       availability: "Disponibilidad",
       policies: "políticas",
