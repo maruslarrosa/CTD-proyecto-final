@@ -29,7 +29,6 @@ public class UserService {
         return mapper.convertValue(userRepository.findByEmail(email), UserDTO.class);
     }
 
-
     public Set<UserDTO> findAll() {
         List<User> users = userRepository.findAll();
         Set<UserDTO> usersDTO = new HashSet<>();
@@ -39,16 +38,13 @@ public class UserService {
         return usersDTO;
     }
 
-
     public UserDTO findById(Long id) {
         return mapper.convertValue(userRepository.findById(id), UserDTO.class);
     }
 
-
     public UserDTO save(UserDTO user) {
         return mapper.convertValue(userRepository.save(mapper.convertValue(user, User.class)), UserDTO.class);
     }
-
 
     public UserDTO update(UserDTO user, Long id) {
         User userUpdated = userRepository.findById(id).orElse(null);
@@ -64,11 +60,9 @@ public class UserService {
         return mapper.convertValue(userRepository.save(userUpdated), UserDTO.class);
     }
 
-
     public UserDTO delete(Long id) {
         UserDTO userDeleted = mapper.convertValue(userRepository.findById(id), UserDTO.class);
         userRepository.delete(mapper.convertValue(userDeleted, User.class));
         return userDeleted;
     }
-
 }

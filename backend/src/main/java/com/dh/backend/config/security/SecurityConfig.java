@@ -27,14 +27,7 @@ import org.springframework.web.filter.CorsFilter;
 
 import java.util.Arrays;
 
-/**
- * @author dpanquev
- * @version 2022-09-01
- * <p>
- * Clase encargada de orquestar la configuración del jwt token para temas de seguridad
- * Estaré trabajando sobre el componente websecurityConfigurerAdapter deprecado para
- * actualizarlo
- */
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -46,9 +39,7 @@ public class SecurityConfig {
     @Autowired
     private JwtEntryPointConfig jwtEntryPointConfig;
 
-    /**
-     * Registro de propiedades a implementar
-     */
+
     @Bean
     public JwtTokenFilterConfig jwtTokenFilter() {
         return new JwtTokenFilterConfig();
@@ -59,31 +50,14 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    /*@Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-    }
 
-    @Bean
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
-
-    @Override
-    protected AuthenticationManager authenticationManager() throws Exception {
-        return super.authenticationManager();
-    }*/
     @Bean("authenticationManager")
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
             throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
-    /**
-     * Registro de los endpoints, definiendo quien tiene acceso a cada uno de ellos, esto con el fin de darle
-     * seguridad a nuestra aplicación
-     */
+
     // @Override
     @Primary
     @Bean
@@ -92,11 +66,11 @@ public class SecurityConfig {
 
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/auth/**", "/usuarios/**"
+                .antMatchers(HttpMethod.POST, "/auth/", "/usuarios/", "productos/busqueda-por-fecha-y-ciudad", "productos/busqueda-por-fecha"
                 ).permitAll()
 
-                .antMatchers(HttpMethod.GET, "/productos/**", "/categorias/**"
-                        , "/ciudades/**", "/caracteristicas/**", "/swagger-ui/**"
+                .antMatchers(HttpMethod.GET, "/productos/", "/categorias/"
+                        , "/ciudades/", "/caracteristicas/", "/swagger-ui/"
                 ).permitAll()
 
                 .antMatchers(HttpMethod.POST, "/productos/**", "/categorias/**"
@@ -114,17 +88,17 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.GET, "/roles/**", "/usuarios/**"
                 ).hasAnyRole("ADMIN")
 
-                .antMatchers(HttpMethod.POST, "/booking/**", "/favorite/**"
-                ).hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.POST, "/reservas/**"
+                ).hasAnyRole("ADMIN", "CLIENT")
 
-                .antMatchers(HttpMethod.PUT, "/booking/**", "/favorite/**"
-                ).hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.PUT, "/reservas/**"
+                ).hasAnyRole("ADMIN", "CLIENT")
 
-                .antMatchers(HttpMethod.DELETE, "/booking/**", "/favorite/**"
-                ).hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/reservas/**"
+                ).hasAnyRole("ADMIN", "CLIENT")
 
-                .antMatchers(HttpMethod.GET, "/booking/**", "/favorite/**"
-                ).hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.GET, "/reservas/**"
+                ).hasAnyRole("ADMIN", "CLIENT")
 
                 //.anyRequest().authenticated()
                 .and()
@@ -134,10 +108,7 @@ public class SecurityConfig {
         http.addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
         return http;
     }
-    /**
-     * Se registran los cors origin para que el ecosistema permita el libre consumo de los endpoints desde
-     * el front
-     */
+
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
@@ -150,10 +121,6 @@ public class SecurityConfig {
         return cors;
     }
 
-    /**
-     * Registro los filtros configurados anteriormente para que sea un filter implementado por sprinb
-     * de esta manera uso e implemento el registro y apertura de los cors
-     */
     @Bean
     public FilterRegistrationBean<CorsFilter> corsFilter() {
         FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<CorsFilter>(new CorsFilter(corsConfigurationSource()));

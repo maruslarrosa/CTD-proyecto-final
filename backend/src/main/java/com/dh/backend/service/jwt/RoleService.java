@@ -34,16 +34,13 @@ public class RoleService {
         return rolesDTO;
     }
 
-
     public RoleDTO findById(Long id) {
         return mapper.convertValue(roleRepository.findById(id), RoleDTO.class);
     }
 
-
     public RoleDTO save(RoleDTO role) {
         return mapper.convertValue(roleRepository.save(mapper.convertValue(role, Role.class)), RoleDTO.class);
     }
-
 
     public RoleDTO update(RoleDTO role, Long id) {
         Role roleUpdated = roleRepository.findById(id).orElse(null);
@@ -55,11 +52,9 @@ public class RoleService {
         return mapper.convertValue(roleRepository.save(roleUpdated), RoleDTO.class);
     }
 
-
     public RoleDTO delete(Long id) {
         RoleDTO roleDeleted = mapper.convertValue(roleRepository.findById(id), RoleDTO.class);
         roleRepository.delete(mapper.convertValue(roleDeleted, Role.class));
         return roleDeleted;
     }
-
 }

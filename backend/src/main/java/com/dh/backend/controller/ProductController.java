@@ -1,5 +1,6 @@
 package com.dh.backend.controller;
 
+import com.dh.backend.dto.AvailabilityRequestDTO;
 import com.dh.backend.dto.ProductDTO;
 import com.dh.backend.exceptions.BadRequestException;
 import com.dh.backend.exceptions.ResourceNotFoundException;
@@ -79,6 +80,27 @@ public class ProductController {
         return ResponseEntity.ok(productsDTO);
     }
 
+    @PostMapping("/busqueda-por-fecha-y-ciudad")
+    public ResponseEntity<List<ProductDTO>> findAvailableProductsByCityAndDate(@RequestBody AvailabilityRequestDTO availabilityRequestDTO) {
+        List<ProductDTO> productsDTO = new ArrayList<>();
+        List<Product> products = productService.findAvailableProductsByCityAndDate(availabilityRequestDTO);
+        for (Product product: products) {
+            productsDTO.add(mapper.convertValue(product, ProductDTO.class));
+        }
+
+        return ResponseEntity.ok(productsDTO);
+    }
+
+    @PostMapping("/busqueda-por-fecha")
+    public ResponseEntity<List<ProductDTO>> findAvailableProductsByDate(@RequestBody AvailabilityRequestDTO availabilityRequestDTO) {
+        List<ProductDTO> productsDTO = new ArrayList<>();
+        List<Product> products = productService.findAvailableProductsByDate(availabilityRequestDTO);
+        for (Product product: products) {
+            productsDTO.add(mapper.convertValue(product, ProductDTO.class));
+        }
+
+        return ResponseEntity.ok(productsDTO);
+    }
 }
 
 
