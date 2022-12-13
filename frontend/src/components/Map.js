@@ -21,11 +21,11 @@ export const Map = () => {
 
     const renderMap = () => {
         if(isMobile) {
-            return <img src={mapPhone} />
+            return <img src={mapPhone} alt = 'MapPhone' />
         } else if(isTablet) {
-            return <img src={mapTablet} />
+            return <img src={mapTablet} alt = 'MapTablet'/>
         }else {
-            return <img className={styles.map} src={mapDesktop} />
+            return <img className={styles.map} src={mapDesktop} alt = 'MapDesktop'/>
         }
     }
     return (

@@ -26,6 +26,8 @@ import { ProductSubHeader } from './ProductSubHeader';
 import { RightNav } from './RightNav';
 import { Success } from './Success';
 import { User } from './User'
+import { SuccessProduct } from './SuccessProduct';
+
 
 // This file allows to import components without
 // specifying the complete component location's path
@@ -58,5 +60,6 @@ export {
     ProductSubHeader,
     RightNav,
     Success,
-    User
+    User,
+    SuccessProduct
 }

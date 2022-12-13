@@ -3,6 +3,7 @@ import { Button } from "./Button";
 import { Link } from "react-router-dom";
 import { UseEmailValidation, UsePasswordValidation } from "../hooks";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const CreateAccount = () => {
   const [passwords, setPasswords] = useState({
@@ -16,6 +17,7 @@ export const CreateAccount = () => {
 
   const [email, setEmail] = useState("");
   const validEmail = UseEmailValidation(email);
+  const navigate = useNavigate();
 
   const setNewEmail = (event) => {
     setEmail(event.target.value);
@@ -27,38 +29,48 @@ export const CreateAccount = () => {
     setPasswords({ ...passwords, confirmPassword: event.target.value });
   };
 
-  const submitForm = (event) => {
-    event.preventDefault();
-    if (!match) {
+    const submitForm = (event) => {
       event.preventDefault();
-    } else {
-      const formattedUser = formatUser(event.target);
-      fetch(
-        "http://ec2-3-140-200-1.us-east-2.compute.amazonaws.com:8080/backend/usuarios",
-        {
-          method: "POST",
-          body: JSON.stringify(formattedUser),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-        });
-    }
-  };
+      if (!match) {
+        event.preventDefault();
+      } else {
+        const formattedUser = formatUser(event.target);
+        // Esto es el cuerpo del post que tengo que copiar para crear Producto
+        fetch(
+          "http://ec2-3-140-200-1.us-east-2.compute.amazonaws.com:8080/backend/usuarios",
+          {
+            method: "POST",
+            // crear objeto JSON con datos de producto
+            // Usar de ejemplo la función FormatdUsser de linea 35
+            body: JSON.stringify(formattedUser),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            debugger
+            console.log(data);
+            navigate('/');
+          });
+      }
+    };
 
+
+
+  
+// TODO Role is hardcoded
+    // Acá tengo que completar según los datos que pide un producto
+// ciudad es probable que también sea un objeto
   const formatUser = (data) => {
-    // TODO Role is hardcoded
-    const formattedUser = {
+      const formattedUser = {
       name: data.name.value,
       lastName: data.lastname.value,
       email: data.email.value,
       password: data.password.value,
       role: {
-        id: 2,
+        id: 1,
         name: "ROLE_CLIENT"
       },
     };
