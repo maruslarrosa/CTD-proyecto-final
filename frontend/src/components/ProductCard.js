@@ -44,8 +44,8 @@ export const ProductCard = ({product}) => {
             <p>A 940 m del centro</p>
           </div>
           <div className={styles.services}>
-            <img src={product.characteristicsInProducts_id[0].iconUrl} className={styles.icon} alt={product.characteristicsInProducts_id[0].name}/>
-            <img src={product.characteristicsInProducts_id[1].iconUrl} className={styles.icon} alt={product.characteristicsInProducts_id[1].name}/>
+            <img src={product?.characteristicsInProducts_id[0]?.iconUrl} className={styles.icon} alt={product?.characteristicsInProducts_id[0]?.name}/>
+            <img src={product?.characteristicsInProducts_id[1]?.iconUrl} className={styles.icon} alt={product?.characteristicsInProducts_id[1]?.name}/>
           </div>
         </div>
 
