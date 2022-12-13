@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +20,7 @@ public class UserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    //    ADMIN
+    // ADMIN
     @GetMapping
     public ResponseEntity<Map<String, Object>> index() {
         Map<String, Object> response = new HashMap<>();
@@ -29,7 +28,7 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
-    //    ALL
+    // ALL
     @PostMapping
     public ResponseEntity<Map<String, Object>> create(@RequestBody UserDTO userDTO) {
         Map<String, Object> response = new HashMap<>();
@@ -39,7 +38,7 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
-    //    ADMIN
+    // ADMIN
     @PutMapping("/{id}")
     public ResponseEntity<Map<String, Object>> update(@RequestBody UserDTO user, @PathVariable Long id) {
         Map<String, Object> response = new HashMap<>();
@@ -49,7 +48,7 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
-    //    ADMIN
+    // ADMIN
     @GetMapping("/{id}")
     public ResponseEntity<Map<String, Object>> findById(@PathVariable Long id) {
         Map<String, Object> response = new HashMap<>();
@@ -58,7 +57,7 @@ public class UserController {
     }
 
 
-    //    ADMIN
+    // ADMIN
     @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, Object>> delete(@PathVariable Long id) {
         Map<String, Object> response = new HashMap<>();

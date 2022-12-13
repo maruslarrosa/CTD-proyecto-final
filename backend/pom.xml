@@ -86,7 +86,10 @@
 				runtime
 			</scope>
 		</dependency>
+<<<<<<< HEAD
 		<!--
+=======
+>>>>>>> 02e822c9e681b9ab5e8652b6ed5de9821d967cac
 		<dependency>
 		<groupId>com.h2database</groupId>
 		<artifactId>h2</artifactId>

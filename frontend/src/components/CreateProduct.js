@@ -166,7 +166,8 @@ export const CreateProduct = () => {
                 <div
                   className={styles.characteristic}
                 >
-                  <p>{characteristic.name}</p>
+                  <input type="checkbox" name="characteristics" value={characteristic.name}/>
+                  <label>{characteristic.name}</label>
                   <img src={characteristic.iconUrl} className={styles.icon} />
                 </div>
               ))}

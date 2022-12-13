@@ -27,25 +27,20 @@ public class ProductDTO {
     @NotBlank
     @Size(min = 3, max = 400)
     private String description;
-    @NotNull
-    @NotBlank
-    @Size(min = 3, max = 45)
+
     private String availability;
-    @NotNull
-    @NotBlank
-    @Size(min = 3, max = 45)
+
     private String policies;
-    @NotNull
-    @NotBlank
-    @Size(min = 3, max = 45)
+
     private String longitude;
-    @NotNull
-    @NotBlank
-    @Size(min = 3, max = 45)
+
     private String latitude;
 
     private List<ImageDTO> images;
+
     private CityDTO city_id;
+
     private CategoryDTO category_id;
+
     private Set<CharacteristicDTO> characteristicsInProducts_id;
 }

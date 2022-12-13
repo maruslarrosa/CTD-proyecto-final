@@ -25,5 +25,4 @@ public class CharacteristicDTO {
     @NotBlank
     @Size(min = 8, max = 200)
     private String iconUrl;
-
 }
