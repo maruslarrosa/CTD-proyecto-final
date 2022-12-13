@@ -45,7 +45,7 @@ export const Hamburguer = () => {
         <div>
           <ul className={styles.buttonContainer}>
             {showLogin ? (
-              <div onClick={() => goTo("/login")}>
+              <div data-testid="btn-login" onClick={() => goTo("/login")}>
                 <Button
                   text="Iniciar sesión"
                   label="Botón para iniciar sesión"
@@ -55,7 +55,7 @@ export const Hamburguer = () => {
               </div>
             ) : null}
             {showCreateAccount ? (
-              <div onClick={()=> goTo("/create-account")}>
+              <div data-testid="btn-signup" onClick={()=> goTo("/create-account")}>
                 <Button
                   text="Crear cuenta"
                   label="Botón para crear cuenta"

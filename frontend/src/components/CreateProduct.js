@@ -2,12 +2,22 @@ import styles from "../styles/createProduct.module.css";
 import { useEffect, useState } from "react";
 import { getCategories, getCharacteristics, getCities } from "../services";
 import { Button } from "./Button";
+import { useNavigate } from "react-router-dom";
+
 
 export const CreateProduct = () => {
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState([]);
   const [characteristics, setCharacteristics] = useState([]);
   const [cities, setCities] = useState([]);
+  const navigate = useNavigate();
+
+  //Token que del admin logueado
+  const [userName, setUserName] = useState(window.sessionStorage.getItem('bookingUser'))
+
+  useEffect(() => {
+    setUserName(window.sessionStorage.getItem('bookingUser'))
+  }, [])
 
   useEffect(() => {
     getCategories()
@@ -31,6 +41,37 @@ export const CreateProduct = () => {
     })
     setCharacteristics(characteristicArray)
   }
+
+  // Hacer el post y manejar el comportamiento
+  const handleButtonClick = () => {
+    const submitForm = (event) => {
+      event.preventDefault();
+      if (true) {
+        event.preventDefault();
+      } else {
+        //const formattedUser = formatUser(event.target);
+        // Esto es el cuerpo del post que tengo que copiar para crear Producto
+        fetch(
+          "http://ec2-3-140-200-1.us-east-2.compute.amazonaws.com:8080/backend/usuarios",
+          {
+            method: "POST",
+            // crear objeto JSON con datos de producto
+            // Usar de ejemplo la función FormatdUsser de linea 35
+           //body: JSON.stringify(formattedUser),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+          .then((response) => response.json())
+          .then((responseData) => {
+            //console.log(data);
+            navigate("/successProduct");
+          });
+      }
+    }; 
+  };
+
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Crear propiedad</h2>
@@ -132,7 +173,7 @@ export const CreateProduct = () => {
             </div>
           </div>
         </div>
-{/* Apartir de aquí empiezo a editar */}
+{/* Apartir de aquí empiezo a escribir */}
         {/* Bloque políticas del producto */}
             <label className={styles.label} style={{ display: 'flex', marginBottom: '5px', marginTop: '20px', fontSize:' 20px'}}>
               Políticas del producto
@@ -198,10 +239,22 @@ export const CreateProduct = () => {
         </div>
         {/* Bloque Imagenes */}
         <div>
-          <div className={styles.inputContainer}>
-            <label htmlFor="" className={styles.label} style={{ display: 'flex', marginBottom: '5px', marginTop: '20px', fontSize:' 20px'}}>
+          <div style= {{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '15rem'}}>
+            {/* <label htmlFor="imageName" className={styles.label} style={{ display: 'flex', marginBottom: '5px', marginTop: '20px', fontSize:' 20px'}}>
               Cargar imágenes
-            </label>
+            </label> */}
+            <h3 style={{ display: 'flex', marginBottom: '5px', marginTop: '20px', fontSize:' 20px'}}>Cargar imágenes </h3>
+            {/* // cargar imagen */}
+            <div>
+              <input
+              className={styles.input}
+              type="text"
+              id="imageName"
+              name="name"
+              required={true}
+              aria-describedby="nombreImagen"
+              placeholder="Nombre imagen"
+            />
             <input
               className={styles.input}
               type="text"
@@ -209,14 +262,17 @@ export const CreateProduct = () => {
               name="name"
               required={true}
               aria-describedby="URL imagen"
+              placeholder="URL de la imagen"
             />
-            <div>
-              +
             </div>
-          </div>
+            
+            <div className= {styles.addImageContainer}>
+              <Button text="+" label="sumarImg" color="primary" />
+            </div>
+            </div>
         </div>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <Button text="Crear" label="Crear producto" color="primary" />
+          <Button text="Crear" label="Crear producto" color="third" handleButtonClick={handleButtonClick} style={ {width: '3rem'}} />
         </div>
 
       </form>
