@@ -7,6 +7,7 @@ import { getProductById } from "../services";
 import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../GlobalContext";
 import { isWithinInterval } from "date-fns";
+import { useJwt } from "react-jwt";
 
 export const Booking = () => {
   const { isMobile } = useContext(GlobalContext);
@@ -17,10 +18,13 @@ export const Booking = () => {
   const [userName, setUserName] = useState(
     window.sessionStorage.getItem("bookingUser")
   );
-  const names = userName.split(" ");
+  const { decodedToken, isExpired } = useJwt(userName);
+  //const names = decodedToken?.name;
   const [checkin, setCheckin] = useState("");
   const [date, setDate] = useState();
   const [inputRange, setInputRange] = useState("Seleccioná tus fechas");
+
+  //console.log(decodedToken)
 
   useEffect(() => {
     setUserName(window.sessionStorage.getItem("bookingUser"));
@@ -62,7 +66,7 @@ export const Booking = () => {
                   name="name"
                   placeholder="Ingresá tu nombre"
                   autoComplete="name"
-                  value={names[0]}
+                  value={decodedToken?.name}
                   disabled
                 ></input>
                 <label htmlFor="email">email</label>
@@ -73,7 +77,7 @@ export const Booking = () => {
                   placeholder="ejemplo@ejemplo.com"
                   autoComplete="email"
                   disabled
-                  value="email@example.com"
+                  value={decodedToken?.sub}
                 ></input>
               </div>
               <div className={styles.personalDataColumn}>
@@ -84,7 +88,7 @@ export const Booking = () => {
                   name="lastname"
                   placeholder="Ingresá tu apellido"
                   autoComplete="family-name"
-                  value={names[1]}
+                  value={decodedToken?.name}
                   disabled
                 ></input>
                 <label htmlFor="city">Ciudad</label>
@@ -184,6 +188,7 @@ export const Booking = () => {
           onChange={setDate}
           selectRange={true}
           minDate={new Date()}
+          //required={true}
         />
       </div>
     );
