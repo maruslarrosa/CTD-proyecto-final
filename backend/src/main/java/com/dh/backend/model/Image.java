@@ -32,6 +32,4 @@ public class Image {
     @Size( min = 8, max = 200)
     @Column(name = "URL")
     private String url;
-
-
 }

@@ -1,5 +1,6 @@
 package com.dh.backend.service;
 
+import com.dh.backend.dto.AvailabilityRequestDTO;
 import com.dh.backend.dto.ProductDTO;
 import com.dh.backend.exceptions.BadRequestException;
 import com.dh.backend.exceptions.ResourceNotFoundException;
@@ -10,7 +11,6 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.validation.constraints.NotNull;
 import java.util.*;
 
 @Service
@@ -26,16 +26,14 @@ public class ProductService {
     @Autowired
     private CityService cityService;
 
+    @Autowired
+    private BookingService bookingService;
+
     private static final Logger logger = Logger.getLogger(ProductService.class);
 
     @Autowired
     ObjectMapper mapper;
 
-    /**
-     * Crear
-     * @param productDTO
-     * @return Graba en BBDD y retorna un DTO
-     */
     public ProductDTO createProduct(ProductDTO productDTO) throws BadRequestException {
         if(productDTO.getName().isEmpty() || productDTO == null)
             throw new BadRequestException("El producto no puede ser null");
@@ -52,12 +50,6 @@ public class ProductService {
         return productDTO;
     }
 
-
-    /**
-     * Buscar por id
-     * @param id
-     * @return Retorna el DTO que corresponde a ese ID
-     */
     public ProductDTO readProduct(Long id) throws BadRequestException, ResourceNotFoundException {
         if( id == null || id < 1 )
             throw new BadRequestException("El id del producto no puede ser null ni negativo");
@@ -68,13 +60,7 @@ public class ProductService {
         return mapper.convertValue(product, ProductDTO.class);
     }
 
-    /**
-     * Modificar
-     * @param productDTO
-     * @return Graba cambios en BBDD y retorna el DTO
-     */
     public ProductDTO updateProduct(ProductDTO productDTO) throws BadRequestException, ResourceNotFoundException {
-
 
         if (productDTO == null )
             throw new BadRequestException("El producto no puede ser null");
@@ -99,10 +85,6 @@ public class ProductService {
         return mapper.convertValue(productRepository.save(productUpdate), ProductDTO.class);
     }
 
-    /**
-     * Eliminar
-     * @param id Elimina según id
-     */
     public void deleteProduct(Long id) throws BadRequestException, ResourceNotFoundException {
         if( id == null || id < 1 )
             throw new BadRequestException("El id del producto no puede ser null ni negativo");
@@ -112,10 +94,6 @@ public class ProductService {
         productRepository.deleteById(id);
     }
 
-    /**
-     * Listar
-     * @return Retorna listado completo de entidades
-     */
     public Set<ProductDTO> getListProduct() {
         List<Product> products = productRepository.findAll();
         Set<ProductDTO> productsDTO = new HashSet<>();
@@ -140,8 +118,6 @@ public class ProductService {
         return productsDTO;
     }
 
-
-    // Lista de Productos según categoría
     public List<ProductDTO> findProductsByCategory(Long id) throws BadRequestException {
         if (id == null || id < 1)
             throw new BadRequestException("El id de la categoría no puede ser null, ni negativo");
@@ -154,9 +130,6 @@ public class ProductService {
         return productsDTO;
     }
 
-
-
-    // Lista de Productos Random
     public List<ProductDTO> getProductsRandom() {
         int NUMBER_OF_ELEMENTS = 3;
         Random rand = new Random();
@@ -179,12 +152,20 @@ public class ProductService {
         return productsDTO;
     }
 
-    /**.
-     * Método a partir de Query
-     * @param name Busca entidad por nombre
-     * @return Retorna entidad
-     */
     public Product findProductByName(String name) {
         return productRepository.findProductByName(name);
+    }
+
+    public List<Product> findAvailableProductsByCityAndDate(AvailabilityRequestDTO availabilityRequestDTO) {
+        return productRepository.findAvailableProductsByCityAndDate(
+                availabilityRequestDTO.getCity_id()
+                , availabilityRequestDTO.getCheckIn()
+                , availabilityRequestDTO.getCheckOut());
+    }
+
+    public List<Product> findAvailableProductsByDate(AvailabilityRequestDTO availabilityRequestDTO) {
+        return productRepository.findAvailableProductsByDate(
+                availabilityRequestDTO.getCheckIn()
+                , availabilityRequestDTO.getCheckOut());
     }
 }

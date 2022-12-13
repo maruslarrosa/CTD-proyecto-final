@@ -1,18 +1,13 @@
 package com.dh.backend.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Getter @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class CategoryDTO {
 
     private Long id;
@@ -32,4 +27,21 @@ public class CategoryDTO {
     @Size( min = 8, max = 200)
     private String url;
 
+    // Constructores
+    public CategoryDTO() {
+
+    }
+
+    public CategoryDTO(String name, String description, String url) {
+        this.name = name;
+        this.description = description;
+        this.url = url;
+    }
+
+    public CategoryDTO(Long id, String name, String description, String url) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.url = url;
+    }
 }
