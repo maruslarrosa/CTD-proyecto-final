@@ -28,23 +28,5 @@ describe('CreateProduct', () => {
     });
 
 
-    // test('Funcionamiento del formulario', async () => {
-    //     setup();
-
-
-
-
-    //     // const nameInput = screen.queryByText('Nombre de la propiedad');
-
-    //     // userEvent.type(nameInput, "Hotel 1")
-
-    //     // await expect(nameInput).toHaveValue('Hotel 1')
-
-    //     // await waitFor(() => {
-    //     //     const categoryInput = screen.queryByLabelText('Categoría')
-    //     //     expect(categoryInput).toHaveValue('');
-
-    //     // })
-    // });
 
 })
