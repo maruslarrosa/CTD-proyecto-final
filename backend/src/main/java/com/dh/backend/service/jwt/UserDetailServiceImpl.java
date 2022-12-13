@@ -18,8 +18,5 @@ public class UserDetailServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserDTO user = userService.findByEmail(username);
         return MainUserAuth.build(user);
-
-
     }
-
 }

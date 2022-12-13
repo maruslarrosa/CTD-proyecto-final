@@ -49,13 +49,13 @@
     display: flex;
     align-items: center;
     padding: 0.5rem 0;
+    padding-left: 1rem;
 }
 
 .hotelInfoContainer {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    padding-left: 1rem;
+    align-items: center;
 }
 
 .hotelName {
@@ -64,7 +64,11 @@
     align-items: flex-start;
     padding-left: 1rem;
 }
-
+.checkIn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
 .button {
     display: flex;
     align-self: center;
@@ -80,13 +84,17 @@
     border-radius: 1rem;
     padding: 1rem;
     align-items: flex-start;
-    height: 9rem;
+    height: 10rem;
     justify-content: space-between;
 }
 
 .arrivalSelector {
     width: 60%;
+    height: 2rem;
+    border: none;
     border-radius: 0.5rem;
+    padding-inline-start: 1rem;
+    box-shadow: 0px 0px 7px 0px rgb(118 118 118 / 50%);
 }
 
 /* Booking Date */
@@ -130,6 +138,7 @@
 
 .icon {
     width: 1rem;
+    margin-right: 0.5rem;
 }
 
 @media screen and (max-width:820px) {
@@ -144,15 +153,11 @@
         height: 50rem;
         margin-top: 2rem;
     }
-    .hotelInfoContainer{
-        flex-direction: row;
-        align-items: flex-start;
-    }
     .politicsContainer {
         margin: 2rem;
     }
 }
-@media screen and (max-width:390px) {
+@media screen and (max-width:500px) {
     .section {
         flex-direction: column;
     }
@@ -165,10 +170,12 @@
     .arrivalContainer {
         height: 13rem;
     }
-    .bookingDetailContainer{
-        height: 35rem;
-    }
     .politicsContainer {
         margin: 2rem;
     }
+    .checkIn {
+        flex-direction: column;
+        height: 4rem
+    }
+
 }

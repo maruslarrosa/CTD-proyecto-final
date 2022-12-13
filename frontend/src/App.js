@@ -1,7 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Booking, CreateAccount, Footer, Header, Login, Main, Product, Success } from './components'
+import { Booking, CreateAccount, CreateProduct, Footer, Header, Login, Main, Product, Success } from './components'
 import { GlobalContext } from './GlobalContext';
 
 function App() {
@@ -26,11 +26,14 @@ function App() {
   },[isLogged])
 
   const isMobile = width <= 500;
+  const isTablet = width <= 820;
+  
   return (
     <div className="App">
       <GlobalContext.Provider
         value={{
           isMobile: isMobile,
+          isTablet: isTablet,
           logged: [isLogged, setIsLogged],
           fromBooking: [isFromBooking, setIsFromBooking],
         }}
@@ -43,6 +46,7 @@ function App() {
             <Route path="/create-account" element={<CreateAccount />} />
             <Route path="/product/:data" element={<Product />} />
             <Route path="/product/:data/booking" element={<Booking />} />
+            <Route path='/create-product' element={<CreateProduct />}/>
             <Route path="/success" element={<Success />} />
           </Routes>
           <Footer isMobile={isMobile} />

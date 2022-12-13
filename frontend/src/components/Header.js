@@ -22,18 +22,20 @@ export const Header = () => {
           <img
             src={isMobile ? logoSmall : logoLarge}
             alt="Logo digital booking"
+            className={styles.imgLogo}
           />
         </Link>
+        {!isMobile ? (
+          <p className={styles.theme}>Sentite como en tu hogar</p>
+        ) : null}
       </div>
       {isLogged ? (
-        <User
-          logout={handleLogout}
-        />
-      ) :( isMobile ? (
+        <User logout={handleLogout} />
+      ) : isMobile ? (
         <Hamburguer />
       ) : (
         <RightNav />
-      ))}
+      )}
     </div>
   );
 };

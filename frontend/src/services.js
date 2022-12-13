@@ -49,3 +49,27 @@ export const getCities = async () => {
 
   return cities
 }
+
+export const getCharacteristics = async () => {
+  const endpoint = `${baseUrl}caracteristicas`
+  const response = await axios.get(endpoint)
+  const characteristics = response.data
+  return characteristics
+}
+
+export const postUser = async (data) => {
+  const endpoint = `${baseUrl}usuarios`
+  const response = await axios.post(endpoint, data)
+  return response;
+}
+
+export const postAuth = async (data) => {
+  const endpoint = `${baseUrl}auth/auth`
+  const response = await axios.post(endpoint, data, headers)
+  return response
+}
+
+const headers = {
+  "Content-Type": "application/json",
+}
+

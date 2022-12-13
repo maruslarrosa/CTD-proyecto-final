@@ -30,33 +30,26 @@ public class Product {
     @Size(min = 3, max = 45)
     @Column(name = "NAME")
     private String name;
+
     @NotNull
     @NotBlank
     @Size(min = 3, max = 400)
     @Column(name = "DESCRIPTION")
     private String description;
-    @NotNull
-    @NotBlank
-    @Size(min = 3, max = 45)
+
     @Column(name = "AVAILABILITY")
     private String availability;
-    @NotNull
-    @NotBlank
-    @Size(min = 3, max = 45)
+
     @Column(name = "POLICIES")
     private String policies;
-    @NotNull
-    @NotBlank
-    @Size(min = 3, max = 45)
+
     @Column(name = "LONGITUDE")
     private String longitude;
-    @NotNull
-    @NotBlank
-    @Size(min = 3, max = 45)
+
     @Column(name = "LATITUDE")
     private String latitude;
 
-    // Un producto puede tener varias imágenes
+    // Un producto puede tener varias imagenes
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "products_id")
     private Set<Image> images = new HashSet<>();
@@ -71,7 +64,6 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category_id;
 
-
     // Un producto puede tener varias características
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinTable(
@@ -79,5 +71,6 @@ public class Product {
             joinColumns = @JoinColumn(name = "products_id"),
             inverseJoinColumns = @JoinColumn(name = "characteristics_id")
     )
+
     private Set <Characteristic> characteristicsInProducts_id = new HashSet<>();
 }

@@ -3,7 +3,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    background-color: #DEDEDE;
+    background-color: #dedede33;
     height: calc(100% - 5rem);
     margin-bottom: 5rem;
     justify-content: space-around;
@@ -17,8 +17,7 @@
 }
 
 .title {
-    height: 2rem;
-    font-size: 1.5rem;
+    padding-bottom: 1rem;
 }
 
 @media screen and (min-width: 820px){

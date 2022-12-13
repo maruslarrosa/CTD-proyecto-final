@@ -28,15 +28,6 @@ public class CityService {
     private static final Logger logger = Logger.getLogger(CityService.class);
 
 
-    /**
-     * Métodos CRUD completos + Método listar
-     */
-
-    /**
-     * Crear
-     * @param cityDTO
-     * @return Graba en BBDD y retorna un DTO
-     */
     public CityDTO createCity(CityDTO cityDTO) throws BadRequestException {
         if(cityDTO.getName().isEmpty() || cityDTO == null)
             throw new BadRequestException("La ciudad no puede ser null");
@@ -48,11 +39,6 @@ public class CityService {
         return mapper.convertValue(cityRepository.save(city), CityDTO.class);
     }
 
-    /**
-     * Buscar por id
-     * @param id
-     * @return Retorna el DTO que corresponde a ese ID
-     */
     public CityDTO readCity(Long id) throws BadRequestException {
         if(id == null | id < 1)
             throw new BadRequestException("El id de la ciudad no puede ser null ni negativo");
@@ -64,11 +50,6 @@ public class CityService {
         return mapper.convertValue(city, CityDTO.class);
     }
 
-    /**
-     * Modificar
-     * @param cityDTO
-     * @return Graba cambios en BBDD y retorna el DTO
-     */
     public CityDTO updateCity(CityDTO cityDTO) throws BadRequestException, ResourceNotFoundException {
         if (cityDTO == null )
             throw new BadRequestException("la ciudad no puede ser null");
@@ -81,10 +62,6 @@ public class CityService {
         return mapper.convertValue(cityRepository.save(city), CityDTO.class);
     }
 
-    /**
-     * Eliminar
-     * @param id Elimina según id
-     */
     public void deleteCity(Long id) throws BadRequestException, ResourceNotFoundException {
         if( id == null || id < 1 )
             throw new BadRequestException("El id de la ciudad no puede ser null ni negativo");
@@ -94,10 +71,6 @@ public class CityService {
         cityRepository.deleteById(id);
     }
 
-    /**
-     * Listar
-     * @return Retorna listado completo de entidades
-     */
     public Set<CityDTO> getListCity() {
         List<City> cities = cityRepository.findAll();
         Set<CityDTO> citiesDTO = new HashSet<>();
@@ -113,15 +86,8 @@ public class CityService {
         return mapper.convertValue(city, CityDTO.class);
     }
 
-    /**.
-     * Método a partir de Query
-     * @param name Busca entidad por nombre
-     * @return Retorna entidad
-     */
     public City findCityByName(String name) {
         return cityRepository.findCityByName(name);
     }
-
-
 }
 

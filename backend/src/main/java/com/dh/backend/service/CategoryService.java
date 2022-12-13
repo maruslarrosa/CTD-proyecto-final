@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-
 @Service
 public class CategoryService {
 
@@ -27,15 +26,7 @@ public class CategoryService {
 
     private static final Logger logger = Logger.getLogger(CategoryService.class);
 
-    /**
-     * Métodos CRUD completo + Método listar
-     */
 
-    /**
-     * Crear
-     * @param categoryDTO
-     * @return Graba en BBDD y retorna un DTO
-     */
     public CategoryDTO createCategory(CategoryDTO categoryDTO) throws BadRequestException {
         if(categoryDTO.getName().isEmpty() || categoryDTO == null)
             throw new BadRequestException("La categoria no puede ser null");
@@ -47,11 +38,7 @@ public class CategoryService {
         return mapper.convertValue(categoryRepository.save(category), CategoryDTO.class);
     }
 
-    /**
-     * Buscar por id
-     * @param id
-     * @return Retorna el DTO que corresponde a ese ID
-     */
+
     public CategoryDTO readCategory(Long id) throws BadRequestException{
         if(id == null | id < 1)
             throw new BadRequestException("El id de la categoría no puede ser null ni negativo");
@@ -62,11 +49,7 @@ public class CategoryService {
         return mapper.convertValue(category, CategoryDTO.class);
     }
 
-    /**
-     * Modificar
-     * @param categoryDTO
-     * @return Graba cambios en BBDD y retorna el DTO
-     */
+
     public CategoryDTO updateCategory(CategoryDTO categoryDTO) throws BadRequestException, ResourceNotFoundException {
         if (categoryDTO == null )
             throw new BadRequestException("la categoría no puede ser null");
@@ -79,10 +62,7 @@ public class CategoryService {
         return mapper.convertValue(categoryRepository.save(category), CategoryDTO.class);
     }
 
-    /**
-     * Eliminar
-     * @param id Elimina según id
-     */
+
     public void deleteCategory(Long id) throws BadRequestException, ResourceNotFoundException {
         if( id == null || id < 1 )
             throw new BadRequestException("El id de la categoría no puede ser null ni negativo");
@@ -92,10 +72,7 @@ public class CategoryService {
         categoryRepository.deleteById(id);
     }
 
-    /**
-     * Listar
-     * @return Retorna listado completo de entidades
-     */
+
     public Set<CategoryDTO> getListCategory() {
         List<Category> categories = categoryRepository.findAll();
         Set<CategoryDTO> categoriesDTO = new HashSet<>();
@@ -106,11 +83,7 @@ public class CategoryService {
         return categoriesDTO;
     }
 
-    /**
-     * Método a partir de Query
-     * @param name Busca entidad por nombre
-     * @return Retorna entidad
-     */
+
     public Category findCategoryByName(String name) throws BadRequestException {
         if (name == null)
             throw new BadRequestException("El nombre no puede ser null");

@@ -1,16 +1,12 @@
 package com.dh.backend.dto;
 
-import com.dh.backend.model.Product;
-import com.dh.backend.model.jwt.User;
+import com.dh.backend.dto.jwt.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -20,17 +16,12 @@ public class BookingDTO {
 
     private Long id;
 
-    @NotNull
-    @NotBlank
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date checkIn;
+    private LocalDate checkIn;
 
-    @NotNull
-    @NotBlank
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date checkOut;
+    private LocalDate checkOut;
 
-    private Product product;
+    private ProductDTO product;
 
-    private User user;
+    private UserDTO user;
 }
+

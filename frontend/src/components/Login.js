@@ -1,14 +1,9 @@
 import styles from '../styles/form.module.css'
 import { Button, Error } from './index';
 import { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { UseEmailValidation } from '../hooks';
 import { GlobalContext } from '../GlobalContext';
-
-const userModel = {
-  email: 'test@test.com',
-  password: '123456'
-}
 
 export const Login = () => {
   const {logged, fromBooking} = useContext(GlobalContext)
@@ -25,24 +20,48 @@ export const Login = () => {
 
   const login = (event) => {
     event.preventDefault()
-    const correctEmail = event.target.email.value === userModel.email
-    const correctPassword = event.target.password.value === userModel.password
-    if(correctEmail && correctPassword) {
-      setInvalidCredentials(false)
-      window.sessionStorage.setItem('bookingUser', 'Marilina Larrosa')
-      const url = isFromBooking ? -1 : "/"
-      navigate(url)
-      setIsLogged(true)
-      setIsFromBooking(false)
+    // const correctEmail = event.target.email.value === userModel.email
+    // const correctPassword = event.target.password.value === userModel.password
+      // setInvalidCredentials(false)
+      // window.sessionStorage.setItem('bookingUser', 'Marilina Larrosa')
+      // const url = isFromBooking ? -1 : "/"
+      // navigate(url)
+      // setIsLogged(true)
+      // setIsFromBooking(false)
+      debugger
+      const user = {
+        email: event.target.email.value,
+        password: event.target.password.value
+      }
+      fetch(
+        "http://ec2-3-140-200-1.us-east-2.compute.amazonaws.com:8080/backend/auth/auth",
+        {
+          method: "POST",
+          body: JSON.stringify(user),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          debugger
+          console.log(data);
+          window.sessionStorage.setItem('bookingUser', data.respuesta.token)
+          const url = isFromBooking ? -1 : "/"
+          navigate(url)
+          setIsLogged(true)
+          setIsFromBooking(false)
+        });
     }
-    else {
-      setInvalidCredentials(true)
-    }
-  }
+
+
 
   return (
     <div className={styles.formContainer} onSubmit={login}>
-      {isFromBooking ? <Error text="Para realizar una reserva necesitas estar logueado"/> : null}
+      {isFromBooking ? (
+        <Error text="Para realizar una reserva necesitas estar logueado" />
+      ) : null}
       <h3 className={styles.text}>Iniciar sesión</h3>
       {invalidCredentials ? (
         <p className={styles.error}>
@@ -84,6 +103,10 @@ export const Login = () => {
           required={true}
         />
         <Button text="Ingresar" label="Ingresar" color="primary" />
+        <h5 className={styles.text}>
+          ¿Aún no tenés cuenta?
+          <Link to="/create-account">Registrate</Link>
+        </h5>
       </form>
     </div>
   );
