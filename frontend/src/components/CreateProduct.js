@@ -13,7 +13,7 @@ export const CreateProduct = () => {
 
   //Token que del admin logueado
   const [token, setToken] = useState(window.sessionStorage.getItem('bookingUser'))
-
+  
   useEffect(() => {
     setToken(window.sessionStorage.getItem('bookingUser'))
   }, [])
@@ -90,7 +90,7 @@ export const CreateProduct = () => {
   });
 
 
-  const handleButtonClick = (event) => {
+  const handleButtonClick2 = (event) => {
 
     event.preventDefault();
 
@@ -130,7 +130,7 @@ export const CreateProduct = () => {
     }
 
     console.log(producto);
-
+    
     fetch(
       "http://ec2-3-140-200-1.us-east-2.compute.amazonaws.com:8080/backend/productos",
       {
@@ -152,9 +152,10 @@ export const CreateProduct = () => {
       .catch(error => console.log(error))
   };
 
-  const handleButtonClick2 = (event) => {
+  const handleButtonClick = (event) => {
+    event.preventDefault();
     const producto = {
-      name: "Hotel Prueba 10",
+      name: "Hotel Prueba 11",
       description: "Conoce el mejor Hotel de la ciudad",
       availability: "Disponibilidad",
       policies: "políticas",
@@ -163,7 +164,23 @@ export const CreateProduct = () => {
       images: [
         {
           name: "Imagen 2",
-          url: "https://www.imagen-1.jpg/"
+          url: "https://content.r9cdn.net/himg/62/c0/84/ice-85676218-68620422_3XL-430714.jpg",
+        },
+        {
+          name: "Imagen 2",
+          url: "https://content.r9cdn.net/himg/62/c0/84/ice-85676218-68620422_3XL-430714.jpg",
+        },
+        {
+          name: "Imagen 2",
+          url: "https://content.r9cdn.net/himg/62/c0/84/ice-85676218-68620422_3XL-430714.jpg",
+        },
+        {
+          name: "Imagen 2",
+          url: "https://content.r9cdn.net/himg/62/c0/84/ice-85676218-68620422_3XL-430714.jpg",
+        },
+        {
+          name: "Imagen 2",
+          url: "https://content.r9cdn.net/himg/62/c0/84/ice-85676218-68620422_3XL-430714.jpg",
         }
       ],
       city_id: {
@@ -175,25 +192,26 @@ export const CreateProduct = () => {
       characteristicsInProducts_id: [
         {
           id: "2"
+        },
+        {
+          id: "3"
         }
       ]
     }
-    event.preventDefault();
+    const productoJson = JSON.stringify(producto)
+    debugger
     fetch(
       "http://ec2-3-140-200-1.us-east-2.compute.amazonaws.com:8080/backend/productos",
       {
         method: "POST",
-        body: JSON.stringify(producto),
+        body: productoJson,
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
+          "Authorization": `Bearer ${token}`
         },
-        mode: 'no-cors'
       }
     )
-      .then((response) => {
-        console.log(response)
-      })
+      .then((response) => response.json()) 
       .then((responseData) => {
         console.log(responseData);
         navigate("/successProduct")
