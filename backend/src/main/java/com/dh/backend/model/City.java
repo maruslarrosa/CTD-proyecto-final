@@ -17,10 +17,12 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @NoArgsConstructor
 public class City {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "city_sequence")
     @Column(name = "ID")
     private Long id;
+
     @NotNull
     @NotBlank
     @Size(min = 3, max = 45)

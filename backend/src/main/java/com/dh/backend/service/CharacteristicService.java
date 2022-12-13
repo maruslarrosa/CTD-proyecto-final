@@ -26,11 +26,7 @@ public class CharacteristicService {
 
     private static final Logger logger = Logger.getLogger(CharacteristicService.class);
 
-    /**
-     * Crear
-     * @param characteristicDTO
-     * @return Graba en BBDD y retorna un DTO
-     */
+
     public CharacteristicDTO createCharacteristic(CharacteristicDTO characteristicDTO) throws BadRequestException {
         if(characteristicDTO.getName().isEmpty() || characteristicDTO == null)
             throw new BadRequestException("La característica no puede ser null");
@@ -42,11 +38,6 @@ public class CharacteristicService {
         return mapper.convertValue(characteristicRepository.save(characteristic), CharacteristicDTO.class);
     }
 
-    /**
-     * Buscar por id
-     * @param id
-     * @return Retorna el DTO que corresponde a ese ID
-     */
     public CharacteristicDTO readCharacteristic(Long id) throws BadRequestException {
         if(id== null | id < 1)
             throw new BadRequestException("El id de la característica no puede ser null ni negativo");
@@ -58,11 +49,6 @@ public class CharacteristicService {
         return mapper.convertValue(characteristic, CharacteristicDTO.class);
     }
 
-    /**
-     * Modificar
-     * @param characteristicDTO
-     * @return Graba cambios en BBDD y retorna el DTO
-     */
     public CharacteristicDTO updateCharacteristic(CharacteristicDTO characteristicDTO) throws BadRequestException, ResourceNotFoundException {
         if (characteristicDTO == null )
             throw new BadRequestException("la característica no puede ser null");
@@ -75,10 +61,6 @@ public class CharacteristicService {
         return mapper.convertValue(characteristicRepository.save(characteristic), CharacteristicDTO.class);
     }
 
-    /**
-     * Eliminar
-     * @param id Elimina según id
-     */
     public void deleteCharacteristic(Long id) throws BadRequestException, ResourceNotFoundException {
         if( id == null || id < 1 )
             throw new BadRequestException("El id de la característica no puede ser null ni negativo");
@@ -88,10 +70,6 @@ public class CharacteristicService {
         characteristicRepository.deleteById(id);
     }
 
-    /**
-     * Listar
-     * @return Retorna listado completo de entidades
-     */
     public Set<CharacteristicDTO> getListCharacteristic() {
         List<Characteristic> characteristics = characteristicRepository.findAll();
         Set<CharacteristicDTO> characteristicDTO = new HashSet<>();
@@ -102,15 +80,9 @@ public class CharacteristicService {
         return characteristicDTO;
     }
 
-    /**.
-     * Método a partir de Query
-     * @param name Busca entidad por nombre
-     * @return Retorna entidad
-     */
     public Characteristic findCharacteristicByName(String name) throws BadRequestException {
         if (name == null)
             throw new BadRequestException("El nombre no puede ser null");
         return characteristicRepository.findCharacteristicByName(name);
     }
-
 }

@@ -1,15 +1,14 @@
 package com.dh.backend.model;
 
 import com.dh.backend.model.jwt.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "BOOKINGS")
@@ -24,24 +23,21 @@ public class Booking {
     @Column(name = "ID")
     private Long id;
 
-    @NotNull
-    @NotBlank
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "CHECK_IN")
-    private Date checkIn;
 
-    @NotNull
-    @NotBlank
-    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "CHECK_IN")
+    private LocalDate checkIn;
+
+
     @Column(name = "CHECK_OUT")
-    private Date checkOut;
+    private LocalDate checkOut;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "product")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Product product;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private User user;
 }
-

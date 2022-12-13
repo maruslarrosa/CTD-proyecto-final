@@ -20,17 +20,10 @@ public class JwtProviderConfig {
     @Value("${jwt.expiration}")
     private int expiration;
 
-    /**
-     * Metodo que nos ayudara a generar el token a partir de un usuario existente en la base de datos
-     * nos creara un usuario principal que será entrega como objeto al front
-     * */
     public String generateToken(Authentication auth) {
         MainUserAuth mainUserAuth = (MainUserAuth) auth.getPrincipal();
         Map<String, Object> claims = new HashMap<>();
-        /**
-         * claims, es una variable para generar nueva información de acuerdo a lo que
-         * yo necesite entregarle al front
-         * */
+
         claims.put("lastName",mainUserAuth.getLastName());
         claims.put("name",mainUserAuth.getName());
         return Jwts.builder()
@@ -41,21 +34,14 @@ public class JwtProviderConfig {
                 .signWith(SignatureAlgorithm.HS512, secret).compact();
     }
 
-    /**
-     * Metodo que obtiene el usuario configurado en el token
-     * */
     public String getUserNameFromToken(String token) {
         return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().getSubject();
     }
 
-    /**
-     * Metodo que valida si el token esta correctamente armado y si aun cuenta con tiempo y no ha expirado
-     * */
     @SneakyThrows
     public boolean validateToken(String token) {
         Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
         return true;
     }
-
 }
 

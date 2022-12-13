@@ -27,5 +27,4 @@ public class Role {
     @Size(min = 3, max = 45)
     @Column(name = "NAME")
     private String name;
-
 }
