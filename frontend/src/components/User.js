@@ -6,7 +6,7 @@ import { useJwt } from "react-jwt";
 export const User = ({ logout }) => {
   const [userName, setUserName] = useState(window.sessionStorage.getItem('bookingUser'))
   const { decodedToken, isExpired } = useJwt(userName);
-  console.log(decodedToken);
+  
 
   useEffect(() => {
     setUserName(window.sessionStorage.getItem('bookingUser'))

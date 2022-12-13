@@ -4,7 +4,6 @@ import { getCategories, getCharacteristics, getCities } from "../services";
 import { Button } from "./Button";
 import { useNavigate } from "react-router-dom";
 
-
 export const CreateProduct = () => {
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState([]);
@@ -13,10 +12,10 @@ export const CreateProduct = () => {
   const navigate = useNavigate();
 
   //Token que del admin logueado
-  const [userName, setUserName] = useState(window.sessionStorage.getItem('bookingUser'))
+  const [token, setToken] = useState(window.sessionStorage.getItem('bookingUser'))
 
   useEffect(() => {
-    setUserName(window.sessionStorage.getItem('bookingUser'))
+    setToken(window.sessionStorage.getItem('bookingUser'))
   }, [])
 
   useEffect(() => {
@@ -42,34 +41,77 @@ export const CreateProduct = () => {
     setCharacteristics(characteristicArray)
   }
 
+  
+
   // Hacer el post y manejar el comportamiento
-  const handleButtonClick = () => {
-    const submitForm = (event) => {
+  const handleButtonClick = (event) => {
+
+    const product = {
+      name: event.target.name.value,
+      description: event.target.description.value,
+      availability: event.target.description.value,
+      policies: event.target.policies.value,
+      latitude: 'xxx',
+      longitude: 'yyy',
+      images: [
+        {
+          name: event.target.imageName.value,
+          url: event.target.imageURL.value
+        }
+      ],
+      city_id: {
+        id: event.target.city.value
+      },
+      category_id: {
+        id: event.target.category.value
+      },
+      characteristicsInProducts_id: [
+        {
+          id: event.target.characteristic.value
+        }
+      ]
+    };
+    
+
       event.preventDefault();
-      if (true) {
-        event.preventDefault();
-      } else {
+      
         //const formattedUser = formatUser(event.target);
         // Esto es el cuerpo del post que tengo que copiar para crear Producto
         fetch(
-          "http://ec2-3-140-200-1.us-east-2.compute.amazonaws.com:8080/backend/usuarios",
+          "http://ec2-3-140-200-1.us-east-2.compute.amazonaws.com:8080/backend/productos",
           {
             method: "POST",
             // crear objeto JSON con datos de producto
             // Usar de ejemplo la función FormatdUsser de linea 35
-           //body: JSON.stringify(formattedUser),
+           body: JSON.stringify(product),
             headers: {
-              "Content-Type": "application/json",
+              "Content-Type": "application/json", 
+              Authorization: `Bearer ${token}`
             },
           }
         )
-          .then((response) => response.json())
-          .then((responseData) => {
-            //console.log(data);
-            navigate("/successProduct");
-          });
-      }
-    }; 
+        try {
+          // console.log(response)
+          navigate("/successProduct")
+       } catch(e) {
+        console.log("Hubo un error")
+        console.log(e)
+       } 
+        console.log(product)
+          // .then((response) => {
+          //   console.log(response)
+          //   navigate("/successProduct")
+      
+          // })
+          // .catch(function(error)){
+          //   console.log("Hubo un error")
+          //   console.log(error)
+          // }
+
+          // .then((responseData) => {
+          //   console.log(responseData);
+          // });
+      
   };
 
   return (
@@ -78,7 +120,7 @@ export const CreateProduct = () => {
       {/* {loading ? (
         <p>Cargando</p>
       ) : ( */}
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleButtonClick}>
         <div className={styles.propertyData}>
           <div className={styles.column}>
             <div className={styles.inputContainer}>
@@ -90,7 +132,7 @@ export const CreateProduct = () => {
                 type="text"
                 id="name"
                 name="name"
-                required={true}
+                //required={true}
                 aria-describedby="Nombre de la propiedad"
               />
             </div>
@@ -103,10 +145,10 @@ export const CreateProduct = () => {
                 id="category"
                 placeholder="Categoría"
                 name="category"
-                required
+                //required
               >
                 {categories.map((category) => (
-                  <option>{category.name}</option>
+                  <option key={category.name} value={category.id}>{category.name}</option>
                 ))}
               </select>
             </div>
@@ -121,7 +163,7 @@ export const CreateProduct = () => {
                 type="text"
                 id="address"
                 name="address"
-                required={true}
+                //required={true}
                 aria-describedby="Dirección"
               />
             </div>
@@ -134,10 +176,10 @@ export const CreateProduct = () => {
                 id="city"
                 placeholder="Ciudad"
                 name="city"
-                required
+                //required
               >
                 {cities.map((city) => (
-                  <option>{city.name}</option>
+                  <option key={city.name} value={city.id}>{city.name}</option>
                 ))}
               </select>
             </div>
@@ -152,7 +194,7 @@ export const CreateProduct = () => {
             type="text"
             id="description"
             name="description"
-            required={true}
+            //required={true}
             aria-describedby="Descripción"
           />
         </div>
@@ -164,9 +206,9 @@ export const CreateProduct = () => {
             <div className={styles.characteristicsContainer}>
               {characteristics.map((characteristic) => (
                 <div
-                  className={styles.characteristic}
+                  className={styles.characteristic} key={characteristic.id}
                 >
-                  <input type="checkbox" name="characteristics" value={characteristic.name}/>
+                  <input type="checkbox" name="characteristics" value={characteristic.id}/>
                   <label>{characteristic.name}</label>
                   <img src={characteristic.iconUrl} className={styles.icon} />
                 </div>
@@ -192,9 +234,9 @@ export const CreateProduct = () => {
               <input
                 className={styles.description}
                 type="text"
-                id="name"
-                name="name"
-                required={true}
+                id="policies"
+                name="policies"
+                //required={true}
                 aria-describedby="Normas de la casa"
               />
             </div>
@@ -211,9 +253,7 @@ export const CreateProduct = () => {
               <input
                 className={styles.description}
                 type="text"
-                id="name"
-                name="name"
-                required={true}
+                //required={true}
                 aria-describedby="Salud y seguridad"
               />
             </div>
@@ -230,9 +270,7 @@ export const CreateProduct = () => {
               <input
                 className={styles.description}
                 type="text"
-                id="name"
-                name="name"
-                required={true}
+                //required={true}
                 aria-describedby="Política de cancelación"
               />
             </div>
@@ -251,17 +289,17 @@ export const CreateProduct = () => {
               className={styles.input}
               type="text"
               id="imageName"
-              name="name"
-              required={true}
+              name="imageName"
+              //required={true}
               aria-describedby="nombreImagen"
               placeholder="Nombre imagen"
             />
             <input
               className={styles.input}
               type="text"
-              id="name"
-              name="name"
-              required={true}
+              id="imageURL"
+              name="imageURL"
+              //required={true}
               aria-describedby="URL imagen"
               placeholder="URL de la imagen"
             />

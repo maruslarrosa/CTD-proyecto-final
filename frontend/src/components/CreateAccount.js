@@ -70,7 +70,7 @@ export const CreateAccount = () => {
       email: data.email.value,
       password: data.password.value,
       role: {
-        id: 2,
+        id: 1,
         name: "ROLE_CLIENT"
       },
     };

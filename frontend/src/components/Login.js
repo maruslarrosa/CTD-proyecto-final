@@ -28,11 +28,12 @@ export const Login = () => {
       // navigate(url)
       // setIsLogged(true)
       // setIsFromBooking(false)
-      debugger
+      
       const user = {
         email: event.target.email.value,
         password: event.target.password.value
       }
+      
       fetch(
         "http://ec2-3-140-200-1.us-east-2.compute.amazonaws.com:8080/backend/auth/auth",
         {
@@ -45,7 +46,7 @@ export const Login = () => {
       )
         .then((response) => response.json())
         .then((data) => {
-          debugger
+          
           console.log(data);
           window.sessionStorage.setItem('bookingUser', data.respuesta.token)
           const url = isFromBooking ? -1 : "/"
