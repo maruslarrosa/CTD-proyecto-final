@@ -49,7 +49,7 @@ public class Product {
     @Column(name = "LATITUDE")
     private String latitude;
 
-    // Un producto puede tener varias imágenes
+    // Un producto puede tener varias imagenes
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "products_id")
     private Set<Image> images = new HashSet<>();
