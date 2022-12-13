@@ -1,5 +1,6 @@
 @import './colors.css';
 
+<<<<<<< HEAD
 .header {
     background-color: var(--yellow);
     height: 5rem;
@@ -27,4 +28,38 @@
 .userButton {
     padding: 1rem;
     height: inherit;
+=======
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--yellow);
+    padding: 0.5rem;
+    height: 5rem;
+    position: fixed;
+    width: 100vw;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    font-style: italic;
+    font-weight: 600;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+.theme {
+    padding-bottom: 0.7rem;
+}
+
+.imgLogo {
+    width:90%;
+    max-width: 9rem;
+}
+
+.imgLogo:hover {
+    width: 100%;
+    transition: width 150ms linear;
+
+>>>>>>> c4e1ced1b1da590fb4e94f7e37a222c401d8e372
 }

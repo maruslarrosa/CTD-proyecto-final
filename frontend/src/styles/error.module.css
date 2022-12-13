@@ -1,0 +1,21 @@
+.errorContainer {
+    background-color: #ffe6e6;
+    color: red;
+    width: 30rem;
+    max-width: 80%;
+    height: 3rem;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0.5rem;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+.errorText {
+    padding-left: 1rem;
+}

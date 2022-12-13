@@ -4,7 +4,11 @@ import { iconFacebook, iconInstagram, iconLinkedin, iconTwitter } from '../asset
 import { GlobalContext } from '../GlobalContext';
 
 export const Footer = () => {
+<<<<<<< HEAD
   const isMobile = useContext(GlobalContext)
+=======
+  const {isMobile} = useContext(GlobalContext)
+>>>>>>> c4e1ced1b1da590fb4e94f7e37a222c401d8e372
 
     const socialIcons = () => {
         return (

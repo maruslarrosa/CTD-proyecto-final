@@ -1,0 +1,33 @@
+.availabilityContainer{
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    background-color: #F1F2F3;
+    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
+
+}
+.leftContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    padding: 1rem;
+}
+.startavailability {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 1rem;
+    align-items: center;
+    margin: 1rem;
+    border-radius: 1rem;
+}
+
+@media screen and (max-width: 820px) {
+    .availabilityContainer {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,90 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: #DEDEDE;
+    height: calc(100vh - 5rem);
+    padding: 3rem;
+    padding-top: 8rem;
+    display: flex;
+    margin-bottom: 5rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0px 0px 7px 0px rgb(118 118 118 / 50%);
+}
+
+.propertyData {
+    display: flex;
+    flex-direction: row;
+}
+.title {
+    text-align: left;
+    font-size: 2em;
+    margin-bottom: 12px;
+}
+
+.column {
+    width: 100%;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+
+}
+
+.select {
+    height: 2rem;
+    padding-left: 0.5rem;
+    border-radius: 6px;
+    border: none;
+    box-shadow: 0px 0px 7px 0px rgb(118 118 118 / 50%);
+}
+
+.label {
+    padding: 0.5rem;
+    align-self: flex-start;
+    font-weight: 600;
+}
+
+.descriptionContainer {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+}
+
+.description {
+    height: 10rem;
+    border-radius: 6px;
+    border: none;
+    box-shadow: 0px 0px 7px 0px rgb(118 118 118 / 50%);
+}
+.characteristicsContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.characteristic {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 10rem;
+    height: 3rem;
+    margin: 0.5rem;
+    border-radius: 6px;
+    border: none;
+    box-shadow: 0px 0px 7px 0px rgb(118 118 118 / 50%);
+}
+
+.icon {
+    width: 2rem;
+}

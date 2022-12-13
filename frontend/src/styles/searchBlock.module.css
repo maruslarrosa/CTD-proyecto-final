@@ -15,6 +15,7 @@
     margin-bottom: 22px;
 }
 
+<<<<<<< HEAD
 .formContainer{
     display: flex;
 }
@@ -22,6 +23,8 @@
 .columnSearch {
     width: 350px;
 }
+=======
+>>>>>>> c4e1ced1b1da590fb4e94f7e37a222c401d8e372
 
 .searchContainer {
     width: 100%;
@@ -33,11 +36,18 @@
 
 .searchInputContainer {
     width: 30%;
+<<<<<<< HEAD
     position:relative;
 }
 
 .searchInput {
     width: 100% ;
+=======
+}
+
+.searchInput {
+    width: 100%;
+>>>>>>> c4e1ced1b1da590fb4e94f7e37a222c401d8e372
     border: 1px solid white ;
     background-color: white;
     border-radius: 5px;
@@ -51,14 +61,19 @@
 .searchDropdown {
     background-color: white;
     position: absolute;
+<<<<<<< HEAD
     top: 45px;
     left: 0px;
     width: 100%;
+=======
+    width: 30%;
+>>>>>>> c4e1ced1b1da590fb4e94f7e37a222c401d8e372
     height: 290px;
     overflow: auto;
     z-index: 1;
 }
 
+<<<<<<< HEAD
 .searchDatePicker {
     background-color: white;
     position: absolute;
@@ -69,6 +84,8 @@
     overflow: hidden;
 }
 
+=======
+>>>>>>> c4e1ced1b1da590fb4e94f7e37a222c401d8e372
 .dropDown{
     display: flex;
     align-items: center;
@@ -83,9 +100,26 @@
 
 }
 
+<<<<<<< HEAD
+=======
+.customCalendar {
+        position: absolute;
+        z-index: 1;
+    }
+
+.icon {
+    width: 1.5rem;
+}
+
+>>>>>>> c4e1ced1b1da590fb4e94f7e37a222c401d8e372
 @media screen and (max-width:720px) {
     .searchContainer {flex-wrap: wrap;}
     .searchInputContainer {width: 100%;}
     .generalSearchContainer{ padding: 10px;}
+<<<<<<< HEAD
   }
   
+=======
+    .searchDropdown {width: 90%;}
+ }
+>>>>>>> c4e1ced1b1da590fb4e94f7e37a222c401d8e372

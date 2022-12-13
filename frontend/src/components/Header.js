@@ -1,57 +1,41 @@
 import styles from '../styles/header.module.css';
-import { useState, useContext } from 'react'
-import { Button, Menu } from './index';
-import { logoLarge, logoSmall, menu } from '../assets/index'
+import { useContext } from 'react'
+import { RightNav, Hamburguer, User } from './index';
+import { logoLarge, logoSmall } from '../assets/index'
 import { GlobalContext } from '../GlobalContext';
+import { Link } from 'react-router-dom'
+
 
 export const Header = () => {
-  const isMobile = useContext(GlobalContext)
-  const [menuVisibility, setMenuVisibility] = useState(false);
+  const {isMobile,logged} = useContext(GlobalContext)
+  const [isLogged, setIsLogged] = logged
 
-  const renderUserButtons = () => {
-    return (
-      <>
-        <Button
-          text={"Crear cuenta"}
-          label={"Botón para crear cuenta"}
-          color={"primary"}
-        />
-        <Button
-          text={"Login"}
-          label={"Botón para iniciar sesión"}
-          color={"primary"}
-        />
-      </>
-    );
-  };
-
-  const renderMobileButtons = () => {
-    return (
-      <div onClick={() => setMenuVisibility(!menuVisibility)}>
-        <img
-          src={menu}
-          alt="Menu para ver opciones de usuario"
-        />
-      </div>
-    );
-  };
+  const handleLogout = () => {
+    sessionStorage.removeItem('bookingUser')
+    setIsLogged(false)
+  }
 
   return (
-    <>
-      {menuVisibility ? (
-        <Menu />
-      ) : (
-        <div className={styles.header}>
+    <div className={styles.nav}>
+      <div className={styles.logo}>
+        <Link to="/">
           <img
             src={isMobile ? logoSmall : logoLarge}
-            className={styles.logo}
-            alt="Logo digital bookign"
+            alt="Logo digital booking"
+            className={styles.imgLogo}
           />
-          <div className={styles.buttonContainer}>
-            {isMobile ? renderMobileButtons() : renderUserButtons()}
-          </div>
-        </div>
+        </Link>
+        {!isMobile ? (
+          <p className={styles.theme}>Sentite como en tu hogar</p>
+        ) : null}
+      </div>
+      {isLogged ? (
+        <User logout={handleLogout} />
+      ) : isMobile ? (
+        <Hamburguer />
+      ) : (
+        <RightNav />
       )}
-    </>
+    </div>
   );
 };

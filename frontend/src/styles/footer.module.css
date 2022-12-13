@@ -1,5 +1,11 @@
 @import './colors.css';
 
+.iconContainer {
+    width: 15rem;
+    display: flex;
+    justify-content: space-between;
+}
+
 .footer {
     width: 100%;
     height: 5rem;
@@ -10,12 +16,7 @@
     align-items: center;
     padding-left: 2rem;
     padding-right: 2rem;
-    position: absolute;
+    position: fixed;
     bottom: 0;
-}
-
-.iconContainer {
-    width: 15rem;
-    display: flex;
-    justify-content: space-between;
+    z-index: 18;
 }

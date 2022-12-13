@@ -15,13 +15,26 @@
 .cardContainer{
     width: 25%;
     border-radius: 8px;
+<<<<<<< HEAD
     box-shadow: 4px 4px 13px rgba(0, 0, 0, 0.267);
+=======
+    box-shadow: 4px 4px 13px rgba(0, 0, 0, 0.267);   
+}
+
+.cardContainer:hover {
+    box-shadow: 4px 4px 13px rgba(0, 0, 0, 0.6);
+    transition: box-shadow 200ms linear;
+>>>>>>> c4e1ced1b1da590fb4e94f7e37a222c401d8e372
 }
 
 .cardContainer img {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
+<<<<<<< HEAD
     object-fit: fill;
+=======
+    object-fit: cover;
+>>>>>>> c4e1ced1b1da590fb4e94f7e37a222c401d8e372
     width: 100%;
     height: 250px;
 }
@@ -38,8 +51,11 @@
     text-align: left;
     margin-top: 5px;
     font-weight: 600;
+<<<<<<< HEAD
     color: rgb(167, 167, 167);
 
+=======
+>>>>>>> c4e1ced1b1da590fb4e94f7e37a222c401d8e372
 }
 
 
